@@ -1,6 +1,6 @@
 //
 //  logging.h
-//  ReiKey
+//  Netiquette
 //
 //  Created by Patrick Wardle on 12/24/18.
 //  Copyright © 2018 Objective-See. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  logging.m
-//  ReiKey
+//  Netiquette
 //
 //  Created by Patrick Wardle on 12/24/18.
 //  Copyright © 2018 Objective-See. All rights reserved.
@@ -18,7 +18,7 @@ void logMsg(int level, NSString* msg)
     
     //alloc/init
     // always start w/ name + pid
-    logPrefix = [NSMutableString stringWithFormat:@"ReiKey(%d)", getpid()];
+    logPrefix = [NSMutableString stringWithFormat:@"Netiquette(%d)", getpid()];
     
     //if its error, add error to prefix
     if(LOG_ERR == level)
