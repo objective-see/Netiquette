@@ -11,7 +11,7 @@ Via its simple intuitive UI, you can quickly:
 **Documentation:** \
 Full details and usage instructions can be found [here](https://objective-see.com/products/netiquette.html). 
 
-**To Build:** \
+**To Build:** 
 
 1. run in project directory, run: `carthage update`
 2. build in Xcode
