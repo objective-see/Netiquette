@@ -13,7 +13,7 @@ Full details and usage instructions can be found [here](https://objective-see.co
 
 **To Build:** 
 
-1. run in project directory, run: `carthage update`
+1. run in project directory, run: `carthage update  --platform macOS`
 2. build in Xcode
 
 Netiquette should build cleanly in Xcode (though you will have to remove code signing constraints, or replace with your own Apple developer code signing certificate).
