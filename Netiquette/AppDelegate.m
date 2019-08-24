@@ -178,9 +178,13 @@
     // ->'updateResponse newVersion:' method will be called when check is done
     [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
         
-        //process response
-        [self updateResponse:result newVersion:newVersion];
-        
+        //show update window?
+        if( (nil != sender) ||
+            (UPDATE_NEW_VERSION == result) )
+        {
+            //process response
+            [self updateResponse:result newVersion:newVersion];
+        }
     }];
     
     return;
@@ -232,7 +236,7 @@
     else
     {
         //set details
-        details = @"no new versions available!";
+        details = @"no new versions available";
             
         //set action
         action = @"Close";
