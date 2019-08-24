@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,9 +23,12 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="aiH-sN-y4b" customClass="TableViewController">
             <connections>
+                <outlet property="activityIndicator" destination="XEJ-zt-Ua0" id="ulr-Kd-PUy"/>
+                <outlet property="activityMessage" destination="03w-iN-KKb" id="gF7-6F-UgR"/>
                 <outlet property="filterBox" destination="rOo-Uz-eKM" id="zZu-02-3Bs"/>
                 <outlet property="filterButton" destination="zGD-yD-SJN" id="vLe-Kf-Kel"/>
                 <outlet property="outlineView" destination="riP-0C-cJN" id="4S5-Eh-gbm"/>
+                <outlet property="overlay" destination="8wq-vH-wKB" id="em3-tB-TCK"/>
                 <outlet property="refreshButton" destination="f7x-Is-k35" id="Iy9-qd-L1m"/>
             </connections>
         </customObject>
@@ -38,6 +42,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="about:" target="Voe-Tx-rLC" id="xR4-1T-KeX"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Check for Update" id="LpK-b7-eeJ" userLabel="Check for Update">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="check4Update:" target="Voe-Tx-rLC" id="vD6-oi-7yB"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -100,7 +110,7 @@
                                                             </constraints>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSColorPanel" id="7lY-KO-pkW"/>
                                                         </imageView>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fST-Bo-s5k">
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fST-Bo-s5k">
                                                             <rect key="frame" x="54" y="21" width="97" height="26"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Item Name" id="Iql-Sc-jIR">
                                                                 <font key="font" size="17" name="Menlo-Bold"/>
@@ -108,7 +118,7 @@
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6E8-3J-jpN">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6E8-3J-jpN">
                                                             <rect key="frame" x="54" y="8" width="736" height="17"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingMiddle" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Item Path" usesSingleLineMode="YES" id="6tZ-RA-Kuj">
                                                                 <font key="font" size="11" name="Menlo-Regular"/>
@@ -138,9 +148,9 @@
                                                     <rect key="frame" x="1" y="57" width="813" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="P5i-dn-VqS">
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5i-dn-VqS">
                                                             <rect key="frame" x="-1" y="12" width="813" height="25"/>
-                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="connection " id="zLL-cd-Yu1">
+                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="connection " id="zLL-cd-Yu1">
                                                                 <font key="font" size="17" name="Menlo-Bold"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -215,6 +225,28 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="8wq-vH-wKB" userLabel="Overlay">
+                        <rect key="frame" x="338" y="205" width="500" height="200"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="XEJ-zt-Ua0">
+                                <rect key="frame" x="234" y="84" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03w-iN-KKb" userLabel="loading data">
+                                <rect key="frame" x="18" y="43" width="464" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Enumerating Network Connections..." id="T3k-y4-uvq">
+                                    <font key="font" size="13" name="Menlo-Bold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="HS7-Gq-ED5"/>
+                            <constraint firstAttribute="width" constant="500" id="bn0-UG-q0C"/>
+                        </constraints>
+                    </customView>
                     <button tag="10002" translatesAutoresizingMaskIntoConstraints="NO" id="Z3X-kC-co8" userLabel="Logo">
                         <rect key="frame" x="572" y="8" width="32" height="32"/>
                         <constraints>
@@ -235,7 +267,7 @@
                             <constraint firstAttribute="height" constant="15" id="5Be-bZ-xAx"/>
                             <constraint firstAttribute="width" constant="175" id="ewP-eA-DDW"/>
                         </constraints>
-                        <buttonCell key="cell" type="check" title="Hide Apple Processes" bezelStyle="regularSquare" imagePosition="leading" alignment="justified" state="on" inset="2" id="8Br-b8-pLx">
+                        <buttonCell key="cell" type="check" title="Hide Apple Processes" bezelStyle="regularSquare" imagePosition="left" alignment="justified" state="on" inset="2" id="8Br-b8-pLx">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="Menlo-Bold"/>
                         </buttonCell>
@@ -285,7 +317,9 @@
                     <constraint firstItem="zGD-yD-SJN" firstAttribute="leading" secondItem="f7x-Is-k35" secondAttribute="trailing" constant="8" id="OME-6c-7tD"/>
                     <constraint firstAttribute="trailing" secondItem="es4-I1-LNP" secondAttribute="trailing" constant="-1" id="P8D-hL-hUV"/>
                     <constraint firstItem="f7x-Is-k35" firstAttribute="baseline" secondItem="zGD-yD-SJN" secondAttribute="baseline" id="X4b-79-GAM"/>
+                    <constraint firstItem="8wq-vH-wKB" firstAttribute="centerY" secondItem="EiT-Mj-1SZ" secondAttribute="centerY" id="ctu-4B-fAo"/>
                     <constraint firstAttribute="bottom" secondItem="Z3X-kC-co8" secondAttribute="bottom" constant="8" id="dEg-EJ-3DI"/>
+                    <constraint firstItem="8wq-vH-wKB" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="fUd-t8-o23"/>
                     <constraint firstItem="Z3X-kC-co8" firstAttribute="top" secondItem="es4-I1-LNP" secondAttribute="bottom" constant="7" id="qJE-67-GEE"/>
                     <constraint firstItem="B4V-Uy-741" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="rwx-VK-YSF"/>
                 </constraints>
@@ -305,13 +339,13 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="CF826839-BC2B-4FEF-898A-77DC4D2486F1" label="" paletteLabel="" id="gH4-ag-QAf">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="96" height="19"/>
-                        <size key="maxSize" width="175" height="22"/>
+                        <size key="minSize" width="185" height="22"/>
+                        <size key="maxSize" width="185" height="22"/>
                         <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="rOo-Uz-eKM">
-                            <rect key="frame" x="0.0" y="14" width="175" height="22"/>
+                            <rect key="frame" x="0.0" y="14" width="185" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter Connections" usesSingleLineMode="YES" bezelStyle="round" id="FZk-JV-dl5">
-                                <font key="font" size="11" name="Menlo-Regular"/>
+                            <searchFieldCell key="cell" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter Connections" usesSingleLineMode="YES" bezelStyle="round" id="FZk-JV-dl5">
+                                <font key="font" size="13" name="Menlo-Bold"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </searchFieldCell>

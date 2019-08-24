@@ -14,8 +14,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TableViewController : NSOutlineView <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
+@property (weak) IBOutlet NSView *overlay;
+
 //outline view
 @property (weak) IBOutlet NSOutlineView *outlineView;
+
+//overlay spinner
+@property (weak) IBOutlet NSProgressIndicator *activityIndicator;
+
+//overlay msg
+@property (weak) IBOutlet NSTextField *activityMessage;
 
 //original connections
 @property(nonatomic, retain)OrderedDictionary* items;

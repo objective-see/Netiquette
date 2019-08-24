@@ -47,4 +47,7 @@ NSMutableString* formatResults(OrderedDictionary* connections, BOOL skipApple);
 //prettify JSON
 NSString* prettifyJSON(NSString* output);
 
+//make a window modal
+void makeModal(NSWindowController* windowController);
+
 #endif /* utilities_h */

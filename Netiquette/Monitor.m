@@ -58,18 +58,31 @@
 //callback for new event
 -(void)callbackDescription:(NStatSourceRef)source description:(NSDictionary*)description
 {
+    //event (conenction)
+    Event* event = nil;
+    
     //sync
     @synchronized(self.events) {
         
         //init event
-        Event* event = [[Event alloc] init:description];
+        event = [[Event alloc] init:description];
+        
+        //ignore errors/processes that (just) exited
+        if(0 == event.process.pid)
+        {
+            //igore
+            goto bail;
+        }
         
         //update
         // source will be unique per connection
         self.events[[NSValue valueWithPointer:source]] = event;
     }
+    
+bail:
+    
+    return;
 }
-
 
 //callback for removed event
 // remove source, and call block that was passed in

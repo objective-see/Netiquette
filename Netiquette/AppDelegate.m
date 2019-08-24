@@ -8,6 +8,8 @@
 
 #import "sort.h"
 #import "Event.h"
+#import "Update.h"
+#import "utilities.h"
 #import "AppDelegate.h"
 #import "3rd-party/OrderedDictionary.h"
 
@@ -23,6 +25,7 @@
 @synthesize monitor;
 @synthesize tableViewController;
 @synthesize aboutWindowController;
+@synthesize updateWindowController;
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
@@ -35,7 +38,15 @@
     //center window
     [[self window] center];
     
-    
+    //after a a few seconds
+    // check for updates in background
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+    ^{
+       //check
+        [self check4Update:nil];
+       
+    });
+
     //first time run?
     // show thanks to friends window!
     // note: on close, invokes method to show main window
@@ -149,6 +160,103 @@
         [self.friends close];
         
     });
+    
+    return;
+}
+
+//call into Update obj
+// check to see if there an update?
+-(IBAction)check4Update:(id)sender
+{
+    //update obj
+    Update* update = nil;
+    
+    //init update obj
+    update = [[Update alloc] init];
+    
+    //check for update
+    // ->'updateResponse newVersion:' method will be called when check is done
+    [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
+        
+        //process response
+        [self updateResponse:result newVersion:newVersion];
+        
+    }];
+    
+    return;
+}
+
+//process update response
+// error, no update, update/new version
+-(void)updateResponse:(NSInteger)result newVersion:(NSString*)newVersion
+{
+    //details
+    NSString* details = nil;
+    
+    //action
+    NSString* action = nil;
+    
+    //new version?
+    // configure ui, and add 'update' button
+    if(UPDATE_NEW_VERSION== result)
+    {
+        //set details
+        details = [NSString stringWithFormat:@"a new version (%@) is available!", newVersion];
+        
+        //set action
+        action = @"Update";
+        
+        //alloc update window
+        updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
+        
+        //configure
+        [self.updateWindowController configure:details buttonTitle:action];
+        
+        //center window
+        [[self.updateWindowController window] center];
+        
+        //show it
+        [self.updateWindowController showWindow:self];
+        
+        //invoke function in background that will make window modal
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            //make modal
+            makeModal(self.updateWindowController);
+            
+        });
+    }
+    
+    //no new version
+    // configure ui, and add 'close' button
+    else
+    {
+        //set details
+        details = @"no new versions available!";
+            
+        //set action
+        action = @"Close";
+        
+        //alloc update window
+        updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
+        
+        //configure
+        [self.updateWindowController configure:details buttonTitle:action];
+        
+        //center window
+        [[self.updateWindowController window] center];
+        
+        //show it
+        [self.updateWindowController showWindow:self];
+        
+        //invoke function in background that will make window modal
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            //make modal
+            makeModal(self.updateWindowController);
+            
+        });
+    }
     
     return;
 }

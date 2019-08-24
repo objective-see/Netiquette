@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD1BFEB6231112A700230AE2 /* UpdateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1BFEB2231112A700230AE2 /* UpdateWindow.xib */; };
+		CD1BFEB7231112A700230AE2 /* UpdateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1BFEB4231112A700230AE2 /* UpdateWindowController.m */; };
+		CD1BFEB8231112A700230AE2 /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1BFEB5231112A700230AE2 /* Update.m */; };
+		CD1BFEBB231116CD00230AE2 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1BFEBA231116CD00230AE2 /* NSApplicationKeyEvents.m */; };
 		CD1DFE1622F61ACA002112FA /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1DFE1322F61ACA002112FA /* AboutWindow.xib */; };
 		CD1DFE1722F61ACA002112FA /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DFE1422F61ACA002112FA /* AboutWindowController.m */; };
 		CD23BA4322E3A75E00992D1C /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD23BA4222E3A75E00992D1C /* TableViewController.m */; };
@@ -44,6 +48,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD1BFEB1231112A700230AE2 /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
+		CD1BFEB2231112A700230AE2 /* UpdateWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateWindow.xib; sourceTree = "<group>"; };
+		CD1BFEB3231112A700230AE2 /* UpdateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateWindowController.h; sourceTree = "<group>"; };
+		CD1BFEB4231112A700230AE2 /* UpdateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateWindowController.m; sourceTree = "<group>"; };
+		CD1BFEB5231112A700230AE2 /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
+		CD1BFEB9231116CD00230AE2 /* NSApplicationKeyEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSApplicationKeyEvents.h; sourceTree = "<group>"; };
+		CD1BFEBA231116CD00230AE2 /* NSApplicationKeyEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSApplicationKeyEvents.m; sourceTree = "<group>"; };
 		CD1DFE1322F61ACA002112FA /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		CD1DFE1422F61ACA002112FA /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
 		CD1DFE1522F61ACA002112FA /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
@@ -128,6 +139,8 @@
 		CD75D96822CB36D70085361F /* Netiquette */ = {
 			isa = PBXGroup;
 			children = (
+				CD1BFEB9231116CD00230AE2 /* NSApplicationKeyEvents.h */,
+				CD1BFEBA231116CD00230AE2 /* NSApplicationKeyEvents.m */,
 				CDFCAE4A230BD75A005FA66B /* logging.h */,
 				CDFCAE4B230BD75A005FA66B /* logging.m */,
 				CD1DFE1322F61ACA002112FA /* AboutWindow.xib */,
@@ -143,6 +156,11 @@
 				CD75D97122CB36D90085361F /* Info.plist */,
 				CD73A8F522DBE72900464867 /* main.h */,
 				CD75D97222CB36D90085361F /* main.m */,
+				CD1BFEB1231112A700230AE2 /* Update.h */,
+				CD1BFEB5231112A700230AE2 /* Update.m */,
+				CD1BFEB2231112A700230AE2 /* UpdateWindow.xib */,
+				CD1BFEB3231112A700230AE2 /* UpdateWindowController.h */,
+				CD1BFEB4231112A700230AE2 /* UpdateWindowController.m */,
 				CD73A8B622D1ABA900464867 /* Event.h */,
 				CD73A8B722D1ABA900464867 /* Event.m */,
 				CD73A8B322D1AB4200464867 /* Monitor.h */,
@@ -236,6 +254,7 @@
 				CDFCAE52230BE5D4005FA66B /* patrons.txt in Resources */,
 				CD75D96D22CB36D90085361F /* Assets.xcassets in Resources */,
 				CD75D97022CB36D90085361F /* MainMenu.xib in Resources */,
+				CD1BFEB6231112A700230AE2 /* UpdateWindow.xib in Resources */,
 				CD1DFE1622F61ACA002112FA /* AboutWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,15 +266,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD1BFEB8231112A700230AE2 /* Update.m in Sources */,
 				CD3126AE22E442C500B819B3 /* CustomRow.m in Sources */,
 				CD73A8B822D1ABA900464867 /* Event.m in Sources */,
 				CD23BA4322E3A75E00992D1C /* TableViewController.m in Sources */,
 				CD75D97322CB36D90085361F /* main.m in Sources */,
 				CDFCAE48230B8C7B005FA66B /* sort.m in Sources */,
+				CD1BFEB7231112A700230AE2 /* UpdateWindowController.m in Sources */,
 				CD75D96B22CB36D70085361F /* AppDelegate.m in Sources */,
 				CD73A8F322DBE4BF00464867 /* utilities.m in Sources */,
 				CDFCAE4C230BD75A005FA66B /* logging.m in Sources */,
 				CD23BA4622E3D82D00992D1C /* Item.m in Sources */,
+				CD1BFEBB231116CD00230AE2 /* NSApplicationKeyEvents.m in Sources */,
 				CD73A8B522D1AB4200464867 /* Monitor.m in Sources */,
 				CD1DFE1722F61ACA002112FA /* AboutWindowController.m in Sources */,
 				CD82468522F921F20080CE10 /* OrderedDictionary.m in Sources */,
@@ -327,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -380,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;

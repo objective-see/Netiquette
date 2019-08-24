@@ -60,23 +60,31 @@ OrderedDictionary* sortEvents(NSMutableDictionary* events)
     
     //sort pids by process name
     sortedPids = [combinedEvents keysSortedByValueUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2)
-                  {
-                      //first event
-                      Event* firstEvent = [[((NSDictionary*)obj1) allValues] firstObject];
-                      
-                      //second event
-                      Event* secondEvent = [[((NSDictionary*)obj2) allValues] firstObject];
-                      
-                      //compare/return
-                      return [firstEvent.process.binary.name compare:secondEvent.process.binary.name options:NSCaseInsensitiveSearch];
-                  }];
+    {
+          //first event
+          Event* firstEvent = [[((NSDictionary*)obj1) allValues] firstObject];
+          
+          //second event
+          Event* secondEvent = [[((NSDictionary*)obj2) allValues] firstObject];
+          
+          //compare/return
+          return [firstEvent.process.binary.name compare:secondEvent.process.binary.name options:NSCaseInsensitiveSearch];
+    }];
+    
+    //sanity check
+    if(0 == sortedPids.count)
+    {
+        //bail
+        goto bail;
+    }
     
     //add sorted events
-    for(NSUInteger i = 0; i<sortedPids.count-1; i++)
+    for(NSInteger i = 0; i<sortedPids.count-1; i++)
     {
         //add to ordered dictionary
         [processedEvents insertObject:combinedEvents[sortedPids[i]] forKey:sortedPids[i] atIndex:i];
     }
     
+bail:
     return processedEvents;
 }

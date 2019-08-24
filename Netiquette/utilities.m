@@ -33,52 +33,28 @@ void disableSTDERR()
 //init crash reporting
 void initCrashReporting()
 {
-    //sentry
-    NSBundle *sentry = nil;
-    
     //error
-    NSError* error = nil;
+    NSError *error = nil;
     
-    //class
-    Class SentryClient = nil;
+    //client
+    SentryClient *client = nil;
     
-    //load senty
-    sentry = loadFramework(@"Sentry.framework");
-    if(nil == sentry)
-    {
-        //err msg
-        logMsg(LOG_ERR, @"failed to load 'Sentry' framework");
-        
-        //bail
-        goto bail;
-    }
-    
-    //get client class
-    SentryClient = NSClassFromString(@"SentryClient");
-    if(nil == SentryClient)
+    //init
+    client = [[SentryClient alloc] initWithDsn:@"https://1735fa7903114215993cb18c96fe268c@sentry.io/1535612" didFailWithError:&error];
+    if( (nil == client) ||
+        (nil != error) )
     {
         //bail
         goto bail;
     }
     
-    //set shared client
-    [SentryClient setSharedClient:[[SentryClient alloc] initWithDsn:CRASH_REPORTING_URL didFailWithError:&error]];
+    //set delegate
+    SentryClient.sharedClient = client;
+    
+    //start
+    [SentryClient.sharedClient startCrashHandlerWithError:&error];
     if(nil != error)
     {
-        //log error
-        logMsg(LOG_ERR, [NSString stringWithFormat:@"initializing 'Sentry' failed with %@", error]);
-        
-        //bail
-        goto bail;
-    }
-    
-    //start crash handler
-    [[SentryClient sharedClient] startCrashHandlerWithError:&error];
-    if(nil != error)
-    {
-        //log error
-        logMsg(LOG_ERR, [NSString stringWithFormat:@"starting 'Sentry' crash handler failed with %@", error]);
-        
         //bail
         goto bail;
     }
@@ -218,6 +194,37 @@ NSString* convertIPAddr(unsigned char* ipAddr, __uint8_t socketFamily)
     return socketDescription;
 }
 
+//wait until a window is non nil
+// then make it modal
+void makeModal(NSWindowController* windowController)
+{
+    //wait up to 1 second window to be non-nil
+    // then make modal
+    for(int i=0; i<20; i++)
+    {
+        //can make it modal once we have a window
+        if(nil != windowController.window)
+        {
+            //make modal on main thread
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                
+                //modal
+                [[NSApplication sharedApplication] runModalForWindow:windowController.window];
+                
+            });
+            
+            //all done
+            break;
+        }
+        
+        //nap
+        [NSThread sleepForTimeInterval:0.05f];
+        
+    }//until 1 second
+    
+    return;
+}
+
 //prettify JSON
 NSString* prettifyJSON(NSString* output)
 {
@@ -248,7 +255,9 @@ NSString* prettifyJSON(NSString* output)
     }
     @catch(NSException *exception)
     {
-        ;
+        //TODO: remove
+        NSLog(@"exception: %@", exception);
+        printf("exception: %s\n", exception.description.UTF8String);
     }
     
     //covert to pretty string

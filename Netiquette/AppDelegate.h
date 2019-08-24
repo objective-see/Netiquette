@@ -9,6 +9,7 @@
 #import "Monitor.h"
 #import "TableViewController.h"
 #import "AboutWindowController.h"
+#import "UpdateWindowController.h"
 
 #import <Cocoa/Cocoa.h>
 
@@ -22,6 +23,9 @@
 
 //friends of objective-see window
 @property (weak) IBOutlet NSWindow *friends;
+
+//update window controller
+@property(nonatomic, retain)UpdateWindowController* updateWindowController;
 
 //about window controller
 @property(nonatomic, retain)AboutWindowController* aboutWindowController;

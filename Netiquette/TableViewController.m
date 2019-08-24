@@ -41,6 +41,31 @@
         
         //alloc
         self.collapsedItems = [NSMutableDictionary dictionary];
+        
+        //pre-req for color of overlay
+        self.overlay.wantsLayer = YES;
+        
+        //round overlay's corners
+        self.overlay.layer.cornerRadius = 20.0;
+        
+        //mask overlay
+        self.overlay.layer.masksToBounds = YES;
+        
+        //set overlay's view color to gray
+        self.overlay.layer.backgroundColor = NSColor.lightGrayColor.CGColor;
+        
+        //set (default) scanning msg
+        self.activityMessage.stringValue = @"Enumerating Network Connections...";
+        
+        //show overlay
+        self.overlay.hidden = NO;
+        
+        //show activity indicator
+        self.activityIndicator.hidden = NO;
+        
+        //start activity indicator
+        [self.activityIndicator startAnimation:nil];
+        
     });
     
     return;
@@ -57,6 +82,9 @@
     
     //currently selected item
     __block id selectedItem = nil;
+    
+    //once
+    static dispatch_once_t once;
     
     //user turned off refresh?
     if(NSControlStateValueOff == self.refreshButton.state)
@@ -87,6 +115,58 @@
     
     //filter
     self.processedItems = [self filter];
+        
+    //first time
+    // remove/update
+    dispatch_once(&once, ^{
+        
+        //hide activity indicator
+        self.activityIndicator.hidden = YES;
+        
+        //nothing found?
+        // update overlay, then fade out
+        if(0 == self.processedItems.count)
+        {
+            //ignore apple?
+            // set message about 3rd-party
+            if(NSControlStateValueOn == self.filterButton.state)
+            {
+                //set msg
+                self.activityMessage.stringValue = @"No (3rd-party) Network Connections Detected";
+            }
+            
+            //full scan
+            // set message about all
+            else
+            {
+                //set msg
+                self.activityMessage.stringValue = @"No Network Connections Detected";
+            }
+            
+            //fade-out overlay
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                //begin grouping
+                [NSAnimationContext beginGrouping];
+                
+                //set duration
+                [[NSAnimationContext currentContext] setDuration:2.0];
+                
+                //fade out
+                [[self.overlay animator] removeFromSuperview];
+                
+                //end grouping
+                [NSAnimationContext endGrouping];
+                
+            });
+        }
+        
+        else
+        {
+            //hide overlay
+            self.overlay.hidden = YES;
+        }
+    });
     
     //dbg msg
     //NSLog(@"reloading table");
@@ -107,6 +187,7 @@
     itemRow = [self.outlineView rowForItem:selectedItem];
     if(-1 != itemRow)
     {
+        //set
         selectedRow = itemRow;
     }
         
@@ -526,6 +607,13 @@ bail:
     // filter out all apple processes
     if(NSControlStateValueOn == self.filterButton.state)
     {
+        //sanity check
+        if(0 == self.items.count)
+        {
+            //bail
+            goto bail;
+        }
+        
         //process all items
         for(NSInteger i=0; i<self.items.count-1; i++)
         {
@@ -573,12 +661,24 @@ bail:
         goto bail;
     }
     
+    //sanity check
+    if(0 == results.count)
+    {
+        //bail
+        goto bail;
+    }
+    
     //apply search field
     // remove any items that *don't* match
     for(NSInteger i = results.count-1; i >= 0; i--)
     {
         //grab events (for process)
         events = [[results objectForKey:[results keyAtIndex:i]] copy];
+        if(0 == events.count)
+        {
+            //skip
+            continue;
+        }
         
         //search all (per) process events
         // remove any events that don't match
@@ -603,8 +703,10 @@ bail:
             //remove
             [results removeObjectForKey:[results keyAtIndex:i]];
         }
+        //otherwise add
         else
         {
+            //add
             [results setObject:events forKey:[results keyAtIndex:i]];
         }
     }

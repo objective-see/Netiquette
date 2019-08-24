@@ -29,6 +29,10 @@
 #define KEY_ADDRRESS @"address"
 #define KEY_HOST_NAME @"hostName"
 
+//product name
+// ...for version check
+#define PRODUCT_NAME @"Netiquette"
+
 //sentry crash reporting URL
 #define CRASH_REPORTING_URL @"https://1735fa7903114215993cb18c96fe268c@sentry.io/1535612"
 
@@ -40,5 +44,17 @@
 
 //path to CUPS
 #define CUPS @"/usr/sbin/cupsd"
+
+//product version url
+#define PRODUCT_VERSIONS_URL @"https://objective-see.com/products.json"
+
+//update error
+#define UPDATE_ERROR -1
+
+//update no new version
+#define UPDATE_NOTHING_NEW 0
+
+//update new version
+#define UPDATE_NEW_VERSION 1
 
 #endif /* consts_h */

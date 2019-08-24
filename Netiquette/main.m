@@ -20,6 +20,8 @@
 // 1. add reverse dns lookup (in bg)
 // 2. add filters (#apple #established #listen #nonapple
 
+@import Sentry;
+
 //main
 // process cmdline args, show UI, etc
 int main(int argc, const char * argv[])
