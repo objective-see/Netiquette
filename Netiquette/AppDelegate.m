@@ -13,7 +13,6 @@
 #import "AppDelegate.h"
 #import "3rd-party/OrderedDictionary.h"
 
-
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSWindow *window;
@@ -27,6 +26,8 @@
 @synthesize aboutWindowController;
 @synthesize updateWindowController;
 
+//main app interface
+// init UI and kick off monitoring
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
     //processed events
@@ -34,9 +35,6 @@
     
     //init monitor
     self.monitor = [[Monitor alloc] init];
-    
-    //center window
-    [[self window] center];
     
     //after a a few seconds
     // check for updates in background
@@ -112,8 +110,6 @@
                     
                 });
             }
-            
-            
         }
     }];
     

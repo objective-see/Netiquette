@@ -253,11 +253,10 @@ NSString* prettifyJSON(NSString* output)
         //covert to pretty data
         prettyData =  [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:nil];
     }
+    //bail on exception
     @catch(NSException *exception)
     {
-        //TODO: remove
-        NSLog(@"exception: %@", exception);
-        printf("exception: %s\n", exception.description.UTF8String);
+        ;
     }
     
     //covert to pretty string

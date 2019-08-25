@@ -64,8 +64,7 @@
         </menu>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="1175" height="609"/>
+            <rect key="contentRect" x="1054" y="390" width="1175" height="609"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1417"/>
             <value key="minSize" type="size" width="1175" height="609"/>
             <view key="contentView" id="EiT-Mj-1SZ">
