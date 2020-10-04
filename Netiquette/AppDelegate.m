@@ -45,6 +45,7 @@
        
     });
 
+    /*
     //first time run?
     // show thanks to friends window!
     // note: on close, invokes method to show main window
@@ -86,6 +87,13 @@
         //make window front
         [NSApp activateIgnoringOtherApps:YES];
     }
+    */
+    
+    //make it key window
+    [self.window makeKeyAndOrderFront:self];
+   
+    //make window front
+    [NSApp activateIgnoringOtherApps:YES];
 
     //start (connection) monitor
     // auto-refreshes ever 5 seconds

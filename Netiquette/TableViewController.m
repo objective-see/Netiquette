@@ -504,13 +504,13 @@ bail:
     else if(YES == [event.provider isEqualToString:@"UDP"])
     {
         //set main text
-        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@ ->", event.localAddress[KEY_ADDRRESS], event.localAddress[KEY_PORT]];
+        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@ →", event.localAddress[KEY_ADDRRESS], event.localAddress[KEY_PORT]];
     }
     //show remote addr/port for all others...
     else
     {
         //set main text
-        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@ -> %@:%@", event.localAddress[KEY_ADDRRESS], event.localAddress[KEY_PORT], event.remoteAddress[KEY_ADDRRESS], event.remoteAddress[KEY_PORT]];
+        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@ → %@:%@", event.localAddress[KEY_ADDRRESS], event.localAddress[KEY_PORT], event.remoteAddress[KEY_ADDRRESS], event.remoteAddress[KEY_PORT]];
     }
 
     return cell;
