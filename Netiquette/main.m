@@ -18,7 +18,7 @@
 //TODO: add features such as:
 // 0. update check
 // 1. add reverse dns lookup (in bg)
-// 2. add filters (#apple #established #listen #nonapple
+// 2. add filters (#apple #established #listen #nonapple)
 
 @import Sentry;
 
