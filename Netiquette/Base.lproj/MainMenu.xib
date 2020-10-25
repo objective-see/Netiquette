@@ -71,28 +71,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="1175" height="609"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="8wq-vH-wKB" userLabel="Overlay">
-                        <rect key="frame" x="338" y="192" width="500" height="200"/>
-                        <subviews>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="XEJ-zt-Ua0">
-                                <rect key="frame" x="234" y="84" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </progressIndicator>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03w-iN-KKb" userLabel="loading data">
-                                <rect key="frame" x="18" y="43" width="464" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Enumerating Network Connections..." id="T3k-y4-uvq">
-                                    <font key="font" size="13" name="Menlo-Bold"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="200" id="HS7-Gq-ED5"/>
-                            <constraint firstAttribute="width" constant="500" id="bn0-UG-q0C"/>
-                        </constraints>
-                    </customView>
                     <button tag="10002" translatesAutoresizingMaskIntoConstraints="NO" id="Z3X-kC-co8" userLabel="Logo">
                         <rect key="frame" x="572" y="8" width="32" height="32"/>
                         <constraints>
@@ -300,6 +278,28 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="8wq-vH-wKB" userLabel="Overlay">
+                        <rect key="frame" x="338" y="192" width="500" height="200"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="XEJ-zt-Ua0">
+                                <rect key="frame" x="234" y="84" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03w-iN-KKb" userLabel="loading data">
+                                <rect key="frame" x="18" y="43" width="464" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Enumerating Network Connections..." id="T3k-y4-uvq">
+                                    <font key="font" size="13" name="Menlo-Bold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="HS7-Gq-ED5"/>
+                            <constraint firstAttribute="width" constant="500" id="bn0-UG-q0C"/>
+                        </constraints>
+                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="B4V-Uy-741" secondAttribute="bottom" constant="11" id="0zt-VD-sMU"/>
