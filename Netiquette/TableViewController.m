@@ -32,7 +32,7 @@
 -(void)awakeFromNib
 {
     //once
-    static dispatch_once_t once;
+    static dispatch_once_t once = 0;
     
     dispatch_once (&once, ^{
         
