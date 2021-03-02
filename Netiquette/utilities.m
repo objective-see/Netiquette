@@ -30,40 +30,6 @@ void disableSTDERR()
     return;
 }
 
-//init crash reporting
-void initCrashReporting()
-{
-    //error
-    NSError *error = nil;
-    
-    //client
-    SentryClient *client = nil;
-    
-    //init
-    client = [[SentryClient alloc] initWithDsn:@"https://1735fa7903114215993cb18c96fe268c@sentry.io/1535612" didFailWithError:&error];
-    if( (nil == client) ||
-        (nil != error) )
-    {
-        //bail
-        goto bail;
-    }
-    
-    //set delegate
-    SentryClient.sharedClient = client;
-    
-    //start
-    [SentryClient.sharedClient startCrashHandlerWithError:&error];
-    if(nil != error)
-    {
-        //bail
-        goto bail;
-    }
-    
-bail:
-    
-    return;
-}
-
 //get app's version
 // extracted from Info.plist
 NSString* getAppVersion()

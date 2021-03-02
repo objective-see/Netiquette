@@ -26,6 +26,19 @@
 @synthesize aboutWindowController;
 @synthesize updateWindowController;
 
+//(re)set toolbar style
+-(void)awakeFromNib
+{
+    //bs's default toolbar style isn't good for us
+    if(@available(macOS 11,*))
+    {
+        //set style
+        self.window.toolbarStyle = NSWindowToolbarStyleExpanded;
+    }
+    
+    return;
+}
+
 //main app interface
 // init UI and kick off monitoring
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -40,15 +53,19 @@
     // check for updates in background
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
     ^{
-       //check
+        //check
         [self check4Update:nil];
        
     });
+    
+    //make main window active/front
+    [self.window makeKeyAndOrderFront:self];
+        
+    //make window front
+    [NSApp activateIgnoringOtherApps:YES];
 
-    /*
     //first time run?
-    // show thanks to friends window!
-    // note: on close, invokes method to show main window
+    // show thanks to friends window
     if(YES != [[NSUserDefaults standardUserDefaults] boolForKey:NOT_FIRST_TIME])
     {
         //set key
@@ -78,23 +95,6 @@
         });
     }
     
-    //make main window active/front
-    else
-    {
-        //make it key window
-        [self.window makeKeyAndOrderFront:self];
-        
-        //make window front
-        [NSApp activateIgnoringOtherApps:YES];
-    }
-    */
-    
-    //make it key window
-    [self.window makeKeyAndOrderFront:self];
-   
-    //make window front
-    [NSApp activateIgnoringOtherApps:YES];
-
     //start (connection) monitor
     // auto-refreshes ever 5 seconds
     [self.monitor start:5 callback:^(NSMutableDictionary* events)

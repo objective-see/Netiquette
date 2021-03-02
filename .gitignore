@@ -1,5 +1,7 @@
 .DS_Store
 Carthage/*
 DerivedData/*
+*.xcscheme
+*.xcuserstate
 Netiquette.xcodeproj/xcuserdata/*
 Netiquette.xcodeproj/project.xcworkspace/xcuserdata/*

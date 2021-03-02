@@ -615,7 +615,7 @@ bail:
         }
         
         //process all items
-        for(NSInteger i=0; i<self.items.count-1; i++)
+        for(NSInteger i=0; i<self.items.count; i++)
         {
             //pid
             NSNumber* pid = [self.items keyAtIndex:i];

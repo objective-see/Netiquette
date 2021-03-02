@@ -79,7 +79,7 @@ OrderedDictionary* sortEvents(NSMutableDictionary* events)
     }
     
     //add sorted events
-    for(NSInteger i = 0; i<sortedPids.count-1; i++)
+    for(NSInteger i = 0; i<sortedPids.count; i++)
     {
         //add to ordered dictionary
         [processedEvents insertObject:combinedEvents[sortedPids[i]] forKey:sortedPids[i] atIndex:i];

@@ -16,7 +16,6 @@
 #import <Cocoa/Cocoa.h>
 
 //TODO: add features such as:
-// 0. update check
 // 1. add reverse dns lookup (in bg)
 // 2. add filters (#apple #established #listen #nonapple)
 
@@ -38,13 +37,12 @@ int main(int argc, const char * argv[])
     //disable stderr
     // crash reporter dumps info here
     disableSTDERR();
-    
+  
     //init crash reporting
-    // kicks off sentry.io
-    initCrashReporting();
-    
-    //dbg msg
-    //logMsg(LOG_DEBUG, [NSString stringWithFormat:@"starting main app (args: %@)", [[NSProcessInfo processInfo] arguments]]);
+    [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
+            options.dsn = SENTRY_DSN;
+            options.debug = YES;
+    }];
     
     //handle '-h' or '-help'
     if( (YES == [arguments containsObject:@"-h"]) ||
