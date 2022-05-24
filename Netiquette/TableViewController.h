@@ -33,9 +33,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak) IBOutlet NSSearchField *filterBox;
 
-
 //auto-refresh button
 @property (weak) IBOutlet NSButton *refreshButton;
+
+//resolve names button
+@property (weak) IBOutlet NSButton *resolveButton;
 
 //filter apple button
 @property (weak) IBOutlet NSButton *filterButton;
@@ -46,7 +48,10 @@ NS_ASSUME_NONNULL_BEGIN
 /* METHODS */
 
 //update table
--(void)update:(OrderedDictionary*)updatedItems;
+-(void)update:(OrderedDictionary*)updatedItems reset:(BOOL)reset;
+
+//map column id to index
+-(NSUInteger)columnIDToIndex:(NSString*)columnID;
 
 @end
 

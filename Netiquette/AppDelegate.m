@@ -43,8 +43,11 @@
 // init UI and kick off monitoring
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-    //processed events
-    __block OrderedDictionary* processedEvents = nil;
+    //first listing?
+    __block BOOL isFirstEnumeration = YES;
+    
+    //sorted events
+    __block OrderedDictionary* sortedEvents = nil;
     
     //init monitor
     self.monitor = [[Monitor alloc] init];
@@ -65,7 +68,7 @@
     [NSApp activateIgnoringOtherApps:YES];
 
     //first time run?
-    // show thanks to friends window
+    // show thanks to friends
     if(YES != [[NSUserDefaults standardUserDefaults] boolForKey:NOT_FIRST_TIME])
     {
         //set key
@@ -97,29 +100,83 @@
     
     //start (connection) monitor
     // auto-refreshes ever 5 seconds
-    [self.monitor start:5 callback:^(NSMutableDictionary* events)
-    {
-        //sync
-        @synchronized (self) {
-            
-            //keep memory in check
-            @autoreleasepool {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        //start (connection) monitor
+        // auto-refreshes ever 5 seconds
+        [self.monitor start:5 callback:^(NSMutableDictionary* events)
+        {
+            //sync
+            @synchronized (self) {
                 
-                //process events
-                // combine into pid:connection(s)
-                processedEvents = sortEvents(events);
-                
-                //update table on main thread
-                dispatch_sync(dispatch_get_main_queue(),
-                ^{
-                  
-                  //update table
-                  [self.tableViewController update:processedEvents];
+                //keep memory in check
+                @autoreleasepool {
                     
-                });
+                    //column
+                    __block NSUInteger column = 0;
+                    
+                    //direction
+                    __block BOOL ascending = 0;
+                    
+                    //on main thread
+                    // what to sort on?
+                    dispatch_sync(dispatch_get_main_queue(),
+                    ^{
+                        //sort descriptors
+                        NSArray<NSSortDescriptor *> *sortDescriptors = nil;
+                        
+                        //grab
+                        sortDescriptors = self.tableViewController.outlineView.sortDescriptors;
+                        
+                        //no sort?
+                        // default to first column and ascending
+                        if(0 == sortDescriptors.count)
+                        {
+                            //default column
+                            column = 0;
+                            
+                            //default direction
+                            ascending = YES;
+                        }
+                        
+                        //what was sorted (already)?
+                        else
+                        {
+                            //column to sort on
+                            column = [self.tableViewController columnIDToIndex:sortDescriptors.firstObject.key];
+                            
+                            //ascending?
+                            ascending = sortDescriptors.firstObject.ascending;
+                        }
+                        
+                    });
+                    
+                
+                    //combine
+                    // and then sort events
+                    sortedEvents = sortEvents(combineEvents(events), column, ascending);
+        
+                    //update table on main thread
+                    dispatch_async(dispatch_get_main_queue(),
+                    ^{
+                        
+                        //refresh table?
+                        if( (YES == isFirstEnumeration) ||
+                            (YES == [NSUserDefaults.standardUserDefaults boolForKey:PREFS_AUTO_REFRESH]) )
+                        {
+                            //update
+                            isFirstEnumeration = NO;
+                            
+                            //update table
+                            [self.tableViewController update:sortedEvents reset:NO];
+                        }
+                        
+                    });
+                }
             }
-        }
-    }];
+        }];
+        
+    });
     
     return;
 }

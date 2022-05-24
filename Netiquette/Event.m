@@ -6,8 +6,8 @@
 //  Copyright © 2019 Objective-See. All rights reserved.
 //
 
-
 #import "Event.h"
+#import "Monitor.h"
 #import "utilities.h"
 
 @implementation Event
@@ -26,8 +26,20 @@
     self = [super init];
     if(self != nil)
     {
-        //set flag
-        resolveName = [[[NSProcessInfo processInfo] arguments] containsObject:@"-names"];
+        //terminal exec
+        // should resolve flags?
+        if(YES == [NSProcessInfo.processInfo.arguments containsObject:@"-list"])
+        {
+            //set
+            resolveName = [NSProcessInfo.processInfo.arguments containsObject:@"-names"];
+        }
+        //non-terminal exec
+        // should resolve flags?
+        else
+        {
+            //set
+            resolveName = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_RESOLVE_NAMES];
+        }
         
         //init process
         self.process = [[Process alloc] init:[event[(__bridge NSString *)kNStatSrcKeyPID] intValue]];
@@ -43,25 +55,129 @@
         self.tcpState = event[(__bridge NSString *)kNStatSrcKeyTCPState];
         
         //convert local address
-        self.localAddress = [self parseAddress:event[(__bridge NSString *)kNStatSrcKeyLocal] resolveName:NO];
+        self.localAddress = [self parseAddress:event[(__bridge NSString *)kNStatSrcKeyLocal]];
         
         //convert remote address
         // and resolve remote name if necessary
-        self.remoteAddress = [self parseAddress:event[(__bridge NSString *)kNStatSrcKeyRemote] resolveName:resolveName];
-    
+        self.remoteAddress = [self parseAddress:event[(__bridge NSString *)kNStatSrcKeyRemote]];
+        
+        //in background
+        // resolve host name
+        if(YES == resolveName)
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+                //host name
+                NSString* hostName = nil;
+                
+                //resolve / save
+                hostName = [self resolveName:(struct sockaddr *)[(NSData*)(event[(__bridge NSString *)kNStatSrcKeyRemote]) bytes]];
+                if(0 != hostName.length)
+                {
+                    self.remoteAddress[KEY_HOST_NAME] = hostName;
+                
+                }
+            });
+        }
+        
         //extract and convert interface (number) to name
         if(NULL != if_indextoname([event[(__bridge NSString *)kNStatSrcKeyInterface] intValue], (char*)&interfaceName))
         {
             //save/convert
             self.interface = [NSString stringWithUTF8String:interfaceName];
         }
+        
+        //extract bytes up
+        self.bytesUp = [event[(__bridge NSString *)kNStatSrcKeyTxBytes] unsignedLongValue];
+        
+        //extract bytes down
+        self.bytesDown = [event[(__bridge NSString *)kNStatSrcKeyRxBytes] unsignedLongValue];
+        
     }
  
     return self;
 }
 
+//init with event
+// process raw event, adding process info, etc
+-(void)init2:(NSDictionary*)event
+{
+    //flag
+    BOOL resolveName = NO;
+    
+    //interface name
+    char interfaceName[IF_NAMESIZE+1] = {0};
+    
+    //super
+    //self = [super init];
+    //if(self != nil)
+    //{
+        //terminal exec
+        // should resolve flags?
+        if(YES == [NSProcessInfo.processInfo.arguments containsObject:@"-list"])
+        {
+            //set
+            resolveName = [NSProcessInfo.processInfo.arguments containsObject:@"-names"];
+        }
+        //non-terminal exec
+        // should resolve flags?
+        else
+        {
+            //set
+            resolveName = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_RESOLVE_NAMES];
+        }
+        
+        //init process
+        self.process = [[Process alloc] init:[event[(__bridge NSString *)kNStatSrcKeyPID] intValue]];
+        
+        //generate code signing info
+        [self.process generateSigningInfo:kSecCSDefaultFlags];
+        
+        //extract provider
+        self.provider = event[(__bridge NSString *)kNStatSrcKeyProvider];
+        
+        //extract state
+        // note: nil, unless provider is TCP
+        self.tcpState = event[(__bridge NSString *)kNStatSrcKeyTCPState];
+        
+        //convert local address
+        self.localAddress = [self parseAddress:event[(__bridge NSString *)kNStatSrcKeyLocal]];
+        
+        //convert remote address
+        // and resolve remote name if necessary
+        self.remoteAddress = [self parseAddress:event[(__bridge NSString *)kNStatSrcKeyRemote]];
+        
+        //in background
+        // resolve host name
+        if(YES == resolveName)
+        {
+            //in background
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+                //host name
+                NSString* hostName = nil;
+                
+                //resolve / save
+                hostName = [self resolveName:(struct sockaddr *)[(NSData*)(event[(__bridge NSString *)kNStatSrcKeyRemote]) bytes]];
+                if(0 != hostName.length)
+                {
+                    self.remoteAddress[KEY_HOST_NAME] = hostName;
+                }
+            });
+        }
+        
+        //extract and convert interface (number) to name
+        if(NULL != if_indextoname([event[(__bridge NSString *)kNStatSrcKeyInterface] intValue], (char*)&interfaceName))
+        {
+            //save/convert
+            self.interface = [NSString stringWithUTF8String:interfaceName];
+        }
+        
+    return;
+}
+
 //parse/extract addr, port, etc...
--(NSMutableDictionary*)parseAddress:(NSData*)data resolveName:(BOOL)resolveName
+-(NSMutableDictionary*)parseAddress:(NSData*)data
 {
     //address
     NSMutableDictionary* address = nil;
@@ -72,21 +188,18 @@
     //ipv6 struct
     struct sockaddr_in6 *ipv6 = NULL;
     
-    //host name
-    NSString* hostName = nil;
-    
     //init
     address = [NSMutableDictionary dictionary];
     
     //parse
     // for now, only support IPv4 and IPv6
-    switch(((struct sockaddr *)[data bytes])->sa_family)
+    switch(((struct sockaddr *)data.bytes)->sa_family)
     {
         //IPv4
         case AF_INET:
             
             //typecast
-            ipv4 = (struct sockaddr_in *)[data bytes];
+            ipv4 = (struct sockaddr_in *)data.bytes;
             
             //add family
             address[KEY_FAMILY] = [NSNumber numberWithInt:AF_INET];
@@ -97,30 +210,13 @@
             //format/add address
             address[KEY_ADDRRESS] = convertIPAddr((unsigned char*)&ipv4->sin_addr, AF_INET);
             
-            //resolve name?
-            if(YES == resolveName)
-            {
-                //resolve host name
-                if(nil != (hostName = [self resolveName:(struct sockaddr *)[data bytes]]))
-                {
-                    //add host
-                    address[KEY_HOST_NAME] = hostName;
-                }
-            }
-            //set default
-            else
-            {
-                //add host
-                address[KEY_HOST_NAME] = @"n/a";
-            }
-            
             break;
             
         //IPv6
         case AF_INET6:
         {
             //typecast
-            ipv6 = (struct sockaddr_in6 *)[data bytes];
+            ipv6 = (struct sockaddr_in6 *)data.bytes;
             
             //add family
             address[KEY_FAMILY] = [NSNumber numberWithInt:AF_INET6];
@@ -131,22 +227,6 @@
             //format/add address
             address[KEY_ADDRRESS] = convertIPAddr((unsigned char*)&ipv6->sin6_addr, AF_INET6);
             
-            //resolve name?
-            if(YES == resolveName)
-            {
-                //resolve host name
-                if(nil != (hostName = [self resolveName:(struct sockaddr *)[data bytes]]))
-                {
-                    //add host
-                    address[KEY_HOST_NAME] = hostName;
-                }
-            }
-            //set default
-            else
-            {
-                //add host
-                address[KEY_HOST_NAME] = @"n/a";
-            }
         }
     }
     
@@ -272,7 +352,8 @@ bail:
     return matches;
 }
 
-//resolve name via (reverse) dns    
+//resolve name via (reverse) dns
+// though it checks a cache first...
 -(NSString*)resolveName:(struct sockaddr *)sockAddr
 {
     //name
@@ -281,12 +362,61 @@ bail:
     //host
     char host[NI_MAXHOST+1] = {0};
     
+    //cache
+    static NSCache* cache = nil;
+    
+    //once
+    static dispatch_once_t once = 0;
+    
+    //key
+    NSData* key = nil;
+    
+    //init cache
+    dispatch_once (&once, ^{
+        
+        //init cache
+        cache = [[NSCache alloc] init];
+        
+        //set cache limit
+        cache.countLimit = 2048;
+
+    });
+
+    //init ipv4 cache key
+    if(AF_INET == sockAddr->sa_family)
+    {
+        //key
+        key = [NSData dataWithBytes:(unsigned char*)&((struct sockaddr_in *)sockAddr)->sin_addr length:INET_ADDRSTRLEN];
+    }
+    //init ipv6 cache key
+    else if(AF_INET6 == sockAddr->sa_family)
+    {
+        key = [NSData dataWithBytes:(unsigned char*)&((struct sockaddr_in6 *)sockAddr)->sin6_addr length:INET6_ADDRSTRLEN];
+    }
+    
+    //in cache?
+    resolvedName = [cache objectForKey:key];
+    if(0 != resolvedName.length)
+    {
+        //done
+        goto bail;
+    }
+    
     //resolve name
     if(0 == getnameinfo(sockAddr, sockAddr->sa_len, host, NI_MAXHOST, NULL, 0, 0))
     {
         //convert
         resolvedName = [NSString stringWithUTF8String:host];
+        
+        //save to cache
+        if(0 != resolvedName.length)
+        {
+            //cache
+            [cache setObject:resolvedName forKey:key];
+        }
     }
+    
+bail:
     
     return resolvedName;
 }
@@ -314,7 +444,7 @@ bail:
         interface = self.interface;
     }
     
-    return [NSString stringWithFormat:@"{\"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\"}", INTERFACE, interface, PROTOCOL, self.provider, LOCAL_ADDRESS, self.localAddress[KEY_ADDRRESS], LOCAL_PORT, self.localAddress[KEY_PORT], REMOTE_ADDRESS, self.remoteAddress[KEY_ADDRRESS], REMOTE_PORT, self.remoteAddress[KEY_PORT], REMOTE_HOST, self.remoteAddress[KEY_HOST_NAME], CONNECTION_STATE, state];
+    return [NSString stringWithFormat:@"{\"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%lu\", \"%@\": \"%lu\"}", INTERFACE, interface, PROTOCOL, self.provider, LOCAL_ADDRESS, self.localAddress[KEY_ADDRRESS], LOCAL_PORT, self.localAddress[KEY_PORT], REMOTE_ADDRESS, self.remoteAddress[KEY_ADDRRESS], REMOTE_PORT, self.remoteAddress[KEY_PORT], REMOTE_HOST, self.remoteAddress[KEY_HOST_NAME], CONNECTION_STATE, state, BYTES_UP, self.bytesUp, BYTES_DOWN, self.bytesDown];
 }
 
 @end

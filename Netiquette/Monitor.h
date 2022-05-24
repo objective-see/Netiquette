@@ -20,7 +20,8 @@ typedef void *NStatSourceRef;
 typedef NSObject* NStatManagerRef;
 
 NStatManagerRef NStatManagerCreate (const struct __CFAllocator *, dispatch_queue_t, void (^)(void *, void *));
-void NStatSourceSetDescriptionBlock (NStatSourceRef arg,  void (^)(CFDictionaryRef));
+
+void NStatSourceSetDescriptionBlock (NStatSourceRef arg,  void (^)(NSDictionary*));
 void NStatSourceSetRemovedBlock (NStatSourceRef arg,  void (^)(void));
 
 void NStatManagerAddAllTCP(NStatManagerRef manager);
@@ -30,6 +31,7 @@ void NStatManagerQueryAllSources(NStatManagerRef manager, void (^)(void) );
 void NStatManagerQueryAllSourcesDescriptions(NStatManagerRef manager, void (^)(void) );
 
 void NStatManagerDestroy(NStatManagerRef manager);
+int NStatManagerSetFlags(NStatManagerRef, int Flags);
 
 //block for library
 typedef void (^NetworkCallbackBlock)(NSMutableDictionary* _Nonnull);
@@ -42,6 +44,7 @@ typedef void (^NetworkCallbackBlock)(NSMutableDictionary* _Nonnull);
 @property (nullable) dispatch_source_t timer;
 @property (nullable) NStatManagerRef manager;
 @property (nonatomic, retain)NSMutableDictionary* events;
+
 
 /* METHODS */
 

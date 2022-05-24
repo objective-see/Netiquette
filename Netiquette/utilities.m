@@ -58,14 +58,14 @@ BOOL isDarkMode()
     
     //not mojave?
     // bail, since not true dark mode
-    if(YES != [[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){10, 14, 0}])
+    if(YES != [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){10, 14, 0}])
     {
         //bail
         goto bail;
     }
     
     //not dark mode?
-    if(YES != [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"])
+    if(YES != [[NSUserDefaults.standardUserDefaults stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"])
     {
         //bail
         goto bail;
@@ -128,7 +128,7 @@ NSString* convertIPAddr(unsigned char* ipAddr, __uint8_t socketFamily)
     //what family?
     switch(socketFamily)
     {
-            //IPv4
+        //IPv4
         case AF_INET:
         {
             //convert
@@ -137,7 +137,7 @@ NSString* convertIPAddr(unsigned char* ipAddr, __uint8_t socketFamily)
             break;
         }
             
-            //IPV6
+        //IPV6
         case AF_INET6:
         {
             //convert
@@ -206,7 +206,7 @@ NSString* prettifyJSON(NSString* output)
     //pretty string
     NSString* prettyString = nil;
     
-    //covert to data
+    //convert to data
     data = [output dataUsingEncoding:NSUTF8StringEncoding];
     
     //convert to JSON
@@ -216,7 +216,7 @@ NSString* prettifyJSON(NSString* output)
         //serialize
         object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
-        //covert to pretty data
+        //convert to pretty data
         prettyData =  [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:nil];
     }
     //bail on exception
@@ -225,7 +225,7 @@ NSString* prettifyJSON(NSString* output)
         ;
     }
     
-    //covert to pretty string
+    //convert to pretty string
     if(nil != prettyData)
     {
         //convert to string
@@ -234,7 +234,7 @@ NSString* prettifyJSON(NSString* output)
     else
     {
         //error
-        prettyString = @"{\"ERROR\" : \"failed to covert output to JSON\"}";
+        prettyString = @"{\"ERROR\" : \"failed to convert output to JSON\"}";
     }
     
     return prettyString;

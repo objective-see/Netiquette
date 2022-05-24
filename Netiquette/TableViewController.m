@@ -15,9 +15,12 @@
 #define BUTTON_SAVE         10001
 #define BUTTON_LOGO         10002
 #define BUTTON_REFRESH      10003
-#define BUTTON_SHOW_APPLE   10004
+#define BUTTON_RESOLVE      10004
+#define BUTTON_HIDE_APPLE   10005
 
+#import "sort.h"
 #import "Event.h"
+#import "consts.h"
 #import "CustomRow.h"
 #import "utilities.h"
 #import "TableViewController.h"
@@ -41,6 +44,11 @@
         
         //alloc
         self.collapsedItems = [NSMutableDictionary dictionary];
+        
+        //set buttons
+        self.filterButton.state = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_HIDE_APPLE];
+        self.refreshButton.state = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_AUTO_REFRESH];
+        self.resolveButton.state = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_RESOLVE_NAMES];
         
         //pre-req for color of overlay
         self.overlay.wantsLayer = YES;
@@ -66,13 +74,22 @@
         //start activity indicator
         [self.activityIndicator startAnimation:nil];
         
+        //init sort descriptor for name column
+        self.outlineView.tableColumns[0].sortDescriptorPrototype = [NSSortDescriptor sortDescriptorWithKey:[self.outlineView.tableColumns[0] identifier] ascending:NO];
+        
+        //init sort descriptor for bytes up column
+        self.outlineView.tableColumns[4].sortDescriptorPrototype = [NSSortDescriptor sortDescriptorWithKey:[self.outlineView.tableColumns[4] identifier] ascending:YES];
+        
+        //init sort descriptor for bytes down column
+        self.outlineView.tableColumns[5].sortDescriptorPrototype = [NSSortDescriptor sortDescriptorWithKey:[self.outlineView.tableColumns[5] identifier] ascending:YES];
+        
     });
     
     return;
 }
 
 //update outline view
--(void)update:(OrderedDictionary*)updatedItems
+-(void)update:(OrderedDictionary*)updatedItems reset:(BOOL)reset
 {
     //selected row
     __block NSInteger selectedRow = -1;
@@ -85,13 +102,6 @@
     
     //once
     static dispatch_once_t once;
-    
-    //user turned off refresh?
-    if(NSControlStateValueOff == self.refreshButton.state)
-    {
-        //bail
-        goto bail;
-    }
     
     //sync
     // filter & reload
@@ -194,11 +204,25 @@
     //prev selected now beyond bounds?
     // just default to select last row...
     selectedRow = MIN(selectedRow, (self.outlineView.numberOfRows-1));
+        
+    //reset?
+    if(YES == reset)
+    {
+        //top
+        selectedRow = 0;
+    }
     
     //(re)select
     dispatch_async(dispatch_get_main_queue(),
     ^{
+        //select
         [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
+        
+        if(YES == reset)
+        {
+            //scroll to selected row
+            [self.outlineView scrollRowToVisible:selectedRow];
+        }
     });
         
     } //sync
@@ -362,40 +386,45 @@ bail:
     //first event
     Event* event = nil;
     
+    //flag
+    BOOL isProcessCell = NO;
+    
+    //set process cell flag
+    isProcessCell = [item isKindOfClass:[OrderedDictionary class]];
+    
+    //set event
+    if(YES == isProcessCell)
+    {
+        //grab firt event
+        event = [[item allValues] firstObject];
+    }
+    else
+    {
+        //typecast
+        event = (Event*)item;
+    }
+    
     //first column
-    // process or connection
+    // process or connection cell
     if(tableColumn == self.outlineView.tableColumns[0])
     {
-        //root item?
-        // will be a array of (per-process) connections
-        // grab first (could be any) process obj, and config cell
-        if(YES == [item isKindOfClass:[OrderedDictionary class]])
+        //init process cell
+        if(YES == isProcessCell)
         {
-            //grab firt event
-            event = [[item allValues] firstObject];
-            
-            //create/configure process cell
+            //create/configure
             cell = [self createProcessCell:event.process];
         }
-        //child
-        // create/configure event cell
+        //init connection (child) cell
         else
         {
-            //create/configure process cell
-            cell = [self createConnectionCell:item];
+            //create/configure
+            cell = [self createConnectionCell:event];
         }
     }
     //all other columns
     // init a basic cell
     else
     {
-        //sanity check
-        if(YES != [item isKindOfClass:[Event class]])
-        {
-            //bail
-            goto bail;
-        }
-        
         //init table cell
         cell = [self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
         
@@ -403,14 +432,16 @@ bail:
         ((NSTableCellView*)cell).textField.stringValue = @"";
         
         //2nd column: protocol
-        if(tableColumn  == self.outlineView.tableColumns[1])
+        if( (YES != isProcessCell) &&
+            (tableColumn  == self.outlineView.tableColumns[1]) )
         {
             //set protocol
             ((NSTableCellView*)cell).textField.stringValue = ((Event*)item).provider;
         }
         
         //3rd column: interface
-        if(tableColumn  == self.outlineView.tableColumns[2])
+        else if( (YES != isProcessCell) &&
+                (tableColumn  == self.outlineView.tableColumns[2]) )
         {
             //set interface
             if(nil != ((Event*)item).interface)
@@ -421,13 +452,72 @@ bail:
         }
         
         //4th column: for (tcp) events: state
-        if(tableColumn  == self.outlineView.tableColumns[3])
+        else if( (YES != isProcessCell) &&
+                 (tableColumn == self.outlineView.tableColumns[3]) )
         {
             //set state
             if(nil != ((Event*)item).tcpState)
             {
                 //state
                 ((NSTableCellView*)cell).textField.stringValue = ((Event*)item).tcpState;
+            }
+        }
+        
+        //5th column: bytes up
+        else if(tableColumn == self.outlineView.tableColumns[4])
+        {
+            //process cell?
+            // compute total
+            if(YES == isProcessCell)
+            {
+                //total
+                unsigned long total = 0;
+                
+                //compute all
+                for(Event* event in [item allValues])
+                {
+                    //sum
+                    total += event.bytesUp;
+                }
+                
+                //set
+                ((NSTableCellView*)cell).textField.stringValue = (0 == total) ? @"0" : [NSByteCountFormatter stringFromByteCount:total countStyle:NSByteCountFormatterCountStyleFile];
+            }
+            //connection cell
+            // just display bytes up for connection
+            else
+            {
+                //set
+                ((NSTableCellView*)cell).textField.stringValue = (0 == ((Event*)item).bytesUp) ? @"0" : [NSByteCountFormatter stringFromByteCount:((Event*)item).bytesUp countStyle:NSByteCountFormatterCountStyleFile];
+            }
+        }
+        
+        //6th column: bytes down
+        else if(tableColumn == self.outlineView.tableColumns[5])
+        {
+            //process cell?
+            // compute total
+            if(YES == isProcessCell)
+            {
+                //total
+                unsigned long total = 0;
+                
+                //compute all
+                for(Event* event in [item allValues])
+                {
+                    //sum
+                    total += event.bytesDown;
+                }
+                
+                //set
+                ((NSTableCellView*)cell).textField.stringValue = (0 == total) ? @"0" : [NSByteCountFormatter stringFromByteCount:total countStyle:NSByteCountFormatterCountStyleFile];
+            }
+            //connection cell
+            // just display bytes down for connection
+            else
+            {
+                //set bytes down
+                ((NSTableCellView*)cell).textField.stringValue = (0 == ((Event*)item).bytesDown) ? @"0" : [NSByteCountFormatter stringFromByteCount:((Event*)item).bytesDown countStyle:NSByteCountFormatterCountStyleFile];
             }
         }
     }
@@ -481,11 +571,15 @@ bail:
     
     return processCell;
 }
+
 //create & customize connection cell
 -(NSTableCellView*)createConnectionCell:(Event*)event
 {
     //item cell
     NSTableCellView* cell = nil;
+    
+    //remote address or host
+    NSString* remoteAddress = nil;
     
     //create cell
     cell = [self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
@@ -509,8 +603,19 @@ bail:
     //show remote addr/port for all others...
     else
     {
+        //default
+        remoteAddress = event.remoteAddress[KEY_ADDRRESS];
+        
+        //get a host?
+        // use that here
+        if(0 != [event.remoteAddress[KEY_HOST_NAME] length])
+        {
+            //use host
+            remoteAddress = event.remoteAddress[KEY_HOST_NAME];
+        }
+        
         //set main text
-        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@ → %@:%@", event.localAddress[KEY_ADDRRESS], event.localAddress[KEY_PORT], event.remoteAddress[KEY_ADDRRESS], event.remoteAddress[KEY_PORT]];
+        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@ → %@:%@", event.localAddress[KEY_ADDRRESS], event.localAddress[KEY_PORT], remoteAddress, event.remoteAddress[KEY_PORT]];
     }
 
     return cell;
@@ -546,8 +651,11 @@ bail:
 // save, open product url, toggle view, etc...
 -(IBAction)buttonHandler:(id)sender {
     
+    //button
+    NSButton* button = ((NSButton*)sender);
+    
     //switch on action
-    switch (((NSButton*)sender).tag)
+    switch(button.tag)
     {
         //save
         case BUTTON_SAVE:
@@ -556,17 +664,88 @@ bail:
             
         //logo
         case BUTTON_LOGO:
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:PRODUCT_URL]];
+            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:PRODUCT_URL]];
+            break;
+            
+        //auto refresh
+        case BUTTON_REFRESH:
+            [NSUserDefaults.standardUserDefaults setBool:button.state forKey:PREFS_AUTO_REFRESH];
+            break;
+            
+        //resolve names
+        case BUTTON_RESOLVE:
+            [NSUserDefaults.standardUserDefaults setBool:button.state forKey:PREFS_RESOLVE_NAMES];
             break;
             
         //show/hide apple
-        case BUTTON_SHOW_APPLE:
+        case BUTTON_HIDE_APPLE:
+            [NSUserDefaults.standardUserDefaults setBool:button.state forKey:PREFS_HIDE_APPLE];
             [self toggleAppleProcs];
             break;
             
         default:
             break;
     }
+    
+    return;
+}
+
+//map column id to index
+-(NSUInteger)columnIDToIndex:(NSString*)columnID
+{
+    //index
+    NSUInteger index = 0;
+    
+    //map
+    for(int i=0; i<self.outlineView.tableColumns.count; i++)
+    {
+        //match?
+        if(YES == [self.outlineView.tableColumns[i].identifier isEqualToString:columnID])
+        {
+            //save
+            index = i;
+            
+            //done
+            break;
+        }
+    }
+    
+    return index;
+}
+
+//sort
+-(void)outlineView:(NSOutlineView *)outlineView sortDescriptorsDidChange:(NSArray<NSSortDescriptor *> *)oldDescriptors
+{
+    //sorted events
+    __block OrderedDictionary* sortedEvents = nil;
+    
+    //column
+    NSUInteger column = 0;
+    
+    //ascending?
+    BOOL ascending = NO;
+    
+    //grab column
+    column = [self columnIDToIndex:outlineView.sortDescriptors.firstObject.key];
+    
+    //ascending?
+    ascending = outlineView.sortDescriptors.firstObject.ascending;
+    
+    //sort in background
+    // then update table on main thread
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+    ^{
+        //sort
+        sortedEvents = sortEvents(self.processedItems, column, ascending);
+        
+        //update table on main thread
+        dispatch_async(dispatch_get_main_queue(),
+        ^{
+            //update table
+            [self update:sortedEvents reset:YES];
+                    
+        });
+    });
     
     return;
 }
@@ -799,7 +978,7 @@ bail:
 -(IBAction)filterConnections:(id)sender
 {
     //update
-    [self update:self.items];
+    [self update:self.items reset:YES];
     
     return;
 }

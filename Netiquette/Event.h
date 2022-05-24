@@ -21,6 +21,8 @@ extern CFStringRef kNStatSrcKeyRemote;
 extern CFStringRef kNStatSrcKeyProvider;
 extern CFStringRef kNStatSrcKeyTCPState;
 extern CFStringRef kNStatSrcKeyInterface;
+extern CFStringRef kNStatSrcKeyTxBytes;
+extern CFStringRef kNStatSrcKeyRxBytes;
 
 @interface Event : NSObject
 
@@ -36,11 +38,15 @@ extern CFStringRef kNStatSrcKeyInterface;
 @property (nonatomic, retain) NSString* provider;
 @property (nonatomic, retain) NSString* tcpState;
 
+@property unsigned long bytesUp;
+@property unsigned long bytesDown;
+
 /* METHODS */
 
 //init with event
 // process raw event, adding process info, etc
 -(id)init:(NSDictionary*)event;
+//-(void)init2:(NSDictionary*)event;
 
 //given a search string
 // check if path, pid, ips, etc match?

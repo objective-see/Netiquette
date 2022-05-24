@@ -24,10 +24,15 @@
 
 #define CONNECTION_STATE @"state"
 
+#define BYTES_UP @"bytesUp"
+#define BYTES_DOWN @"bytesDown"
+
 #define KEY_PORT @"port"
 #define KEY_FAMILY @"family"
 #define KEY_ADDRRESS @"address"
 #define KEY_HOST_NAME @"hostName"
+
+
 
 //product name
 // ...for version check
@@ -37,7 +42,7 @@
 #define SENTRY_DSN @"https://1735fa7903114215993cb18c96fe268c@sentry.io/1535612"
 
 //product url
-#define PRODUCT_URL @"https://objective-see.com/products/netiquette.html"
+#define PRODUCT_URL @"https://objective-see.org/products/netiquette.html"
 
 //patreon url
 #define PATREON_URL @"https://www.patreon.com/bePatron?c=701171"
@@ -56,5 +61,9 @@
 
 //update new version
 #define UPDATE_NEW_VERSION 1
+
+#define PREFS_HIDE_APPLE          @"hideApple"
+#define PREFS_RESOLVE_NAMES       @"resolveNames"
+#define PREFS_AUTO_REFRESH        @"autoRefresh"
 
 #endif /* consts_h */

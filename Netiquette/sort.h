@@ -12,13 +12,23 @@
 #import "Event.h"
 #import "3rd-party/OrderedDictionary.h"
 
+//sort by
+enum SortBy{SortByName, SortByProto, SortByInterface, SortByState, SortBytesUp, SortBytesDown};
+
 /* FUNCTIONS */
+
+//combine events
+// create dictionary that combines events via their pid
+// <pid>: { event id 0: event, event id 1: event }
+NSMutableDictionary* combineEvents(NSMutableDictionary* events);
  
 //sort events
-// create an ordered dictionary sorted by name
-// pid 0: { event id 0: event, event id 1: event }
-// pid 1: { event id 0: event, event id 1: event }
-OrderedDictionary* sortEvents(NSMutableDictionary* events);
+// create an ordered dictionary based on column
+OrderedDictionary* sortEvents(NSDictionary* events, NSUInteger column, BOOL ascending);
+
+//sort events
+// create an ordered dictionary sorted by traffic
+OrderedDictionary* sortEventsByTraffic(NSDictionary* events, NSUInteger column, BOOL ascending);
 
 
 #endif /* sort_h */

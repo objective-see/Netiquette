@@ -15,10 +15,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-//TODO: add features such as:
-// 1. add reverse dns lookup (in bg)
-// 2. add filters (#apple #established #listen #nonapple)
-
 @import Sentry;
 
 //main
@@ -32,7 +28,7 @@ int main(int argc, const char * argv[])
     NSArray* arguments = nil;
     
     //grab args
-    arguments = [[NSProcessInfo processInfo] arguments];
+    arguments = NSProcessInfo.processInfo.arguments;
     
     //disable stderr
     // crash reporter dumps info here
@@ -43,7 +39,7 @@ int main(int argc, const char * argv[])
             options.dsn = SENTRY_DSN;
             options.debug = YES;
     }];
-    
+        
     //handle '-h' or '-help'
     if( (YES == [arguments containsObject:@"-h"]) ||
         (YES == [arguments containsObject:@"-help"]) )
@@ -55,8 +51,8 @@ int main(int argc, const char * argv[])
         goto bail;
     }
     
-    //handle '-scan'
-    // cmdline scan without UI
+    //handle '-list'
+    // cmdline enumeration without UI
     if(YES == [arguments containsObject:@"-list"])
     {
         //scan
@@ -86,6 +82,9 @@ int main(int argc, const char * argv[])
     // so, make foreground so app has an dock icon, etc
     transformApp(kProcessTransformToForegroundApplication);
     
+    //set defaults
+    [NSUserDefaults.standardUserDefaults registerDefaults:@{PREFS_AUTO_REFRESH:@YES, PREFS_RESOLVE_NAMES:@YES, PREFS_HIDE_APPLE:@YES}];
+
     //launch app normally
     status = NSApplicationMain(argc, argv);
     
@@ -115,7 +114,7 @@ void cmdlineInterface()
     Monitor* monitor = nil;
 
     //events
-    __block NSMutableDictionary* connections = nil;
+    __block NSDictionary* connections = nil;
     
     //output
     NSMutableString* output = nil;
@@ -133,8 +132,8 @@ void cmdlineInterface()
     // once...
     [monitor start:0 callback:^(NSMutableDictionary* events) {
         
-        //save
-        connections = events;
+        //combine/sort
+        connections = sortEvents(combineEvents(events), 0, YES);
         
         //trigger wait semaphore
         dispatch_semaphore_signal(semaphore);
@@ -152,7 +151,7 @@ void cmdlineInterface()
     
     //format results
     // convert to JSON
-    output = formatResults(sortEvents(connections), [[[NSProcessInfo processInfo] arguments] containsObject:@"-skipApple"]);
+    output = formatResults(connections, [[[NSProcessInfo processInfo] arguments] containsObject:@"-skipApple"]);
     
     //pretty print?
     if(YES == [[[NSProcessInfo processInfo] arguments] containsObject:@"-pretty"])

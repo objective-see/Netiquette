@@ -36,69 +36,48 @@
         ^(NStatSourceRef source, void *unknown)
         {
            //set description block
-           NStatSourceSetDescriptionBlock(source, ^(CFDictionaryRef description)
+           NStatSourceSetDescriptionBlock(source, ^(NSDictionary* description)
            {
-               //set block
-               [self callbackDescription:source description:(__bridge NSDictionary *)(description)];
+               //event (conenction)
+               Event* event = nil;
+               
+               //init event
+               event = [[Event alloc] init:description];
+               
+               //ignore pid 0
+               if(0 == event.process.pid)
+               {
+                   //igore
+                   return;
+               }
+            
+               //sync
+               @synchronized(self.events) {
+                       
+                    //update
+                    self.events[[NSValue valueWithPointer:source]] = event;
+                }
+               
            });
-           
+       
            //set removed block
            NStatSourceSetRemovedBlock(source, ^()
            {
-               //set block
-               [self callbackRemoved:source];
+               //sync
+               @synchronized(self) {
+                    
+                   //remove
+                   self.events[[NSValue valueWithPointer:source]] = nil;
+               }
+              
            });
             
         });
+        
+        NStatManagerSetFlags(self.manager, 0);
     }
     
     return self;
-}
-
-//callback for new event
--(void)callbackDescription:(NStatSourceRef)source description:(NSDictionary*)description
-{
-    //event (conenction)
-    Event* event = nil;
-    
-    //sync
-    @synchronized(self.events) {
-        
-        //init event
-        event = [[Event alloc] init:description];
-        
-        //ignore errors/processes that (just) exited
-        if(0 == event.process.pid)
-        {
-            //igore
-            goto bail;
-        }
-        
-        //update
-        // source will be unique per connection
-        self.events[[NSValue valueWithPointer:source]] = event;
-    }
-    
-bail:
-    
-    return;
-}
-
-//callback for removed event
-// remove source, and call block that was passed in
--(void)callbackRemoved:(NStatSourceRef)source
-{
-    //sync
-    @synchronized(self) {
-        
-        //remove
-        self.events[[NSValue valueWithPointer:source]] = nil;
-    }
-    
-    //since we're auto-refreshing
-    // don't need to callback directly...
-
-    return;
 }
 
 //start (network) monitoring
@@ -110,7 +89,31 @@ bail:
     //watch TCP
     NStatManagerAddAllTCP(self.manager);
     
+    //query block
+    // sync and call user-specified call back
+    void (^queryCallback)(void) = ^(void) {
+
+        //sync
+        @synchronized(self.events)
+        {
+            //invoke user callback
+            // pass copy to prevent access issues
+            callback([self.events mutableCopy]);
+        }
+    };
+    
+    //query all to start
+    NStatManagerQueryAllSourcesDescriptions(manager, queryCallback);
+    
+    //query all to start
+    NStatManagerQueryAllSources(manager, queryCallback);
+        
+                                
+    //TODO: overlay?
+    
+    
     //refresh?
+    // call in timer/loop
     if(0 != refreshRate)
     {
         //set timer
@@ -119,38 +122,16 @@ bail:
         //set timer event handler
         dispatch_source_set_event_handler(self.timer, ^{
             
-            //query for connections
-            NStatManagerQueryAllSourcesDescriptions(self.manager, ^(void)
-            {
-                //sync
-                // then invoke user callback
-                @synchronized (self.events)
-                {
-                    //invoke user callback
-                    // pass copy to prevent access issues
-                    callback([self.events mutableCopy]);
-                }
-                                                        
-            });
+            //(re) query for connections
+            NStatManagerQueryAllSourcesDescriptions(self.manager, queryCallback);
+            
+            //(re)  all to start
+            NStatManagerQueryAllSources(self.manager, queryCallback);
+            
         });
         
         //go!
         dispatch_resume(timer);
-    }
-    
-    else
-    {
-        //query for connections
-        NStatManagerQueryAllSourcesDescriptions(self.manager, ^()
-        {
-            //sync
-            // then invoke user callback
-            @synchronized(self.events)
-            {
-                //invoke user callback
-                callback(self.events);
-            }
-        });
     }
     
     return;
