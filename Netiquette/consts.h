@@ -51,7 +51,7 @@
 #define CUPS @"/usr/sbin/cupsd"
 
 //product version url
-#define PRODUCT_VERSIONS_URL @"https://objective-see.com/products.json"
+#define PRODUCT_VERSIONS_URL @"https://objective-see.org/products.json"
 
 //update error
 #define UPDATE_ERROR -1
