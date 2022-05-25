@@ -62,7 +62,7 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-list"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-pretty"

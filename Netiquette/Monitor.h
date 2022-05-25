@@ -43,6 +43,7 @@ typedef void (^NetworkCallbackBlock)(NSMutableDictionary* _Nonnull);
 @property (nullable) dispatch_queue_t queue;
 @property (nullable) dispatch_source_t timer;
 @property (nullable) NStatManagerRef manager;
+@property (nonatomic, retain)NSCache* processCache;
 @property (nonatomic, retain)NSMutableDictionary* events;
 
 

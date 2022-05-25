@@ -15,14 +15,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern CFStringRef kNStatSrcKeyPID;
-extern CFStringRef kNStatSrcKeyLocal;
-extern CFStringRef kNStatSrcKeyRemote;
-extern CFStringRef kNStatSrcKeyProvider;
-extern CFStringRef kNStatSrcKeyTCPState;
-extern CFStringRef kNStatSrcKeyInterface;
-extern CFStringRef kNStatSrcKeyTxBytes;
-extern CFStringRef kNStatSrcKeyRxBytes;
+extern NSConstantString* kNStatSrcKeyPID;
+extern NSConstantString* kNStatSrcKeyUUID;
+extern NSConstantString* kNStatSrcKeyLocal;
+extern NSConstantString* kNStatSrcKeyRemote;
+extern NSConstantString* kNStatSrcKeyTxBytes;
+extern NSConstantString* kNStatSrcKeyRxBytes;
+extern NSConstantString* kNStatSrcKeyProvider;
+extern NSConstantString* kNStatSrcKeyTCPState;
+extern NSConstantString* kNStatSrcKeyInterface;
 
 @interface Event : NSObject
 
@@ -45,8 +46,7 @@ extern CFStringRef kNStatSrcKeyRxBytes;
 
 //init with event
 // process raw event, adding process info, etc
--(id)init:(NSDictionary*)event;
-//-(void)init2:(NSDictionary*)event;
+-(id)init:(NSDictionary*)event process:(Process*)process;
 
 //given a search string
 // check if path, pid, ips, etc match?

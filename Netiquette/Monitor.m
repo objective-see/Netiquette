@@ -15,6 +15,7 @@
 @synthesize timer;
 @synthesize events;
 @synthesize manager;
+@synthesize processCache;
 
 -(id)init
 {
@@ -31,6 +32,12 @@
         //init dictionary for events
         self.events = [NSMutableDictionary dictionary];
         
+        //init cache
+        processCache = [[NSCache alloc] init];
+        
+        //set cache limit
+        self.processCache.countLimit = 2048;
+        
         //create manager
         self.manager = NStatManagerCreate(kCFAllocatorDefault, self.queue,
         ^(NStatSourceRef source, void *unknown)
@@ -40,15 +47,36 @@
            {
                //event (conenction)
                Event* event = nil;
+            
+               //event (UUID)
+               NSString* uuid = nil;
+               
+               //cached process
+               Process* process = nil;
+               
+               //extract uuid
+               uuid = description[kNStatSrcKeyUUID];
+               if(0 != uuid.length)
+               {
+                   //try grab cached process
+                   process = [self.processCache objectForKey:uuid];
+               }
                
                //init event
-               event = [[Event alloc] init:description];
-               
+               event = [[Event alloc] init:description process:process];
+                   
                //ignore pid 0
                if(0 == event.process.pid)
                {
                    //igore
                    return;
+               }
+               
+               //update process cache
+               if(nil != uuid)
+               {
+                   //update
+                   [self.processCache setObject:event.process forKey:uuid];
                }
             
                //sync

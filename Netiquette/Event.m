@@ -14,7 +14,7 @@
 
 //init with event
 // process raw event, adding process info, etc
--(id)init:(NSDictionary*)event
+-(id)init:(NSDictionary*)event process:(Process*)process
 {
     //flag
     BOOL resolveName = NO;
@@ -41,25 +41,36 @@
             resolveName = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_RESOLVE_NAMES];
         }
         
-        //init process
-        self.process = [[Process alloc] init:[event[(__bridge NSString *)kNStatSrcKeyPID] intValue]];
-        
-        //generate code signing info
-        [self.process generateSigningInfo:kSecCSDefaultFlags];
+        //monitor provided cache'd process?
+        if( (nil != process) &&
+            (process.pid == [event[kNStatSrcKeyPID] intValue]) )
+        {
+            //use
+            self.process = process;
+        }
+        //generate (new) process
+        else
+        {
+            //generate
+            self.process = [[Process alloc] init:[event[kNStatSrcKeyPID] intValue]];
+            
+            //generate code signing info
+            [self.process generateSigningInfo:kSecCSDefaultFlags];
+        }
         
         //extract provider
-        self.provider = event[(__bridge NSString *)kNStatSrcKeyProvider];
+        self.provider = event[kNStatSrcKeyProvider];
         
         //extract state
         // note: nil, unless provider is TCP
-        self.tcpState = event[(__bridge NSString *)kNStatSrcKeyTCPState];
+        self.tcpState = event[kNStatSrcKeyTCPState];
         
         //convert local address
-        self.localAddress = [self parseAddress:event[(__bridge NSString *)kNStatSrcKeyLocal]];
+        self.localAddress = [self parseAddress:event[kNStatSrcKeyLocal]];
         
         //convert remote address
         // and resolve remote name if necessary
-        self.remoteAddress = [self parseAddress:event[(__bridge NSString *)kNStatSrcKeyRemote]];
+        self.remoteAddress = [self parseAddress:event[kNStatSrcKeyRemote]];
         
         //in background
         // resolve host name
@@ -71,109 +82,30 @@
                 NSString* hostName = nil;
                 
                 //resolve / save
-                hostName = [self resolveName:(struct sockaddr *)[(NSData*)(event[(__bridge NSString *)kNStatSrcKeyRemote]) bytes]];
+                hostName = [self resolveName:(struct sockaddr *)[(NSData*)(event[kNStatSrcKeyRemote]) bytes]];
                 if(0 != hostName.length)
                 {
                     self.remoteAddress[KEY_HOST_NAME] = hostName;
-                
                 }
             });
         }
         
         //extract and convert interface (number) to name
-        if(NULL != if_indextoname([event[(__bridge NSString *)kNStatSrcKeyInterface] intValue], (char*)&interfaceName))
+        if(NULL != if_indextoname([event[kNStatSrcKeyInterface] intValue], (char*)&interfaceName))
         {
             //save/convert
             self.interface = [NSString stringWithUTF8String:interfaceName];
         }
         
         //extract bytes up
-        self.bytesUp = [event[(__bridge NSString *)kNStatSrcKeyTxBytes] unsignedLongValue];
+        self.bytesUp = [event[kNStatSrcKeyTxBytes] unsignedLongValue];
         
         //extract bytes down
-        self.bytesDown = [event[(__bridge NSString *)kNStatSrcKeyRxBytes] unsignedLongValue];
+        self.bytesDown = [event[kNStatSrcKeyRxBytes] unsignedLongValue];
         
     }
  
     return self;
-}
-
-//init with event
-// process raw event, adding process info, etc
--(void)init2:(NSDictionary*)event
-{
-    //flag
-    BOOL resolveName = NO;
-    
-    //interface name
-    char interfaceName[IF_NAMESIZE+1] = {0};
-    
-    //super
-    //self = [super init];
-    //if(self != nil)
-    //{
-        //terminal exec
-        // should resolve flags?
-        if(YES == [NSProcessInfo.processInfo.arguments containsObject:@"-list"])
-        {
-            //set
-            resolveName = [NSProcessInfo.processInfo.arguments containsObject:@"-names"];
-        }
-        //non-terminal exec
-        // should resolve flags?
-        else
-        {
-            //set
-            resolveName = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_RESOLVE_NAMES];
-        }
-        
-        //init process
-        self.process = [[Process alloc] init:[event[(__bridge NSString *)kNStatSrcKeyPID] intValue]];
-        
-        //generate code signing info
-        [self.process generateSigningInfo:kSecCSDefaultFlags];
-        
-        //extract provider
-        self.provider = event[(__bridge NSString *)kNStatSrcKeyProvider];
-        
-        //extract state
-        // note: nil, unless provider is TCP
-        self.tcpState = event[(__bridge NSString *)kNStatSrcKeyTCPState];
-        
-        //convert local address
-        self.localAddress = [self parseAddress:event[(__bridge NSString *)kNStatSrcKeyLocal]];
-        
-        //convert remote address
-        // and resolve remote name if necessary
-        self.remoteAddress = [self parseAddress:event[(__bridge NSString *)kNStatSrcKeyRemote]];
-        
-        //in background
-        // resolve host name
-        if(YES == resolveName)
-        {
-            //in background
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-                //host name
-                NSString* hostName = nil;
-                
-                //resolve / save
-                hostName = [self resolveName:(struct sockaddr *)[(NSData*)(event[(__bridge NSString *)kNStatSrcKeyRemote]) bytes]];
-                if(0 != hostName.length)
-                {
-                    self.remoteAddress[KEY_HOST_NAME] = hostName;
-                }
-            });
-        }
-        
-        //extract and convert interface (number) to name
-        if(NULL != if_indextoname([event[(__bridge NSString *)kNStatSrcKeyInterface] intValue], (char*)&interfaceName))
-        {
-            //save/convert
-            self.interface = [NSString stringWithUTF8String:interfaceName];
-        }
-        
-    return;
 }
 
 //parse/extract addr, port, etc...
@@ -240,12 +172,6 @@
     //flag
     BOOL matches = NO;
     
-    //description
-    //NSString* discription = nil;
-    
-    //convert event to string
-    //discription = [NSString stringWithFormat:@"%@ %d %@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\", \"%@\": \"%@\"},", PROCESS_PID, self.process.pid, PROCESS_PATH, self.process.binary.path, INTERFACE, self.interface, PROTOCOL, self.provider, LOCAL_ADDRESS, self.localAddress[KEY_ADDRRESS], LOCAL_PORT, self.localAddress[KEY_PORT], REMOTE_ADDRESS, self.remoteAddress[KEY_ADDRRESS], REMOTE_PORT, self.remoteAddress[KEY_PORT], REMOTE_HOST, self.remoteAddress[KEY_HOST_NAME], CONNECTION_STATE, self.tcpState];
-    
     //name match
     if(YES == [self.process.binary.name localizedCaseInsensitiveContainsString:search])
     {
@@ -306,6 +232,17 @@
         goto bail;
     }
     
+    //remote host name
+    if( (0 != [self.remoteAddress[KEY_HOST_NAME] length]) &&
+        (YES == [self.remoteAddress[KEY_HOST_NAME] localizedCaseInsensitiveContainsString:search]) )
+    {
+        //match
+        matches = YES;
+        
+        //bail
+        goto bail;
+    }
+    
     //remote port match?
     if(YES == [[self.remoteAddress[KEY_PORT] stringValue] containsString:search])
     {
@@ -339,6 +276,26 @@
     //state
     if( (0 != self.tcpState.length) &&
         (YES == [self.tcpState localizedCaseInsensitiveContainsString:search]) )
+    {
+        //match
+        matches = YES;
+        
+        //bail
+        goto bail;
+    }
+    
+    //bytes up
+    if(YES == [[NSString stringWithFormat:@"%lu", self.bytesUp] containsString:search])
+    {
+        //match
+        matches = YES;
+        
+        //bail
+        goto bail;
+    }
+    
+    //bytes down
+    if(YES == [[NSString stringWithFormat:@"%lu", self.bytesDown] containsString:search])
     {
         //match
         matches = YES;
