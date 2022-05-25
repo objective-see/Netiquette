@@ -83,6 +83,9 @@
         //init sort descriptor for bytes down column
         self.outlineView.tableColumns[5].sortDescriptorPrototype = [NSSortDescriptor sortDescriptorWithKey:[self.outlineView.tableColumns[5] identifier] ascending:YES];
         
+        //table resizing settings
+        [self.outlineView sizeLastColumnToFit];
+        
     });
     
     return;
