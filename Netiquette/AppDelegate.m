@@ -63,22 +63,16 @@
     
     //make main window active/front
     [self.window makeKeyAndOrderFront:self];
-        
-    //make window front
-    [NSApp activateIgnoringOtherApps:YES];
-
+    
     //first time run?
     // show thanks to friends
-    if(YES == [[NSUserDefaults standardUserDefaults] boolForKey:NOT_FIRST_TIME])
+    if(YES != [[NSUserDefaults standardUserDefaults] boolForKey:NOT_FIRST_TIME])
     {
         //set key
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NOT_FIRST_TIME];
         
         //front
         [self.friends makeKeyAndOrderFront:self];
-        
-        //front
-        [NSApp activateIgnoringOtherApps:YES];
         
         //make first responder
         // calling this without a timeout sometimes fails :/
@@ -88,17 +82,10 @@
             [self.friends makeFirstResponder:[self.friends.contentView viewWithTag:1]];
             
         });
-        
-        /*
-        //close after 3 seconds
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            
-            //close
-            [self hideFriends:nil];
-            
-        });
-        */
     }
+    
+    //make app front
+    [NSApp activateIgnoringOtherApps:YES];
     
     //start (connection) monitor
     // auto-refreshes ever 5 seconds

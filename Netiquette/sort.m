@@ -162,7 +162,6 @@ bail:
     return sortedEvents;
 }
 
-
 //sort events
 // create an ordered dictionary sorted by traffic
 OrderedDictionary* sortEventsByTraffic(NSDictionary* events, NSUInteger column, BOOL ascending)

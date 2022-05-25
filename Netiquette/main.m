@@ -114,7 +114,7 @@ void cmdlineInterface()
     Monitor* monitor = nil;
 
     //events
-    __block NSDictionary* connections = nil;
+    __block OrderedDictionary* connections = nil;
     
     //output
     NSMutableString* output = nil;

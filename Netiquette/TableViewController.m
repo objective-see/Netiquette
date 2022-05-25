@@ -171,15 +171,13 @@
             });
         }
         
+        //hide overlay
         else
         {
-            //hide overlay
+            //hide
             self.overlay.hidden = YES;
         }
     });
-    
-    //dbg msg
-    //NSLog(@"reloading table");
     
     //begin updates
     [self.outlineView beginUpdates];
@@ -218,9 +216,11 @@
         //select
         [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
         
+        //reset?
+        // scroll to selected row
         if(YES == reset)
         {
-            //scroll to selected row
+            //scroll
             [self.outlineView scrollRowToVisible:selectedRow];
         }
     });

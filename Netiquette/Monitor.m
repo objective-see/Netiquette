@@ -136,10 +136,6 @@
     //query all to start
     NStatManagerQueryAllSources(manager, queryCallback);
         
-                                
-    //TODO: overlay?
-    
-    
     //refresh?
     // call in timer/loop
     if(0 != refreshRate)

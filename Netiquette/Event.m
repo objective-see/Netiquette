@@ -285,7 +285,7 @@
     }
     
     //bytes up
-    if(YES == [[NSString stringWithFormat:@"%lu", self.bytesUp] containsString:search])
+    if(YES == [[NSByteCountFormatter stringFromByteCount:self.bytesUp countStyle:NSByteCountFormatterCountStyleFile] containsString:search])
     {
         //match
         matches = YES;
@@ -295,7 +295,7 @@
     }
     
     //bytes down
-    if(YES == [[NSString stringWithFormat:@"%lu", self.bytesDown] containsString:search])
+    if(YES == [[NSByteCountFormatter stringFromByteCount:self.bytesDown countStyle:NSByteCountFormatterCountStyleFile] containsString:search])
     {
         //match
         matches = YES;
