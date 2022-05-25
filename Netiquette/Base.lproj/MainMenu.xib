@@ -15,7 +15,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
-                <outlet property="friends" destination="w8v-VL-7qZ" id="vud-rk-hc9"/>
+                <outlet property="friends" destination="H2n-NR-ehD" id="Jw3-TZ-PK2"/>
                 <outlet property="tableViewController" destination="aiH-sN-y4b" id="l3J-bO-Gnx"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -87,7 +87,7 @@
                         </connections>
                     </button>
                     <button tag="10005" translatesAutoresizingMaskIntoConstraints="NO" id="zGD-yD-SJN">
-                        <rect key="frame" x="1412" y="15" width="183" height="18"/>
+                        <rect key="frame" x="1412" y="15" width="183" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="5Be-bZ-xAx"/>
                             <constraint firstAttribute="width" constant="181" id="ewP-eA-DDW"/>
@@ -117,7 +117,7 @@
                         </connections>
                     </button>
                     <button tag="10003" translatesAutoresizingMaskIntoConstraints="NO" id="f7x-Is-k35">
-                        <rect key="frame" x="1067" y="14" width="149" height="18"/>
+                        <rect key="frame" x="1067" y="14" width="149" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="147" id="Tf9-sO-jf7"/>
                             <constraint firstAttribute="height" constant="16" id="hWz-9P-VaD"/>
@@ -326,7 +326,7 @@
                         </constraints>
                     </customView>
                     <button tag="10004" translatesAutoresizingMaskIntoConstraints="NO" id="obG-tg-sfr">
-                        <rect key="frame" x="1236" y="13" width="149" height="18"/>
+                        <rect key="frame" x="1236" y="13" width="149" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="147" id="JJn-fd-oXj"/>
                             <constraint firstAttribute="height" constant="16" id="WMW-Hd-Tkh"/>
@@ -395,57 +395,139 @@
             </toolbar>
             <point key="canvasLocation" x="448.5" y="310.5"/>
         </window>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="w8v-VL-7qZ" userLabel="Friends">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <rect key="contentRect" x="2843" y="305" width="767" height="288"/>
-            <rect key="screenRect" x="3440" y="75" width="1440" height="875"/>
-            <view key="contentView" id="WGJ-5R-75c">
-                <rect key="frame" x="0.0" y="0.0" width="767" height="288"/>
+        <window title="Support" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" id="H2n-NR-ehD">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <rect key="contentRect" x="403" y="305" width="813" height="455"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
+            <view key="contentView" id="Gk9-47-FGA">
+                <rect key="frame" x="0.0" y="0.0" width="813" height="455"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <userGuides>
-                    <userLayoutGuide location="152" affinity="minY"/>
-                </userGuides>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="ilX-mS-Z8S">
-                        <rect key="frame" x="639" y="13" width="115" height="32"/>
+                    <customView id="Z9B-hM-pbp" userLabel="Support">
+                        <rect key="frame" x="0.0" y="-25" width="913" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QeN-ud-MQA">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="Menlo-Regular"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="hideFriends:" target="Voe-Tx-rLC" id="Tjl-mH-Kc0"/>
-                        </connections>
-                    </button>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lv7-Pa-akR">
-                        <rect key="frame" x="471" y="95" width="225" height="106"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="K9b-6t-dqA"/>
-                    </imageView>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="exG-Qy-ofG">
-                        <rect key="frame" x="86" y="74" width="274" height="160"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Friends1Password" id="wZk-ep-3vA"/>
-                    </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Azd-FD-MUG">
-                        <rect key="frame" x="0.0" y="229" width="769" height="39"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="💕 Mahalo to the &quot;Friends of Objective-See&quot; 💕" id="zkj-9c-2qc">
-                            <font key="font" size="20" name="Menlo-Bold"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
+                        <subviews>
+                            <box fixedFrame="YES" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7cu-59-kBj">
+                                <rect key="frame" x="0.0" y="26" width="812" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" id="3Hs-Iu-Z40">
+                                    <rect key="frame" x="0.0" y="0.0" width="812" height="48"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hYn-Q6-bXj">
+                                            <rect key="frame" x="13" y="7" width="81" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="No" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Hi-iC-bLD">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="13" name="Menlo-Regular"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="closeSupportWindow:" target="Voe-Tx-rLC" id="GUg-5n-BuU"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="f33-GW-7GO">
+                                            <rect key="frame" x="718" y="7" width="81" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Yes!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hne-jY-DmH">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="13" name="Menlo-Bold"/>
+                                                <connections>
+                                                    <action selector="supportUs:" target="Voe-Tx-rLC" id="YLZ-zo-D32"/>
+                                                </connections>
+                                            </buttonCell>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <color key="fillColor" red="0.52700018810000004" green="0.69087679930000001" blue="0.21211786799999999" alpha="0.99595620600000001" colorSpace="custom" customColorSpace="sRGB"/>
+                            </box>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ycN-uA-wHz">
+                                <rect key="frame" x="12" y="403" width="367" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Support Netiquette?" id="Wea-Nr-3gg">
+                                    <font key="font" size="40" name="AvenirNextCondensed-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J2M-5i-tBN">
+                                <rect key="frame" x="13" y="261" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Love" id="dM8-qc-jis"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" alphaValue="0.59999999999999998" id="S7k-GR-yMA">
+                                <rect key="frame" x="290" y="125" width="233" height="29"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Mahalo to the &quot;Friends Objective-See&quot;" id="lq1-Qh-dX2">
+                                    <font key="font" size="15" name="AvenirNextCondensed-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aXd-XF-r2U">
+                                <rect key="frame" x="20" y="90" width="94" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="XqO-hj-wIh"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="30e-aS-PHB">
+                                <rect key="frame" x="126" y="90" width="116" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMosyle" id="tI8-9E-fqS"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="P2U-m9-R2F">
+                                <rect key="frame" x="682" y="88" width="103" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsKandji" id="DhK-qw-8UK"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="tX1-Tw-ezu">
+                                <rect key="frame" x="555" y="89" width="106" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsKolide" id="MhP-rf-Aqa"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.69999999999999996" id="B4E-R4-LoH">
+                                <rect key="frame" x="255" y="96" width="78" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsFleet" id="7bf-Lc-M0e"/>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="Mpi-ZH-m0x">
+                                <rect key="frame" x="520" y="199" width="274" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Show some love? " id="EVc-Rw-2n1">
+                                    <font key="font" size="40" name="AvenirNextCondensed-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="O8b-FV-IX2">
+                                <rect key="frame" x="357" y="83" width="181" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMacPaw" id="qGW-Q1-Y6M"/>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0O-vf-L7R">
+                                <rect key="frame" x="147" y="268" width="636" height="124"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="It's free, open-source, and written by a single (macOS-loving) coder!" id="USK-A1-jVu">
+                                    <font key="font" size="36" name="AvenirNextCondensed-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </customView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="689.5" y="-749"/>
+            <point key="canvasLocation" x="286.5" y="1806.5"/>
         </window>
     </objects>
     <resources>
-        <image name="Friends1Password" width="666" height="134"/>
+        <image name="FriendsFleet" width="236" height="96"/>
         <image name="FriendsJamf" width="328" height="114"/>
+        <image name="FriendsKandji" width="500" height="127"/>
+        <image name="FriendsKolide" width="636" height="216"/>
+        <image name="FriendsMacPaw" width="2034" height="335"/>
+        <image name="FriendsMosyle" width="500" height="124"/>
         <image name="Logo" width="194" height="236"/>
         <image name="LogoBG" width="194" height="236"/>
+        <image name="Love" width="256" height="256"/>
         <image name="NSColorPanel" width="32" height="32"/>
         <image name="Save" width="256" height="256"/>
         <image name="SaveBG" width="256" height="256"/>

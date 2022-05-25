@@ -69,7 +69,7 @@
 
     //first time run?
     // show thanks to friends
-    if(YES != [[NSUserDefaults standardUserDefaults] boolForKey:NOT_FIRST_TIME])
+    if(YES == [[NSUserDefaults standardUserDefaults] boolForKey:NOT_FIRST_TIME])
     {
         //set key
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NOT_FIRST_TIME];
@@ -89,6 +89,7 @@
             
         });
         
+        /*
         //close after 3 seconds
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             
@@ -96,6 +97,7 @@
             [self hideFriends:nil];
             
         });
+        */
     }
     
     //start (connection) monitor
@@ -263,7 +265,7 @@
     
     //new version?
     // configure ui, and add 'update' button
-    if(UPDATE_NEW_VERSION== result)
+    if(UPDATE_NEW_VERSION == result)
     {
         //set details
         details = [NSString stringWithFormat:@"a new version (%@) is available!", newVersion];
@@ -341,6 +343,29 @@
     
     //show it
     [self.aboutWindowController showWindow:self];
+    
+    return;
+}
+
+//support handler
+// open support (patreon) url
+- (IBAction)supportUs:(id)sender
+{
+    //open URL
+    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:PATREON_URL]];
+    
+    //close window
+    [self.friends close];
+    
+    return;
+}
+
+//don't support handler
+//just close friends window
+-(IBAction)closeSupportWindow:(id)sender
+{
+    //close window
+    [self.friends close];
     
     return;
 }
