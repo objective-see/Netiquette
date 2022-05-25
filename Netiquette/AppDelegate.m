@@ -64,9 +64,10 @@
     //make main window active/front
     [self.window makeKeyAndOrderFront:self];
     
-    //first time run?
-    // show thanks to friends
-    if(YES != [[NSUserDefaults standardUserDefaults] boolForKey:NOT_FIRST_TIME])
+    //first time run (and not via LuLu)
+    // show support/friends of objective-see window
+    if( (YES != [NSProcessInfo.processInfo.arguments containsObject:@"-lulu"]) &&
+        (YES != [[NSUserDefaults standardUserDefaults] boolForKey:NOT_FIRST_TIME]) )
     {
         //set key
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NOT_FIRST_TIME];

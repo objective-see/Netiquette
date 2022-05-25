@@ -39,7 +39,7 @@ int main(int argc, const char * argv[])
             options.dsn = SENTRY_DSN;
             options.debug = YES;
     }];
-        
+    
     //handle '-h' or '-help'
     if( (YES == [arguments containsObject:@"-h"]) ||
         (YES == [arguments containsObject:@"-help"]) )
@@ -53,7 +53,7 @@ int main(int argc, const char * argv[])
     
     //handle '-list'
     // cmdline enumeration without UI
-    if(YES == [arguments containsObject:@"-list"])
+    else if(YES == [arguments containsObject:@"-list"])
     {
         //scan
         cmdlineInterface();
@@ -66,10 +66,11 @@ int main(int argc, const char * argv[])
     }
     
     //handle invalid args
-    // allow `-psn_` cuz OS sometimes adds this?
-    if( (arguments.count > 1) &&
-        (YES != [arguments[1] hasPrefix:@"-psn_"]) &&
-        (YES != [arguments[1] isEqualToString:@"-NSDocumentRevisionsDebugMode"]) )
+    // allow -psn_, debug mode, and lulu (launch)
+    else if( (arguments.count > 1) &&
+             (YES != [arguments[1] hasPrefix:@"-psn_"]) &&
+             (YES != [arguments containsObject:@"-lulu"]) &&
+             (YES != [arguments containsObject:@"-NSDocumentRevisionsDebugMode"]) )
     {
         //print usage
         usage();
