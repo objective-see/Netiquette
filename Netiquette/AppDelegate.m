@@ -24,6 +24,7 @@
 @synthesize monitor;
 @synthesize tableViewController;
 @synthesize aboutWindowController;
+@synthesize prefsWindowController;
 @synthesize updateWindowController;
 
 //(re)set toolbar style
@@ -52,22 +53,28 @@
     //init monitor
     self.monitor = [[Monitor alloc] init];
     
-    //after a a few seconds
-    // check for updates in background
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-    ^{
-        
-        //check
-        [self check4Update:nil];
+    //automatically check for updates?
+    // note: don't do this if running via LuLu
+    if( (YES != [NSProcessInfo.processInfo.arguments containsObject:ARGS_LULU]) &&
+        (YES != [NSUserDefaults.standardUserDefaults boolForKey:PREFS_NO_UPDATE]) )
+    {
+        //after a a few seconds
+        // check for updates in background
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+        ^{
+            
+            //check
+            [self check4Update:nil];
 
-    });
-    
+        });
+    }
+        
     //make main window active/front
     [self.window makeKeyAndOrderFront:self];
     
     //first time run (and not via LuLu)
     // show support/friends of objective-see window
-    if( (YES != [NSProcessInfo.processInfo.arguments containsObject:@"-lulu"]) &&
+    if( (YES != [NSProcessInfo.processInfo.arguments containsObject:ARGS_LULU]) &&
         (YES != [[NSUserDefaults standardUserDefaults] boolForKey:NOT_FIRST_TIME]) )
     {
         //set key
@@ -142,7 +149,6 @@
                         
                     });
                     
-                
                     //combine
                     // and then sort events
                     sortedEvents = sortEvents(combineEvents(events), column, ascending);
@@ -317,7 +323,25 @@
     return;
 }
 
+//menu handler: 'Preferences'
+// alloc and show Preferences window
+-(IBAction)showPreferences:(id)sender
+{
+    //alloc prefs window controller
+    if(nil == self.prefsWindowController)
+    {
+        //alloc
+        prefsWindowController = [[PrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
+    }
+    
+    //make active
+    [self makeActive:self.prefsWindowController];
+    
+    return;
+}
+
 //menu handler: about
+// alloc and show 'about' Window
 -(IBAction)about:(id)sender
 {
     //alloc/init settings window
@@ -355,6 +379,27 @@
 {
     //close window
     [self.friends close];
+    
+    return;
+}
+
+//make a window control/window front/active
+-(void)makeActive:(NSWindowController*)windowController
+{
+    //make foreground
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    
+    //center
+    [windowController.window center];
+
+    //show it
+    [windowController showWindow:self];
+    
+    //make it key window
+    [[windowController window] makeKeyAndOrderFront:self];
+    
+    //make window front
+    [NSApp activateIgnoringOtherApps:YES];
     
     return;
 }

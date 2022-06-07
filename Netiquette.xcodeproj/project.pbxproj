@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD1A7F63284C5E360038675C /* PrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1A7F60284C5E360038675C /* PrefsWindowController.m */; };
+		CD1A7F64284C5E360038675C /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1A7F61284C5E360038675C /* Preferences.xib */; };
 		CD1BFEB6231112A700230AE2 /* UpdateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1BFEB2231112A700230AE2 /* UpdateWindow.xib */; };
 		CD1BFEB7231112A700230AE2 /* UpdateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1BFEB4231112A700230AE2 /* UpdateWindowController.m */; };
 		CD1BFEB8231112A700230AE2 /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1BFEB5231112A700230AE2 /* Update.m */; };
@@ -48,6 +50,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD1A7F60284C5E360038675C /* PrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsWindowController.m; sourceTree = "<group>"; };
+		CD1A7F61284C5E360038675C /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		CD1A7F62284C5E360038675C /* PrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsWindowController.h; sourceTree = "<group>"; };
 		CD1BFEB1231112A700230AE2 /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
 		CD1BFEB2231112A700230AE2 /* UpdateWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateWindow.xib; sourceTree = "<group>"; };
 		CD1BFEB3231112A700230AE2 /* UpdateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateWindowController.h; sourceTree = "<group>"; };
@@ -170,6 +175,9 @@
 				CD23BA4222E3A75E00992D1C /* TableViewController.m */,
 				CD1BFEB1231112A700230AE2 /* Update.h */,
 				CD1BFEB5231112A700230AE2 /* Update.m */,
+				CD1A7F61284C5E360038675C /* Preferences.xib */,
+				CD1A7F62284C5E360038675C /* PrefsWindowController.h */,
+				CD1A7F60284C5E360038675C /* PrefsWindowController.m */,
 				CD1BFEB2231112A700230AE2 /* UpdateWindow.xib */,
 				CD1BFEB3231112A700230AE2 /* UpdateWindowController.h */,
 				CD1BFEB4231112A700230AE2 /* UpdateWindowController.m */,
@@ -255,6 +263,7 @@
 				CD75D96D22CB36D90085361F /* Assets.xcassets in Resources */,
 				CD75D97022CB36D90085361F /* MainMenu.xib in Resources */,
 				CD1BFEB6231112A700230AE2 /* UpdateWindow.xib in Resources */,
+				CD1A7F64284C5E360038675C /* Preferences.xib in Resources */,
 				CD1DFE1622F61ACA002112FA /* AboutWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +289,7 @@
 				CD1BFEBB231116CD00230AE2 /* NSApplicationKeyEvents.m in Sources */,
 				CD73A8B522D1AB4200464867 /* Monitor.m in Sources */,
 				CD1DFE1722F61ACA002112FA /* AboutWindowController.m in Sources */,
+				CD1A7F63284C5E360038675C /* PrefsWindowController.m in Sources */,
 				CD82468522F921F20080CE10 /* OrderedDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

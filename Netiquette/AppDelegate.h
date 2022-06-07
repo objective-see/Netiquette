@@ -9,6 +9,7 @@
 #import "Monitor.h"
 #import "TableViewController.h"
 #import "AboutWindowController.h"
+#import "PrefsWindowController.h"
 #import "UpdateWindowController.h"
 
 #import <Cocoa/Cocoa.h>
@@ -30,11 +31,18 @@
 //about window controller
 @property(nonatomic, retain)AboutWindowController* aboutWindowController;
 
+//preferences window controller
+@property(nonatomic, retain)PrefsWindowController* prefsWindowController;
+
 //connection monitor
 @property (nonatomic, retain)Monitor* monitor;
 
 //table view controller
 @property (weak) IBOutlet TableViewController *tableViewController;
+
+/* METHODS */
+
+-(IBAction)showPreferences:(id)sender;
 
 @end
 

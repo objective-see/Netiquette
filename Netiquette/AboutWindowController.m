@@ -75,7 +75,7 @@
 -(void)windowWillClose:(NSNotification *)notification
 {
     //make un-modal
-    [[NSApplication sharedApplication] stopModal];
+    [NSApplication.sharedApplication stopModal];
     
     return;
 }

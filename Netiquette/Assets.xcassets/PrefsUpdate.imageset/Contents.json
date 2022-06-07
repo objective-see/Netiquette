@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "darkMode.png"
+      "filename" : "prefsUpdate Any.pdf"
     },
     {
       "idiom" : "mac",
-      "filename" : "lightMode.png",
+      "filename" : "prefsUpdate Light.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -16,7 +16,7 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "darkMode.png",
+      "filename" : "prefsUpdate Dark.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",

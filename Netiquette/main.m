@@ -69,7 +69,7 @@ int main(int argc, const char * argv[])
     // allow -psn_, debug mode, and lulu (launch)
     else if( (arguments.count > 1) &&
              (YES != [arguments[1] hasPrefix:@"-psn_"]) &&
-             (YES != [arguments containsObject:@"-lulu"]) &&
+             (YES != [arguments containsObject:ARGS_LULU]) &&
              (YES != [arguments containsObject:@"-NSDocumentRevisionsDebugMode"]) )
     {
         //print usage
@@ -84,7 +84,7 @@ int main(int argc, const char * argv[])
     transformApp(kProcessTransformToForegroundApplication);
     
     //set defaults
-    [NSUserDefaults.standardUserDefaults registerDefaults:@{PREFS_AUTO_REFRESH:@YES, PREFS_RESOLVE_NAMES:@YES, PREFS_HIDE_APPLE:@YES}];
+    [NSUserDefaults.standardUserDefaults registerDefaults:@{PREFS_AUTO_REFRESH:@YES, PREFS_RESOLVE_NAMES:@YES, PREFS_HIDE_APPLE:@YES, PREFS_HIDE_LOCAL:@YES}];
 
     //launch app normally
     status = NSApplicationMain(argc, argv);

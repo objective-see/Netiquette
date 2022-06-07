@@ -31,17 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 //filtered connections
 @property(nonatomic, retain)OrderedDictionary* processedItems;
 
+//filter box
 @property (weak) IBOutlet NSSearchField *filterBox;
 
-//auto-refresh button
-@property (weak) IBOutlet NSButton *refreshButton;
-
-//resolve names button
-@property (weak) IBOutlet NSButton *resolveButton;
-
-//filter apple button
-@property (weak) IBOutlet NSButton *filterButton;
-
+//collapsed items
 @property (nonatomic, retain)NSMutableDictionary* collapsedItems;
 
 
@@ -52,6 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //map column id to index
 -(NSUInteger)columnIDToIndex:(NSString*)columnID;
+
+//refresh/reload
+-(void)refresh;
 
 @end
 

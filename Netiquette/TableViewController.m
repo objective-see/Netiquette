@@ -12,17 +12,18 @@
 //id (tag) for detailed text in category table
 #define TABLE_ROW_SUB_TEXT_TAG 101
 
-#define BUTTON_SAVE         10001
-#define BUTTON_LOGO         10002
-#define BUTTON_REFRESH      10003
-#define BUTTON_RESOLVE      10004
-#define BUTTON_HIDE_APPLE   10005
+#define BUTTON_SAVE         1
+#define BUTTON_PREFS        2
+#define BUTTON_LOGO         3
+#define BUTTON_EXPAND       4
+#define BUTTON_COLLAPSE     5
 
 #import "sort.h"
 #import "Event.h"
 #import "consts.h"
 #import "CustomRow.h"
 #import "utilities.h"
+#import "AppDelegate.h"
 #import "TableViewController.h"
 
 @implementation TableViewController
@@ -44,11 +45,6 @@
         
         //alloc
         self.collapsedItems = [NSMutableDictionary dictionary];
-        
-        //set buttons
-        self.filterButton.state = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_HIDE_APPLE];
-        self.refreshButton.state = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_AUTO_REFRESH];
-        self.resolveButton.state = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_RESOLVE_NAMES];
         
         //pre-req for color of overlay
         self.overlay.wantsLayer = YES;
@@ -142,7 +138,7 @@
         {
             //ignore apple?
             // set message about 3rd-party
-            if(NSControlStateValueOn == self.filterButton.state)
+            if(YES == [NSUserDefaults.standardUserDefaults boolForKey:PREFS_HIDE_APPLE])
             {
                 //set msg
                 self.activityMessage.stringValue = @"No (3rd-party) Network Connections Detected";
@@ -581,6 +577,9 @@ bail:
     //item cell
     NSTableCellView* cell = nil;
     
+    //local address or host
+    NSString* localAddress = nil;
+    
     //remote address or host
     NSString* remoteAddress = nil;
     
@@ -589,19 +588,29 @@ bail:
     
     //reset text
     ((NSTableCellView*)cell).textField.stringValue = @"";
+    
+    //init local address
+    localAddress = event.localAddress[KEY_ADDRRESS];
+    
+    //have local name?
+    if(0 != [event.localAddress[KEY_HOST_NAME] length])
+    {
+        //set name
+        localAddress = event.localAddress[KEY_HOST_NAME];
+    }
 
     //no remote addr/port for listen
     if(YES == [event.tcpState isEqualToString:@"Listen"])
     {
         //set main text
-        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@", event.localAddress[KEY_ADDRRESS], event.localAddress[KEY_PORT]];
+        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@", localAddress, event.localAddress[KEY_PORT]];
     }
     
     //no remote addr/port for udp
     else if(YES == [event.provider isEqualToString:@"UDP"])
     {
         //set main text
-        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@ →", event.localAddress[KEY_ADDRRESS], event.localAddress[KEY_PORT]];
+        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@ →", localAddress, event.localAddress[KEY_PORT]];
     }
     //show remote addr/port for all others...
     else
@@ -609,16 +618,16 @@ bail:
         //default
         remoteAddress = event.remoteAddress[KEY_ADDRRESS];
         
-        //get a host?
-        // use that here
+        //have remote name?
+        // if so, use it here
         if(0 != [event.remoteAddress[KEY_HOST_NAME] length])
         {
-            //use host
+            //set name
             remoteAddress = event.remoteAddress[KEY_HOST_NAME];
         }
         
         //set main text
-        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@ → %@:%@", event.localAddress[KEY_ADDRRESS], event.localAddress[KEY_PORT], remoteAddress, event.remoteAddress[KEY_PORT]];
+        cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@ → %@:%@", localAddress, event.localAddress[KEY_PORT], remoteAddress, event.remoteAddress[KEY_PORT]];
     }
 
     return cell;
@@ -651,7 +660,7 @@ bail:
 }
 
 //button handler
-// save, open product url, toggle view, etc...
+// save, open product url, etc...
 -(IBAction)buttonHandler:(id)sender {
     
     //button
@@ -662,29 +671,60 @@ bail:
     {
         //save
         case BUTTON_SAVE:
+        {
+            //save results
             [self saveResults];
+            
             break;
+        }
+            
+        //prefs
+        case BUTTON_PREFS:
+        {
+            //show prefs
+            [((AppDelegate*)NSApplication.sharedApplication.delegate) showPreferences:nil];
+            
+            break;
+        }
             
         //logo
         case BUTTON_LOGO:
+        {
+            //open webpage
             [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:PRODUCT_URL]];
-            break;
             
-        //auto refresh
-        case BUTTON_REFRESH:
-            [NSUserDefaults.standardUserDefaults setBool:button.state forKey:PREFS_AUTO_REFRESH];
             break;
+        }
             
-        //resolve names
-        case BUTTON_RESOLVE:
-            [NSUserDefaults.standardUserDefaults setBool:button.state forKey:PREFS_RESOLVE_NAMES];
-            break;
+        //expand
+        case BUTTON_EXPAND:
+        {
+            //expand
+            [self.outlineView expandItem:nil expandChildren:YES];
             
-        //show/hide apple
-        case BUTTON_HIDE_APPLE:
-            [NSUserDefaults.standardUserDefaults setBool:button.state forKey:PREFS_HIDE_APPLE];
-            [self toggleAppleProcs];
+            //scroll to top
+            [self.outlineView scrollRowToVisible:0];
+            
+            //select top row
+            [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+            
             break;
+        }
+        
+        //collapse
+        case BUTTON_COLLAPSE:
+        {
+            //collapse
+            [self.outlineView collapseItem:nil collapseChildren:YES];
+            
+            //scroll to top
+            [self.outlineView scrollRowToVisible:0];
+            
+            //select top row
+            [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+            
+            break;
+        }
             
         default:
             break;
@@ -785,9 +825,8 @@ bail:
     //grab filter string
     filter = self.filterBox.stringValue;
     
-    //filter (apple) button on?
-    // filter out all apple processes
-    if(NSControlStateValueOn == self.filterButton.state)
+    //filter (hide) apple processes?
+    if(YES == [NSUserDefaults.standardUserDefaults boolForKey:PREFS_HIDE_APPLE])
     {
         //sanity check
         if(0 == self.items.count)
@@ -835,6 +874,59 @@ bail:
         results = [self.items copy];
     }
     
+    //sanity check
+    if(0 == results.count)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //hide (ignore) local connections?
+    if(YES == [NSUserDefaults.standardUserDefaults boolForKey:PREFS_HIDE_LOCAL])
+    {
+        //remove any items that are local connection
+        for(NSInteger i = results.count-1; i >= 0; i--)
+        {
+            //grab events (for process)
+            events = [[results objectForKey:[results keyAtIndex:i]] copy];
+            if(0 == events.count)
+            {
+                //skip
+                continue;
+            }
+            
+            //check all (per) process events
+            // remove any events that are local
+            for(NSInteger j = events.count-1; j >= 0; j--)
+            {
+                //grab event
+                event = [events objectForKey:[events keyAtIndex:j]];
+                
+                //interface match?
+                // for now, check if starts with "lo"
+                if(YES == [event.interface hasPrefix:@"lo"])
+                {
+                    //remove
+                    [events removeObjectForKey:[events keyAtIndex:j]];
+                }
+            }
+            
+            //all (per-process) events were local?
+            // remove entire process from results
+            if(0 == events.count)
+            {
+                //remove
+                [results removeObjectForKey:[results keyAtIndex:i]];
+            }
+            //otherwise add
+            else
+            {
+                //add
+                [results setObject:events forKey:[results keyAtIndex:i]];
+            }
+        }
+    }
+    
     //search field blank?
     // all done filtering
     if(0 == filter.length)
@@ -842,13 +934,7 @@ bail:
         //done!
         goto bail;
     }
-    
-    //sanity check
-    if(0 == results.count)
-    {
-        //bail
-        goto bail;
-    }
+
     
     //apply search field
     // remove any items that *don't* match
@@ -922,7 +1008,7 @@ bail:
     panel = [NSSavePanel savePanel];
     
     //suggest file name
-    [panel setNameFieldStringValue:@"connections.json"];
+    [panel setNameFieldStringValue:@"netiquette.json"];
     
     //show panel
     // completion handler invoked when user clicks 'Ok'
@@ -942,7 +1028,7 @@ bail:
              
              //format results
              // convert to JSON
-             output = formatResults(self.processedItems, self.filterButton.state);
+             output = formatResults(self.processedItems, [NSUserDefaults.standardUserDefaults boolForKey:PREFS_HIDE_APPLE]);
              
              //save JSON to disk
              // display results in popup
@@ -975,6 +1061,17 @@ bail:
     
     return;
 }
+
+//just reload
+// but will (re)apply prefs
+-(void)refresh
+{
+    //update
+    [self update:self.items reset:YES];
+    
+    return;
+}
+
 
 //filter (search box) handler
 // just call into update method (which filters, etc)

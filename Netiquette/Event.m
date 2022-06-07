@@ -78,14 +78,24 @@
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-                //host name
-                NSString* hostName = nil;
+                //local name
+                NSString* localName = nil;
+    
+                //remote name
+                NSString* remoteName = nil;
                 
-                //resolve / save
-                hostName = [self resolveName:(struct sockaddr *)[(NSData*)(event[kNStatSrcKeyRemote]) bytes]];
-                if(0 != hostName.length)
+                //resolve /save local
+                localName = [self resolveName:(struct sockaddr *)[(NSData*)(event[kNStatSrcKeyLocal]) bytes]];
+                if(0 != localName.length)
                 {
-                    self.remoteAddress[KEY_HOST_NAME] = hostName;
+                    self.localAddress[KEY_HOST_NAME] = localName;
+                }
+                
+                //resolve / save remove
+                remoteName = [self resolveName:(struct sockaddr *)[(NSData*)(event[kNStatSrcKeyRemote]) bytes]];
+                if(0 != remoteName.length)
+                {
+                    self.remoteAddress[KEY_HOST_NAME] = remoteName;
                 }
             });
         }
@@ -202,8 +212,20 @@
         goto bail;
     }
     
+
     //local ip match?
     if(YES == [self.localAddress[KEY_ADDRRESS] containsString:search])
+    {
+        //match
+        matches = YES;
+        
+        //bail
+        goto bail;
+    }
+    
+    //local host name match?
+    if( (0 != [self.localAddress[KEY_HOST_NAME] length]) &&
+        (YES == [self.localAddress[KEY_HOST_NAME] localizedCaseInsensitiveContainsString:search]) )
     {
         //match
         matches = YES;
@@ -232,7 +254,7 @@
         goto bail;
     }
     
-    //remote host name
+    //remote host name match?
     if( (0 != [self.remoteAddress[KEY_HOST_NAME] length]) &&
         (YES == [self.remoteAddress[KEY_HOST_NAME] localizedCaseInsensitiveContainsString:search]) )
     {
