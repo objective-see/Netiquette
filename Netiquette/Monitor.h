@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 //   https://twitter.com/Morpheus______
 //   http://newosxbook.com/src.jl?tree=listings&file=netbottom.c
 
-
 typedef void *NStatSourceRef;
 typedef NSObject* NStatManagerRef;
 

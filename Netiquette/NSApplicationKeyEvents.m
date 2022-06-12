@@ -6,6 +6,7 @@
 //  Copyright © 2018 Objective-See. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "NSApplicationKeyEvents.h"
 
 @implementation NSApplicationKeyEvents
@@ -104,6 +105,33 @@
             //done
             return;
         }
+    }
+    
+    //+ (zoom in)
+    if(YES == [[event charactersIgnoringModifiers] isEqualToString:@"="])
+    {
+        //zoom
+        [((AppDelegate*)NSApplication.sharedApplication.delegate).tableViewController zoomIn];
+        
+        return;
+    }
+    
+    //- (zoom out)
+    if(YES == [[event charactersIgnoringModifiers] isEqualToString:@"-"])
+    {
+        //zoom
+        [((AppDelegate*)NSApplication.sharedApplication.delegate).tableViewController zoomOut];
+        
+        return;
+    }
+    
+    //0 (zoom reset)
+    if(YES == [[event charactersIgnoringModifiers] isEqualToString:@"0"])
+    {
+        //zoom
+        [((AppDelegate*)NSApplication.sharedApplication.delegate).tableViewController zoomReset];
+        
+        return;
     }
     
 bail:

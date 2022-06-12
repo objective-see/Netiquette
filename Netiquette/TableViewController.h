@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TableViewController : NSOutlineView <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
+//scroll view
+@property (weak) IBOutlet NSScrollView *scrollView;
+
 @property (weak) IBOutlet NSView *overlay;
 
 //outline view
@@ -37,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 //collapsed items
 @property (nonatomic, retain)NSMutableDictionary* collapsedItems;
 
+//font size
+@property CGFloat zoomScale;
 
 /* METHODS */
 
@@ -48,6 +53,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 //refresh/reload
 -(void)refresh;
+
+//zoom in
+-(void)zoomIn;
+
+//zoom out
+-(void)zoomOut;
+
+//zoom reset
+-(void)zoomReset;
 
 @end
 

@@ -18,6 +18,10 @@
 #define BUTTON_EXPAND       4
 #define BUTTON_COLLAPSE     5
 
+#define MAX_ZOOM_SCALE      33
+#define DEFAULT_FONT_SIZE   16
+#define DEFAULT_ROW_HEIGHT  50
+
 #import "sort.h"
 #import "Event.h"
 #import "consts.h"
@@ -29,6 +33,7 @@
 @implementation TableViewController
 
 @synthesize items;
+@synthesize zoomScale;
 @synthesize collapsedItems;
 @synthesize processedItems;
 
@@ -81,6 +86,9 @@
         
         //table resizing settings
         [self.outlineView sizeLastColumnToFit];
+        
+        //default zoom
+        self.zoomScale = 100.00f;
         
     });
     
@@ -430,6 +438,9 @@ bail:
         //reset text
         ((NSTableCellView*)cell).textField.stringValue = @"";
         
+        //set font size
+        ((NSTableCellView*)cell).textField.font = [NSFontManager.sharedFontManager convertFont:((NSTableCellView*)cell).textField.font toSize:DEFAULT_FONT_SIZE*(self.zoomScale/100)];
+        
         //2nd column: protocol
         if( (YES != isProcessCell) &&
             (tableColumn  == self.outlineView.tableColumns[1]) )
@@ -540,6 +551,9 @@ bail:
     //process path
     NSString* path = nil;
     
+    //sub text
+    NSTextField* subText = nil;
+    
     //create cell
     processCell = [self.outlineView makeViewWithIdentifier:@"processCell" owner:self];
     
@@ -550,20 +564,29 @@ bail:
         [process.binary getIcon];
     }
     
-    //set icon
+    //set image
     processCell.imageView.image = process.binary.icon;
     
     //init process name/pid
     name = [NSString stringWithFormat:@"%@ (pid: %d)", (nil != process.binary.name) ? process.binary.name : @"unknown", process.pid];
     
+    //set font size
+    processCell.textField.font = [NSFontManager.sharedFontManager convertFont:processCell.textField.font toSize:DEFAULT_FONT_SIZE*(self.zoomScale/100)];
+  
     //set main text (process name+pid)
     processCell.textField.stringValue = name;
 
     //init process path
     path = (nil != process.binary.path) ? process.binary.path : @"unknown";
     
+    //grab sub text
+    subText = [processCell viewWithTag:TABLE_ROW_SUB_TEXT_TAG];
+    
+    //scale text
+    subText.font = [NSFontManager.sharedFontManager convertFont:subText.font toSize:(DEFAULT_FONT_SIZE-5)*(self.zoomScale/100)];
+    
     //set sub text (process path)
-    [[processCell viewWithTag:TABLE_ROW_SUB_TEXT_TAG] setStringValue:path];
+    subText.stringValue = path;
     
     //set detailed text color to gray
     ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT_TAG]).textColor = [NSColor secondaryLabelColor];
@@ -587,7 +610,10 @@ bail:
     cell = [self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
     
     //reset text
-    ((NSTableCellView*)cell).textField.stringValue = @"";
+    cell.textField.stringValue = @"";
+    
+    //set font size
+    cell.textField.font = [NSFontManager.sharedFontManager convertFont:cell.textField.font toSize:DEFAULT_FONT_SIZE*(self.zoomScale/100)];
     
     //init local address
     localAddress = event.localAddress[KEY_ADDRRESS];
@@ -792,6 +818,19 @@ bail:
     
     return;
 }
+
+
+/*
+
+//TODO: nuke?
+-(CGFloat)outlineView:(NSOutlineView *)outlineView
+     heightOfRowByItem:(id)item
+{
+    return 20;
+}
+ 
+*/
+ 
 
 //(original) items is an array of arrays
 // each array contains Event objs, per process
@@ -999,7 +1038,7 @@ bail:
     __block NSMutableString* output = nil;
     
     //alert
-    __block NSAlert *popup = nil;
+    __block NSAlert* popup = nil;
     
     //error
     __block NSError* error = nil;
@@ -1072,13 +1111,67 @@ bail:
     return;
 }
 
-
 //filter (search box) handler
 // just call into update method (which filters, etc)
 -(IBAction)filterConnections:(id)sender
 {
     //update
     [self update:self.items reset:YES];
+    
+    return;
+}
+
+//reset
+-(void)zoomReset
+{
+    //reset
+    self.zoomScale = 100.0f;
+    self.outlineView.rowHeight = DEFAULT_ROW_HEIGHT;
+    
+    //refesh
+    [self refresh];
+    
+    return;
+}
+
+//zoom in
+-(void)zoomIn
+{
+    //don't zoom in too much
+    if(self.zoomScale >= (100 + MAX_ZOOM_SCALE))
+    {
+        return;
+    }
+    
+    //inc
+    self.zoomScale += 5.0f;
+    
+    //set row height
+    self.outlineView.rowHeight = DEFAULT_ROW_HEIGHT*(self.zoomScale/100);
+    
+    //refresh
+    [self refresh];
+    
+    return;
+}
+
+//zoom out
+-(void)zoomOut
+{
+    //don't zoom out too much
+    if(self.zoomScale <= (100 - MAX_ZOOM_SCALE))
+    {
+        return;
+    }
+    
+    //dec
+    self.zoomScale -= 5.0f;
+    
+    //set row height
+    self.outlineView.rowHeight = DEFAULT_ROW_HEIGHT*(self.zoomScale/100);
+    
+    //refresh
+    [self refresh];
     
     return;
 }
