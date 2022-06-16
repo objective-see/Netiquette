@@ -35,51 +35,81 @@
             <items>
                 <menuItem title="Netiquette" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Netiquette" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="Netiquette" systemMenu="apple" id="Tr2-0B-OnV">
                         <items>
-                            <menuItem title="About Netiquette" id="5kV-Vb-QxS">
+                            <menuItem title="About Netiquette" id="fQA-Wu-osc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="about:" target="Voe-Tx-rLC" id="xR4-1T-KeX"/>
+                                    <action selector="about:" target="Voe-Tx-rLC" id="2mM-Qs-dVr"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                            <menuItem title="Preferences..." id="LpK-b7-eeJ" userLabel="Check for Update">
+                            <menuItem isSeparatorItem="YES" id="hhE-ry-p9Y"/>
+                            <menuItem title="Preferences..." id="Yci-uK-1Ep" userLabel="Check for Update">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showPreferences:" target="Voe-Tx-rLC" id="Ryi-SN-icG"/>
+                                    <action selector="showPreferences:" target="Voe-Tx-rLC" id="qZy-6x-YW7"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="zTy-jl-7ZG"/>
-                            <menuItem title="Check for Update..." id="bLs-Xj-P2i" userLabel="Check for Update">
+                            <menuItem isSeparatorItem="YES" id="H9W-gO-hnr"/>
+                            <menuItem title="Check for Update..." id="Dam-UP-QcW" userLabel="Check for Update">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="check4Update:" target="Voe-Tx-rLC" id="dAr-SH-XGm"/>
+                                    <action selector="check4Update:" target="Voe-Tx-rLC" id="y1u-8T-dlp"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="rNb-ab-Z3H"/>
-                            <menuItem title="Quit Netiquette" keyEquivalent="q" id="4sb-4s-VLi">
+                            <menuItem isSeparatorItem="YES" id="GWq-kH-LLY"/>
+                            <menuItem title="Quit Netiquette" keyEquivalent="q" id="0rX-zn-sGa">
                                 <connections>
-                                    <action selector="quit:" target="Voe-Tx-rLC" id="Zhs-iT-ubL"/>
+                                    <action selector="quit:" target="Voe-Tx-rLC" id="pAt-V0-goQ"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="View" id="RBT-za-tvn">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="View" id="bco-ve-LX6">
+                        <items>
+                            <menuItem title="Expand All" tag="1" id="cfa-qr-T5T">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="viewMenuHandler:" target="Voe-Tx-rLC" id="slH-i3-Hq5"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Collapse All" tag="2" id="2l2-iL-VQM">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="viewMenuHandler:" target="Voe-Tx-rLC" id="u5L-dO-2X8"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="WoP-dG-y6B"/>
+                            <menuItem title="Zoom In" tag="3" keyEquivalent="+" id="gR2-Wz-gSU">
+                                <connections>
+                                    <action selector="viewMenuHandler:" target="Voe-Tx-rLC" id="wLb-8J-u7o"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoom Out" tag="4" keyEquivalent="_" id="uIU-Ft-wVu">
+                                <connections>
+                                    <action selector="viewMenuHandler:" target="Voe-Tx-rLC" id="YEs-NX-oux"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-292" y="-733"/>
+            <point key="canvasLocation" x="-252" y="-728"/>
         </menu>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="1054" y="390" width="1655" height="609"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="1175" height="609"/>
-            <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="934" height="584"/>
+            <view key="contentView" misplaced="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="1655" height="609"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Z3X-kC-co8" userLabel="Logo">
-                        <rect key="frame" x="451" y="8" width="32" height="32"/>
+                        <rect key="frame" x="812" y="8" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="4KJ-Ne-4xq"/>
                             <constraint firstAttribute="width" constant="32" id="7ru-eW-B5I"/>
@@ -109,20 +139,20 @@
                         </connections>
                     </button>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="es4-I1-LNP">
-                        <rect key="frame" x="-1" y="48" width="936" height="537"/>
+                        <rect key="frame" x="-1" y="48" width="1657" height="562"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="v7Y-pd-CHT">
-                            <rect key="frame" x="1" y="1" width="934" height="535"/>
+                            <rect key="frame" x="1" y="1" width="1655" height="560"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="50" headerView="Yse-b6-QD1" viewBased="YES" indentationPerLevel="8" outlineTableColumn="CGK-04-htF" id="riP-0C-cJN">
-                                    <rect key="frame" x="0.0" y="0.0" width="934" height="510"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1655" height="535"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn editable="NO" width="157" minWidth="10" maxWidth="3.4028234663852886e+38" id="CGK-04-htF" userLabel="Main">
+                                        <tableColumn editable="NO" width="878" minWidth="10" maxWidth="3.4028234663852886e+38" id="CGK-04-htF" userLabel="Main">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -135,7 +165,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="processCell" id="pII-mr-iLF" userLabel="Process">
-                                                    <rect key="frame" x="1" y="1" width="162" height="54"/>
+                                                    <rect key="frame" x="1" y="1" width="883" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <imageView translatesAutoresizingMaskIntoConstraints="NO" id="ndK-Fj-KbA">
@@ -154,7 +184,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6E8-3J-jpN">
-                                                            <rect key="frame" x="54" y="7" width="85" height="17"/>
+                                                            <rect key="frame" x="54" y="7" width="806" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="Eya-kT-0fE"/>
                                                             </constraints>
@@ -181,11 +211,11 @@
                                                     </connections>
                                                 </tableCellView>
                                                 <tableCellView identifier="simpleCell" id="1eb-Xy-PpE" userLabel="Connection">
-                                                    <rect key="frame" x="1" y="57" width="162" height="54"/>
+                                                    <rect key="frame" x="1" y="57" width="883" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5i-dn-VqS">
-                                                            <rect key="frame" x="-1" y="17" width="162" height="20"/>
+                                                            <rect key="frame" x="-1" y="17" width="883" height="20"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="connection " id="zLL-cd-Yu1">
                                                                 <font key="font" size="17" name="Menlo-Bold"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -276,12 +306,12 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" wantsLayer="YES" id="Yse-b6-QD1">
-                            <rect key="frame" x="0.0" y="0.0" width="934" height="25"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1655" height="25"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="8wq-vH-wKB" userLabel="Overlay">
-                        <rect key="frame" x="217" y="180" width="500" height="200"/>
+                        <rect key="frame" x="578" y="180" width="500" height="200"/>
                         <subviews>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="XEJ-zt-Ua0">
                                 <rect key="frame" x="234" y="84" width="32" height="32"/>
@@ -317,7 +347,7 @@
                         </connections>
                     </button>
                     <button toolTip="Show Preferences" alphaValue="0.80000000000000004" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="j8n-6d-Z9E" userLabel="Expand">
-                        <rect key="frame" x="826" y="16" width="32" height="25"/>
+                        <rect key="frame" x="1547" y="16" width="32" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="Dae-9B-ZB0"/>
                             <constraint firstAttribute="width" constant="32" id="Fke-AX-LJ3"/>
@@ -331,7 +361,7 @@
                         </connections>
                     </button>
                     <button toolTip="Show Preferences" alphaValue="0.80000000000000004" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="rWv-ig-rTJ" userLabel="Contract">
-                        <rect key="frame" x="882" y="16" width="32" height="25"/>
+                        <rect key="frame" x="1603" y="16" width="32" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="5aa-eR-sr4"/>
                             <constraint firstAttribute="width" constant="32" id="A5N-Bf-r1u"/>
@@ -345,7 +375,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" alphaValue="0.5" preferredMaxLayoutWidth="39" translatesAutoresizingMaskIntoConstraints="NO" id="7LX-tb-5xt">
-                        <rect key="frame" x="876" y="5" width="43" height="12"/>
+                        <rect key="frame" x="1597" y="5" width="43" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="Inb-i9-oze"/>
                             <constraint firstAttribute="width" constant="39" id="KYv-TB-FcA"/>
@@ -357,7 +387,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" alphaValue="0.5" preferredMaxLayoutWidth="33" translatesAutoresizingMaskIntoConstraints="NO" id="rrK-oD-cvO">
-                        <rect key="frame" x="824" y="5" width="37" height="12"/>
+                        <rect key="frame" x="1545" y="5" width="37" height="12"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="33" id="h8e-jA-lLY"/>
                             <constraint firstAttribute="height" constant="12" id="ntE-Zy-ZLA"/>

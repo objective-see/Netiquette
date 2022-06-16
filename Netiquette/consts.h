@@ -32,8 +32,6 @@
 #define KEY_ADDRRESS @"address"
 #define KEY_HOST_NAME @"hostName"
 
-
-
 //product name
 // ...for version check
 #define PRODUCT_NAME @"Netiquette"
@@ -71,5 +69,11 @@
 
 //executed via LuLu
 #define ARGS_LULU @"-lulu"
+
+//view menu
+#define VIEW_EXPAND                1
+#define VIEW_COLLAPSE              2
+#define VIEW_ZOOM_IN               3
+#define VIEW_ZOOM_OUT              4
 
 #endif /* consts_h */

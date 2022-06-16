@@ -37,6 +37,11 @@
         self.window.toolbarStyle = NSWindowToolbarStyleExpanded;
     }
     
+    //hide tab bar
+    if (@available(macOS 10.12, *)) {
+        [NSClassFromString(@"NSWindow") setAllowsAutomaticWindowTabbing:NO];
+    }
+    
     return;
 }
 
@@ -146,7 +151,7 @@
                             //ascending?
                             ascending = sortDescriptors.firstObject.ascending;
                         }
-                        
+
                     });
                     
                     //combine
@@ -322,6 +327,47 @@
     
     return;
 }
+
+//menu handler for 'view' menu
+// actions include, refresh, zoom in/out, etc
+- (IBAction)viewMenuHandler:(id)sender {
+    
+    //tag
+    NSInteger tag = 0;
+    
+    //init tag
+    tag = ((NSButton*)sender).tag;
+    
+    //handle each
+    switch (tag) {
+            
+        //expand
+        case VIEW_EXPAND:
+            [self.tableViewController expandAll];
+            break;
+        
+        //collapse
+        case VIEW_COLLAPSE:
+            [self.tableViewController collapseAll];
+            break;
+        
+        //zoom in
+        case VIEW_ZOOM_IN:
+            [self.tableViewController zoomIn];
+            break;
+        
+        //zoom out
+        case VIEW_ZOOM_OUT:
+            [self.tableViewController zoomOut];
+            break;
+            
+        default:
+            break;
+    }
+    
+    return;
+}
+
 
 //menu handler: 'Preferences'
 // alloc and show Preferences window

@@ -51,8 +51,14 @@ NS_ASSUME_NONNULL_BEGIN
 //map column id to index
 -(NSUInteger)columnIDToIndex:(NSString*)columnID;
 
-//refresh/reload
+//refresh/reload table
 -(void)refresh;
+
+//expand all
+-(void)expandAll;
+
+//collapse all
+-(void)collapseAll;
 
 //zoom in
 -(void)zoomIn;

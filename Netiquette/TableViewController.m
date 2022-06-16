@@ -726,14 +726,7 @@ bail:
         case BUTTON_EXPAND:
         {
             //expand
-            [self.outlineView expandItem:nil expandChildren:YES];
-            
-            //scroll to top
-            [self.outlineView scrollRowToVisible:0];
-            
-            //select top row
-            [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-            
+            [self expandAll];
             break;
         }
         
@@ -741,14 +734,7 @@ bail:
         case BUTTON_COLLAPSE:
         {
             //collapse
-            [self.outlineView collapseItem:nil collapseChildren:YES];
-            
-            //scroll to top
-            [self.outlineView scrollRowToVisible:0];
-            
-            //select top row
-            [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-            
+            [self collapseAll];
             break;
         }
             
@@ -819,18 +805,6 @@ bail:
     return;
 }
 
-
-/*
-
-//TODO: nuke?
--(CGFloat)outlineView:(NSOutlineView *)outlineView
-     heightOfRowByItem:(id)item
-{
-    return 20;
-}
- 
-*/
- 
 
 //(original) items is an array of arrays
 // each array contains Event objs, per process
@@ -1117,6 +1091,36 @@ bail:
 {
     //update
     [self update:self.items reset:YES];
+    
+    return;
+}
+
+//expand all
+-(void)expandAll
+{
+    //expand
+    [self.outlineView expandItem:nil expandChildren:YES];
+    
+    //scroll to top
+    [self.outlineView scrollRowToVisible:0];
+    
+    //select top row
+    [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+    
+    return;
+}
+
+//collapse all
+-(void)collapseAll
+{
+    //collapse
+    [self.outlineView collapseItem:nil collapseChildren:YES];
+    
+    //scroll to top
+    [self.outlineView scrollRowToVisible:0];
+    
+    //select top row
+    [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
     
     return;
 }
