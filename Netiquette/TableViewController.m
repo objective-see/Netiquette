@@ -18,9 +18,9 @@
 #define BUTTON_EXPAND       4
 #define BUTTON_COLLAPSE     5
 
-#define MAX_ZOOM_SCALE      33
+#define MAX_ZOOM_SCALE      25
 #define DEFAULT_FONT_SIZE   16
-#define DEFAULT_ROW_HEIGHT  50
+#define DEFAULT_ROW_HEIGHT  45
 
 #import "sort.h"
 #import "Event.h"

@@ -60,7 +60,6 @@
 //update new version
 #define UPDATE_NEW_VERSION 1
 
-//TODO: make sure old ones haven't changed!
 #define PREFS_HIDE_APPLE          @"hideApple"
 #define PREFS_AUTO_REFRESH        @"autoRefresh"
 #define PREFS_RESOLVE_NAMES       @"resolveNames"
