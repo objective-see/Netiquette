@@ -48,6 +48,12 @@
         //only generate events end events
         self.filterBox.sendsWholeSearchString = YES;
         
+        //set delegate
+        self.filterBox.delegate = self;
+        
+        //observe first responder for filter box
+        [self.filterBox.window addObserver:self forKeyPath:NSStringFromSelector(@selector(firstResponder)) options:0 context:NULL];
+        
         //alloc
         self.collapsedItems = [NSMutableDictionary dictionary];
         
@@ -90,6 +96,36 @@
         //default zoom
         self.zoomScale = 100.00f;
         
+    });
+    
+    return;
+}
+
+//observer for filter box
+// when it gains focus, clear/reset string
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    //after a bit
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (50 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        
+        //first responder?
+        // reset filter text
+        if(self.filterBox.currentEditor == self.filterBox.window.firstResponder)
+        {
+            //reset?
+            if(0 != self.filterBox.stringValue.length)
+            {
+            
+                //reset
+                self.filterBox.stringValue = @"";
+            
+                //update
+                [self update:self.items expand:YES reset:YES];
+            }
+        } 
     });
     
     return;
@@ -194,7 +230,7 @@
     
     //auto expand
     [self.outlineView expandItem:nil expandChildren:expand];
-    
+
     //end updates
     [self.outlineView endUpdates];
     
@@ -948,7 +984,14 @@ bail:
         goto bail;
     }
 
-    
+    //user editing?
+    // don't filter (want to wait till they hit 'enter'
+    if(self.filterBox.currentEditor == self.filterBox.window.firstResponder)
+    {
+        //done!
+        goto bail;
+    }
+        
     //apply search field
     // remove any items that *don't* match
     for(NSInteger i = results.count-1; i >= 0; i--)
@@ -1085,12 +1128,30 @@ bail:
     return;
 }
 
+//lose focus when done editing
+-(BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+    
+    //on main thread
+    // resign first responder
+    dispatch_async(dispatch_get_main_queue(),
+    ^{
+        //resign first responder
+        [self.filterBox.window makeFirstResponder:nil];
+    });
+
+    return YES;
+}
+
 //filter (search box) handler
 // just call into update method (which filters, etc)
 -(IBAction)filterConnections:(id)sender
 {
     //update
     [self update:self.items expand:YES reset:YES];
+    
+    //force an expand all
+    // and matched item(s) might otherwise be hidden
+    [self expandAll];
     
     return;
 }

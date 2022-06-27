@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TableViewController : NSOutlineView <NSOutlineViewDataSource, NSOutlineViewDelegate>
+@interface TableViewController : NSOutlineView <NSOutlineViewDataSource, NSOutlineViewDelegate, NSTextFieldDelegate>
 
 //scroll view
 @property (weak) IBOutlet NSScrollView *scrollView;
