@@ -15,7 +15,6 @@
 
 @synthesize infoLabel;
 @synthesize overlayView;
-@synthesize firstButton;
 @synthesize actionButton;
 @synthesize infoLabelString;
 @synthesize actionButtonTitle;
@@ -54,22 +53,14 @@
     //set button text
     self.actionButton.title = self.actionButtonTitle;
 
-    //hide first button when action is 'update'
-    // ->don't need update check button ;)
-    if(YES == [self.actionButton.title isEqualToString:@"Update"])
-    {
-        //hide
-        self.firstButton.hidden = YES;
-        
-        //then make action button first responder
-        [self.window makeFirstResponder:self.actionButton];
-    }
-    
     //make it key window
     [self.window makeKeyAndOrderFront:self];
     
     //make window front
     [NSApp activateIgnoringOtherApps:YES];
+    
+    //button first responder
+    [self.window makeFirstResponder:self.actionButton];
     
     return;
 }

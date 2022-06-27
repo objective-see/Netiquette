@@ -96,7 +96,6 @@
             
             //and make it first responder
             [self.friends makeFirstResponder:[self.friends.contentView viewWithTag:1]];
-            
         });
     }
     
@@ -301,7 +300,7 @@
     else
     {
         //set details
-        details = @"no new versions available";
+        details = @"No new versions available";
             
         //set action
         action = @"Close";

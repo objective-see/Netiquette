@@ -24,9 +24,6 @@
 //label string
 @property(nonatomic, retain)NSString* infoLabelString;
 
-//first button ('update check')
-@property(weak)IBOutlet NSView *firstButton;
-
 //button title
 @property(nonatomic, retain)NSString* actionButtonTitle;
 

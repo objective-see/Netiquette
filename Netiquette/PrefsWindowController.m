@@ -90,7 +90,14 @@
     
             //set 'update' button state
             ((NSButton*)[view viewWithTag:BUTTON_NO_UPDATE]).state = [NSUserDefaults.standardUserDefaults boolForKey:PREFS_NO_UPDATE];
-        
+            
+            //set button as first responder
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+                
+                //button first responder
+                [self.window makeFirstResponder:self.updateButton];
+            });
+            
             break;
         }
             
@@ -164,7 +171,6 @@ bail:
             [NSUserDefaults.standardUserDefaults setBool:state forKey:PREFS_HIDE_LOCAL];
             break;
         }
-              
     
         //no update mode
         case BUTTON_NO_UPDATE:
