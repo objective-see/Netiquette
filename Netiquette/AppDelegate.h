@@ -25,6 +25,10 @@
 //friends of objective-see window
 @property (weak) IBOutlet NSWindow *friends;
 
+//menu items
+@property (weak) IBOutlet NSMenuItem *zoomInMenuItem;
+@property (weak) IBOutlet NSMenuItem *zoomOutMenuItem;
+
 //update window controller
 @property(nonatomic, retain)UpdateWindowController* updateWindowController;
 
@@ -42,7 +46,14 @@
 
 /* METHODS */
 
+//show prefs
 -(IBAction)showPreferences:(id)sender;
+
+//menu handler
+-(IBAction)viewMenuHandler:(id)sender;
+
+//toggle menu item
+-(void)toggleMenuItem:(NSMenuItem*)menuItem state:(NSControlStateValue)state;
 
 @end
 

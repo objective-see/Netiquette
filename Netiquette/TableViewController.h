@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 /* METHODS */
 
 //update table
--(void)update:(OrderedDictionary*)updatedItems reset:(BOOL)reset;
+-(void)update:(OrderedDictionary*)updatedItems expand:(BOOL)expand reset:(BOOL)reset;
 
 //map column id to index
 -(NSUInteger)columnIDToIndex:(NSString*)columnID;

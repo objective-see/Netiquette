@@ -22,6 +22,8 @@
 
 @synthesize friends;
 @synthesize monitor;
+@synthesize zoomInMenuItem;
+@synthesize zoomOutMenuItem;
 @synthesize tableViewController;
 @synthesize aboutWindowController;
 @synthesize prefsWindowController;
@@ -170,7 +172,7 @@
                             isFirstEnumeration = NO;
                             
                             //update table
-                            [self.tableViewController update:sortedEvents reset:NO];
+                            [self.tableViewController update:sortedEvents expand:YES reset:NO];
                         }
                         
                     });
@@ -330,7 +332,8 @@
 
 //menu handler for 'view' menu
 // actions include, refresh, zoom in/out, etc
-- (IBAction)viewMenuHandler:(id)sender {
+-(IBAction)viewMenuHandler:(id)sender
+{
     
     //tag
     NSInteger tag = 0;
@@ -368,6 +371,27 @@
     return;
 }
 
+//toggle menu item
+-(void)toggleMenuItem:(NSMenuItem*)menuItem state:(NSControlStateValue)state
+{
+    //off?
+    if(state == NSControlStateValueOff)
+    {
+        //disable
+        [menuItem setTarget:nil];
+        [menuItem setAction:NULL];
+    }
+        
+    //on?
+    else
+    {
+        //enable
+        [menuItem setTarget:self];
+        [menuItem setAction:@selector(viewMenuHandler:)];
+    }
+    
+    return;
+}
 
 //menu handler: 'Preferences'
 // alloc and show Preferences window

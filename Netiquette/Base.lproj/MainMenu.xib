@@ -18,6 +18,8 @@
                 <outlet property="friends" destination="H2n-NR-ehD" id="Jw3-TZ-PK2"/>
                 <outlet property="tableViewController" destination="aiH-sN-y4b" id="l3J-bO-Gnx"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
+                <outlet property="zoomInMenuItem" destination="gR2-Wz-gSU" id="n6a-nc-MNc"/>
+                <outlet property="zoomOutMenuItem" destination="uIU-Ft-wVu" id="JIO-R0-Kvm"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -88,7 +90,7 @@
                                     <action selector="viewMenuHandler:" target="Voe-Tx-rLC" id="wLb-8J-u7o"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Zoom Out" tag="4" keyEquivalent="_" id="uIU-Ft-wVu">
+                            <menuItem title="Zoom Out" tag="4" keyEquivalent="-" id="uIU-Ft-wVu">
                                 <connections>
                                     <action selector="viewMenuHandler:" target="Voe-Tx-rLC" id="YEs-NX-oux"/>
                                 </connections>
@@ -152,7 +154,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn editable="NO" width="878" minWidth="10" maxWidth="3.4028234663852886e+38" id="CGK-04-htF" userLabel="Main">
+                                        <tableColumn editable="NO" width="849" minWidth="10" maxWidth="3.4028234663852886e+38" id="CGK-04-htF" userLabel="Main">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,7 +167,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="processCell" id="pII-mr-iLF" userLabel="Process">
-                                                    <rect key="frame" x="1" y="1" width="883" height="54"/>
+                                                    <rect key="frame" x="1" y="1" width="854" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <imageView translatesAutoresizingMaskIntoConstraints="NO" id="ndK-Fj-KbA">
@@ -184,7 +186,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6E8-3J-jpN">
-                                                            <rect key="frame" x="46" y="6" width="806" height="17"/>
+                                                            <rect key="frame" x="46" y="6" width="777" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="Eya-kT-0fE"/>
                                                             </constraints>
@@ -211,11 +213,11 @@
                                                     </connections>
                                                 </tableCellView>
                                                 <tableCellView identifier="simpleCell" id="1eb-Xy-PpE" userLabel="Connection">
-                                                    <rect key="frame" x="1" y="57" width="883" height="54"/>
+                                                    <rect key="frame" x="1" y="57" width="854" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5i-dn-VqS">
-                                                            <rect key="frame" x="-1" y="17" width="883" height="20"/>
+                                                            <rect key="frame" x="-1" y="17" width="854" height="20"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="connection " id="zLL-cd-Yu1">
                                                                 <font key="font" size="17" name="Menlo-Bold"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

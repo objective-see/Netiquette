@@ -96,7 +96,7 @@
 }
 
 //update outline view
--(void)update:(OrderedDictionary*)updatedItems reset:(BOOL)reset
+-(void)update:(OrderedDictionary*)updatedItems expand:(BOOL)expand reset:(BOOL)reset
 {
     //selected row
     __block NSInteger selectedRow = -1;
@@ -193,7 +193,7 @@
     [self.outlineView reloadData];
     
     //auto expand
-    [self.outlineView expandItem:nil expandChildren:YES];
+    [self.outlineView expandItem:nil expandChildren:expand];
     
     //end updates
     [self.outlineView endUpdates];
@@ -797,7 +797,7 @@ bail:
         dispatch_async(dispatch_get_main_queue(),
         ^{
             //update table
-            [self update:sortedEvents reset:YES];
+            [self update:sortedEvents expand:NO reset:YES];
                     
         });
     });
@@ -1080,7 +1080,7 @@ bail:
 -(void)refresh
 {
     //update
-    [self update:self.items reset:YES];
+    [self update:self.items expand:NO reset:NO];
     
     return;
 }
@@ -1090,7 +1090,7 @@ bail:
 -(IBAction)filterConnections:(id)sender
 {
     //update
-    [self update:self.items reset:YES];
+    [self update:self.items expand:YES reset:YES];
     
     return;
 }
@@ -1128,12 +1128,18 @@ bail:
 //reset
 -(void)zoomReset
 {
+    //enable zoom in
+    [((AppDelegate*)NSApplication.sharedApplication.delegate) toggleMenuItem:((AppDelegate*)NSApplication.sharedApplication.delegate).zoomInMenuItem state:NSControlStateValueOn];
+    
+    //enable zoom out
+    [((AppDelegate*)NSApplication.sharedApplication.delegate) toggleMenuItem:((AppDelegate*)NSApplication.sharedApplication.delegate).zoomOutMenuItem state:NSControlStateValueOn];
+    
     //reset
     self.zoomScale = 100.0f;
     self.outlineView.rowHeight = DEFAULT_ROW_HEIGHT;
     
-    //refesh
-    [self refresh];
+    //update/reload
+    [self update:self.items expand:NO reset:NO];
     
     return;
 }
@@ -1141,6 +1147,10 @@ bail:
 //zoom in
 -(void)zoomIn
 {
+    //always enable zoom out
+    // as we're zooming in...
+    [((AppDelegate*)NSApplication.sharedApplication.delegate) toggleMenuItem:((AppDelegate*)NSApplication.sharedApplication.delegate).zoomOutMenuItem state:NSControlStateValueOn];
+    
     //don't zoom in too much
     if(self.zoomScale >= (100 + MAX_ZOOM_SCALE))
     {
@@ -1153,8 +1163,16 @@ bail:
     //set row height
     self.outlineView.rowHeight = DEFAULT_ROW_HEIGHT*(self.zoomScale/100);
     
-    //refresh
-    [self refresh];
+    //update/reload
+    [self update:self.items expand:NO reset:NO];
+    
+    //hit max?
+    // disable menu option
+    if(self.zoomScale >= (100 + MAX_ZOOM_SCALE))
+    {
+        //disable zoom in
+        [((AppDelegate*)NSApplication.sharedApplication.delegate) toggleMenuItem:((AppDelegate*)NSApplication.sharedApplication.delegate).zoomInMenuItem state:NSControlStateValueOff];
+    }
     
     return;
 }
@@ -1162,6 +1180,10 @@ bail:
 //zoom out
 -(void)zoomOut
 {
+    //always enable zoom in
+    // as we're zooming out...
+    [((AppDelegate*)NSApplication.sharedApplication.delegate) toggleMenuItem:((AppDelegate*)NSApplication.sharedApplication.delegate).zoomInMenuItem state:NSControlStateValueOn];
+    
     //don't zoom out too much
     if(self.zoomScale <= (100 - MAX_ZOOM_SCALE))
     {
@@ -1174,8 +1196,16 @@ bail:
     //set row height
     self.outlineView.rowHeight = DEFAULT_ROW_HEIGHT*(self.zoomScale/100);
     
-    //refresh
-    [self refresh];
+    //update/reload
+    [self update:self.items expand:NO reset:NO];
+    
+    //hit min?
+    // disable menu option
+    if(self.zoomScale <= (100 - MAX_ZOOM_SCALE))
+    {
+        //disable zoom out
+        [((AppDelegate*)NSApplication.sharedApplication.delegate) toggleMenuItem:((AppDelegate*)NSApplication.sharedApplication.delegate).zoomOutMenuItem state:NSControlStateValueOff];
+    }
     
     return;
 }
