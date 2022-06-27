@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TableViewController : NSOutlineView <NSOutlineViewDataSource, NSOutlineViewDelegate, NSTextFieldDelegate>
+@interface TableViewController : NSOutlineView <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 //scroll view
 @property (weak) IBOutlet NSScrollView *scrollView;
@@ -42,6 +42,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //font size
 @property CGFloat zoomScale;
+
+//filter string
+@property (nonatomic, retain)NSString* filterString;
 
 /* METHODS */
 

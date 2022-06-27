@@ -34,6 +34,7 @@
 
 @synthesize items;
 @synthesize zoomScale;
+@synthesize filterString;
 @synthesize collapsedItems;
 @synthesize processedItems;
 
@@ -47,12 +48,6 @@
         
         //only generate events end events
         self.filterBox.sendsWholeSearchString = YES;
-        
-        //set delegate
-        self.filterBox.delegate = self;
-        
-        //observe first responder for filter box
-        [self.filterBox.window addObserver:self forKeyPath:NSStringFromSelector(@selector(firstResponder)) options:0 context:NULL];
         
         //alloc
         self.collapsedItems = [NSMutableDictionary dictionary];
@@ -96,36 +91,6 @@
         //default zoom
         self.zoomScale = 100.00f;
         
-    });
-    
-    return;
-}
-
-//observer for filter box
-// when it gains focus, clear/reset string
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
-{
-    //after a bit
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (50 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-        
-        //first responder?
-        // reset filter text
-        if(self.filterBox.currentEditor == self.filterBox.window.firstResponder)
-        {
-            //reset?
-            if(0 != self.filterBox.stringValue.length)
-            {
-            
-                //reset
-                self.filterBox.stringValue = @"";
-            
-                //update
-                [self update:self.items expand:YES reset:YES];
-            }
-        } 
     });
     
     return;
@@ -841,16 +806,12 @@ bail:
     return;
 }
 
-
 //(original) items is an array of arrays
 // each array contains Event objs, per process
 -(OrderedDictionary*)filter
 {
     //filtered items
     OrderedDictionary* results = nil;
-    
-    //filter string
-    NSString* filter = nil;
     
     //process
     Process* process = nil;
@@ -870,9 +831,6 @@ bail:
     
     //init
     results = [[OrderedDictionary alloc] init];
-    
-    //grab filter string
-    filter = self.filterBox.stringValue;
     
     //filter (hide) apple processes?
     if(YES == [NSUserDefaults.standardUserDefaults boolForKey:PREFS_HIDE_APPLE])
@@ -978,20 +936,12 @@ bail:
     
     //search field blank?
     // all done filtering
-    if(0 == filter.length)
+    if(0 == self.filterString.length)
     {
         //done!
         goto bail;
     }
-
-    //user editing?
-    // don't filter (want to wait till they hit 'enter'
-    if(self.filterBox.currentEditor == self.filterBox.window.firstResponder)
-    {
-        //done!
-        goto bail;
-    }
-        
+    
     //apply search field
     // remove any items that *don't* match
     for(NSInteger i = results.count-1; i >= 0; i--)
@@ -1013,7 +963,7 @@ bail:
             
             //no match?
             // remove event
-            if(YES != [event matches:filter])
+            if(YES != [event matches:self.filterString])
             {
                 //remove
                 [events removeObjectForKey:[events keyAtIndex:j]];
@@ -1128,29 +1078,18 @@ bail:
     return;
 }
 
-//lose focus when done editing
--(BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
-    
-    //on main thread
-    // resign first responder
-    dispatch_async(dispatch_get_main_queue(),
-    ^{
-        //resign first responder
-        [self.filterBox.window makeFirstResponder:nil];
-    });
-
-    return YES;
-}
-
 //filter (search box) handler
 // just call into update method (which filters, etc)
 -(IBAction)filterConnections:(id)sender
 {
+    //save filter string
+    self.filterString =  self.filterBox.stringValue;
+    
     //update
     [self update:self.items expand:YES reset:YES];
     
     //force an expand all
-    // and matched item(s) might otherwise be hidden
+    // any matched item(s) might otherwise be hidden...
     [self expandAll];
     
     return;
