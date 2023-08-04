@@ -66,11 +66,17 @@
         self.tcpState = event[kNStatSrcKeyTCPState];
         
         //convert local address
-        self.localAddress = [self parseAddress:event[kNStatSrcKeyLocal]];
+        if(event[kNStatSrcKeyLocal])
+        {
+            self.localAddress = [self parseAddress:event[kNStatSrcKeyLocal]];
+        }
         
         //convert remote address
         // and resolve remote name if necessary
-        self.remoteAddress = [self parseAddress:event[kNStatSrcKeyRemote]];
+        if(event[kNStatSrcKeyRemote])
+        {
+            self.remoteAddress = [self parseAddress:event[kNStatSrcKeyRemote]];
+        }
         
         //in background
         // resolve host name
@@ -85,14 +91,20 @@
                 NSString* remoteName = nil;
                 
                 //resolve /save local
-                localName = [self resolveName:(struct sockaddr *)[(NSData*)(event[kNStatSrcKeyLocal]) bytes]];
+                if(event[kNStatSrcKeyLocal])
+                {
+                    localName = [self resolveName:(struct sockaddr *)[(NSData*)(event[kNStatSrcKeyLocal]) bytes]];
+                }
                 if(0 != localName.length)
                 {
                     self.localAddress[KEY_HOST_NAME] = localName;
                 }
                 
                 //resolve / save remove
-                remoteName = [self resolveName:(struct sockaddr *)[(NSData*)(event[kNStatSrcKeyRemote]) bytes]];
+                if(event[kNStatSrcKeyRemote])
+                {
+                    remoteName = [self resolveName:(struct sockaddr *)[(NSData*)(event[kNStatSrcKeyRemote]) bytes]];
+                }
                 if(0 != remoteName.length)
                 {
                     self.remoteAddress[KEY_HOST_NAME] = remoteName;
