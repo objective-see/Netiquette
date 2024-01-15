@@ -36,9 +36,6 @@
 // ...for version check
 #define PRODUCT_NAME @"Netiquette"
 
-//sentry crash reporting URL
-#define SENTRY_DSN @"https://1735fa7903114215993cb18c96fe268c@sentry.io/1535612"
-
 //product url
 #define PRODUCT_URL @"https://objective-see.org/products/netiquette.html"
 

@@ -6,14 +6,12 @@
 //  Copyright © 2019 Objective-See. All rights reserved.
 //
 
-@import Sentry;
-
 #import "Event.h"
 #import "logging.h"
 #import "utilities.h"
 
 //disable std err
-void disableSTDERR()
+void disableSTDERR(void)
 {
     //file handle
     int devNull = -1;
@@ -32,7 +30,7 @@ void disableSTDERR()
 
 //get app's version
 // extracted from Info.plist
-NSString* getAppVersion()
+NSString* getAppVersion(void)
 {
     //read and return 'CFBundleVersion' from bundle
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];

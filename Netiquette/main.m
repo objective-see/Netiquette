@@ -15,8 +15,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@import Sentry;
-
 //main
 // process cmdline args, show UI, etc
 int main(int argc, const char * argv[])
@@ -33,12 +31,6 @@ int main(int argc, const char * argv[])
     //disable stderr
     // crash reporter dumps info here
     disableSTDERR();
-  
-    //init crash reporting
-    [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
-            options.dsn = SENTRY_DSN;
-            options.debug = YES;
-    }];
     
     //handle '-h' or '-help'
     if( (YES == [arguments containsObject:@"-h"]) ||
@@ -95,7 +87,7 @@ bail:
 }
 
 //print usage
-void usage()
+void usage(void)
 {
     //usage
     printf("\nNETIQUETTE USAGE:\n");
@@ -109,7 +101,7 @@ void usage()
 }
 
 //perform a cmdline scan
-void cmdlineInterface()
+void cmdlineInterface(void)
 {
     //monitor
     Monitor* monitor = nil;
