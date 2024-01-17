@@ -66,15 +66,17 @@
         self.tcpState = event[kNStatSrcKeyTCPState];
         
         //convert local address
-        if(event[kNStatSrcKeyLocal])
+        if(nil != event[kNStatSrcKeyLocal])
         {
+            //save
             self.localAddress = [self parseAddress:event[kNStatSrcKeyLocal]];
         }
         
         //convert remote address
         // and resolve remote name if necessary
-        if(event[kNStatSrcKeyRemote])
+        if(nil != event[kNStatSrcKeyRemote])
         {
+            //save
             self.remoteAddress = [self parseAddress:event[kNStatSrcKeyRemote]];
         }
         
@@ -91,24 +93,27 @@
                 NSString* remoteName = nil;
                 
                 //resolve /save local
-                if(event[kNStatSrcKeyLocal])
+                if(nil != event[kNStatSrcKeyLocal])
                 {
+                    //resolve
                     localName = [self resolveName:(struct sockaddr *)[(NSData*)(event[kNStatSrcKeyLocal]) bytes]];
-                }
-                if(0 != localName.length)
-                {
-                    self.localAddress[KEY_HOST_NAME] = localName;
+                    if(0 != localName.length)
+                    {
+                        self.localAddress[KEY_HOST_NAME] = localName;
+                    }
                 }
                 
                 //resolve / save remove
-                if(event[kNStatSrcKeyRemote])
+                if(nil != event[kNStatSrcKeyRemote])
                 {
+                    //resolve
                     remoteName = [self resolveName:(struct sockaddr *)[(NSData*)(event[kNStatSrcKeyRemote]) bytes]];
+                    if(0 != remoteName.length)
+                    {
+                        self.remoteAddress[KEY_HOST_NAME] = remoteName;
+                    }
                 }
-                if(0 != remoteName.length)
-                {
-                    self.remoteAddress[KEY_HOST_NAME] = remoteName;
-                }
+                
             });
         }
         

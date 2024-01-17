@@ -171,14 +171,14 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <imageView translatesAutoresizingMaskIntoConstraints="NO" id="ndK-Fj-KbA">
-                                                            <rect key="frame" x="3" y="5" width="40" height="44"/>
+                                                            <rect key="frame" x="3" y="4" width="40" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="7c4-ep-dfn"/>
                                                             </constraints>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSColorPanel" id="7lY-KO-pkW"/>
                                                         </imageView>
                                                         <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fST-Bo-s5k">
-                                                            <rect key="frame" x="46" y="33" width="91" height="19"/>
+                                                            <rect key="frame" x="46" y="28" width="91" height="19"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Item Name" id="Iql-Sc-jIR">
                                                                 <font key="font" size="16" name="Menlo-Bold"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -199,12 +199,12 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="6E8-3J-jpN" firstAttribute="leading" secondItem="ndK-Fj-KbA" secondAttribute="trailing" constant="5" id="63f-HY-XGB"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ndK-Fj-KbA" secondAttribute="bottom" constant="5" id="7fL-GN-jVj"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ndK-Fj-KbA" secondAttribute="bottom" constant="4" id="7fL-GN-jVj"/>
                                                         <constraint firstAttribute="bottom" secondItem="6E8-3J-jpN" secondAttribute="bottom" constant="6" id="B1w-as-9Oh"/>
                                                         <constraint firstItem="fST-Bo-s5k" firstAttribute="leading" secondItem="ndK-Fj-KbA" secondAttribute="trailing" constant="5" id="DAs-gD-x40"/>
-                                                        <constraint firstItem="ndK-Fj-KbA" firstAttribute="top" secondItem="pII-mr-iLF" secondAttribute="top" constant="5" id="VFk-v4-ebE"/>
+                                                        <constraint firstItem="ndK-Fj-KbA" firstAttribute="top" secondItem="pII-mr-iLF" secondAttribute="top" constant="6" id="VFk-v4-ebE"/>
                                                         <constraint firstItem="ndK-Fj-KbA" firstAttribute="leading" secondItem="pII-mr-iLF" secondAttribute="leading" constant="3" id="f5U-2e-g0p"/>
-                                                        <constraint firstItem="fST-Bo-s5k" firstAttribute="top" secondItem="pII-mr-iLF" secondAttribute="top" constant="2" id="mvW-5F-f5T"/>
+                                                        <constraint firstItem="fST-Bo-s5k" firstAttribute="top" secondItem="pII-mr-iLF" secondAttribute="top" constant="7" id="mvW-5F-f5T"/>
                                                         <constraint firstAttribute="trailing" secondItem="6E8-3J-jpN" secondAttribute="trailing" constant="33" id="wp8-nm-aqb"/>
                                                     </constraints>
                                                     <connections>
@@ -469,7 +469,7 @@
                         <searchField key="view" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" tag="1" id="rOo-Uz-eKM">
                             <rect key="frame" x="0.0" y="14" width="185" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <searchFieldCell key="cell" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter Connections" usesSingleLineMode="YES" bezelStyle="round" id="FZk-JV-dl5">
+                            <searchFieldCell key="cell" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="FZk-JV-dl5">
                                 <font key="font" size="13" name="Menlo-Bold"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -556,26 +556,6 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aXd-XF-r2U">
-                                <rect key="frame" x="20" y="87" width="77" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="XqO-hj-wIh"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.69999999999999996" id="30e-aS-PHB">
-                                <rect key="frame" x="108" y="87" width="90" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMosyle" id="tI8-9E-fqS"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.69999999999999996" id="P2U-m9-R2F">
-                                <rect key="frame" x="716" y="87" width="76" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsKandji" id="DhK-qw-8UK"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.69999999999999996" id="tX1-Tw-ezu">
-                                <rect key="frame" x="608" y="86" width="84" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsKolide" id="MhP-rf-Aqa"/>
-                            </imageView>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="Mpi-ZH-m0x">
                                 <rect key="frame" x="520" y="199" width="274" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -585,16 +565,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="O8b-FV-IX2">
-                                <rect key="frame" x="216" y="83" width="138" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMacPaw" id="qGW-Q1-Y6M"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.69999999999999996" id="kda-OT-RUO">
-                                <rect key="frame" x="466" y="86" width="119" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsPaloAlto" id="wum-bv-yGA"/>
-                            </imageView>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0O-vf-L7R">
                                 <rect key="frame" x="147" y="268" width="636" height="124"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -604,10 +574,35 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.69999999999999996" id="B4E-R4-LoH">
-                                <rect key="frame" x="370" y="90" width="73" height="25"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="AcJ-D4-ex5">
+                                <rect key="frame" x="30" y="87" width="77" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsFleet" id="7bf-Lc-M0e"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="u78-HJ-G8o"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.69999999999999996" id="bV0-BB-cjB">
+                                <rect key="frame" x="713" y="85" width="84" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsKolide" id="vjC-Nm-fcG"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="xFb-rA-e38">
+                                <rect key="frame" x="136" y="83" width="138" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMacPaw" id="uxr-v0-LpS"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.69999999999999996" id="unb-b1-Wvd">
+                                <rect key="frame" x="564" y="86" width="119" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsPANW" id="nNJ-lP-B3G"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.69999999999999996" id="edE-BL-F76">
+                                <rect key="frame" x="313" y="83" width="84" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsKandji" id="6Sx-QZ-IDA"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.69999999999999996" id="ehJ-Kg-QzS">
+                                <rect key="frame" x="442" y="86" width="92" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMosyle" id="bJu-Rg-cft"/>
                             </imageView>
                         </subviews>
                     </customView>
@@ -621,13 +616,12 @@
         <image name="ContractAlternate" width="256" height="256"/>
         <image name="Expand" width="256" height="256"/>
         <image name="ExpandAlternate" width="256" height="256"/>
-        <image name="FriendsFleet" width="236" height="96"/>
         <image name="FriendsJamf" width="328" height="114"/>
         <image name="FriendsKandji" width="500" height="127"/>
         <image name="FriendsKolide" width="636" height="216"/>
         <image name="FriendsMacPaw" width="2034" height="335"/>
         <image name="FriendsMosyle" width="500" height="124"/>
-        <image name="FriendsPaloAlto" width="1312" height="240"/>
+        <image name="FriendsPANW" width="1312" height="240"/>
         <image name="Logo" width="194" height="236"/>
         <image name="LogoBG" width="194" height="236"/>
         <image name="Love" width="256" height="256"/>
