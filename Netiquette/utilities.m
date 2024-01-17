@@ -49,7 +49,7 @@ OSStatus transformApp(ProcessApplicationTransformState newState)
 
 //check if (full) dark mode
 // meaning, Mojave+ and dark mode enabled
-BOOL isDarkMode()
+BOOL isDarkMode(void)
 {
     //flag
     BOOL darkMode = NO;
