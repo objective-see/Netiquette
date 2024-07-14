@@ -269,10 +269,10 @@
     if(UPDATE_NEW_VERSION == result)
     {
         //set details
-        details = [NSString stringWithFormat:@"a new version (%@) is available!", newVersion];
+        details = [NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!",@"a new version (%@) is available!"), newVersion];
         
         //set action
-        action = @"Update";
+        action = NSLocalizedString(@"Update",@"Update");
         
         //alloc update window
         updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
@@ -300,10 +300,10 @@
     else
     {
         //set details
-        details = @"No new versions available";
+        details = NSLocalizedString(@"No new versions available", @"No new versions available");
             
         //set action
-        action = @"Close";
+        action = NSLocalizedString(@"Close", @"Close");
         
         //alloc update window
         updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];

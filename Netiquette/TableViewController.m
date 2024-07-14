@@ -65,7 +65,7 @@
         self.overlay.layer.backgroundColor = NSColor.lightGrayColor.CGColor;
         
         //set (default) scanning msg
-        self.activityMessage.stringValue = @"Enumerating Network Connections...";
+        self.activityMessage.stringValue = NSLocalizedString(@"Enumerating Network Connections...", @"Enumerating Network Connections...");
         
         //show overlay
         self.overlay.hidden = NO;
@@ -150,7 +150,7 @@
             if(YES == [NSUserDefaults.standardUserDefaults boolForKey:PREFS_HIDE_APPLE])
             {
                 //set msg
-                self.activityMessage.stringValue = @"No (3rd-party) Network Connections Detected";
+                self.activityMessage.stringValue = NSLocalizedString(@"No (3rd-party) Network Connections Detected", @"No (3rd-party) Network Connections Detected");
             }
             
             //full scan
@@ -158,7 +158,7 @@
             else
             {
                 //set msg
-                self.activityMessage.stringValue = @"No Network Connections Detected";
+                self.activityMessage.stringValue = NSLocalizedString(@"No Network Connections Detected", @"No Network Connections Detected");
             }
             
             //fade-out overlay
@@ -569,7 +569,7 @@ bail:
     processCell.imageView.image = process.binary.icon;
     
     //init process name/pid
-    name = [NSString stringWithFormat:@"%@ (pid: %d)", (nil != process.binary.name) ? process.binary.name : @"unknown", process.pid];
+    name = [NSString stringWithFormat:@"%@ (pid: %d)", (nil != process.binary.name) ? process.binary.name : NSLocalizedString(@"unknown", @"unknown"), process.pid];
     
     //set font size
     processCell.textField.font = [NSFontManager.sharedFontManager convertFont:processCell.textField.font toSize:DEFAULT_FONT_SIZE*(self.zoomScale/100)];
@@ -578,7 +578,7 @@ bail:
     processCell.textField.stringValue = name;
 
     //init process path
-    path = (nil != process.binary.path) ? process.binary.path : @"unknown";
+    path = (nil != process.binary.path) ? process.binary.path : NSLocalizedString(@"unknown", @"unknown");
     
     //grab sub text
     subText = [processCell viewWithTag:TABLE_ROW_SUB_TEXT_TAG];
@@ -1041,20 +1041,21 @@ bail:
              if(YES != [output writeToURL:[panel URL] atomically:NO encoding:NSUTF8StringEncoding error:&error])
              {
                  //set error msg
-                 popup.messageText = @"ERROR: Failed To Save Output";
+                 popup.messageText = NSLocalizedString(@"ERROR: Failed To Save Output",@"ERROR: Failed To Save Output");
                  
                  //set error details
-                 popup.informativeText = [NSString stringWithFormat:@"Details: %@", error];
+                 popup.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Details: %@", @"Details: %@"), error];
              }
+             //TODO: show Finder window instead?
              //saved ok
              // just show msg
              else
              {
                  //set msg
-                 popup.messageText = @"Succesfully Saved Output";
+                 popup.messageText = NSLocalizedString(@"Succesfully Saved Output", @"Succesfully Saved Output");
                  
                  //set details
-                 popup.informativeText = [NSString stringWithFormat:@"File: %s", [[panel URL] fileSystemRepresentation]];
+                 popup.informativeText = [NSString stringWithFormat:NSLocalizedString(@"File: %s", @"File: %s"), [[panel URL] fileSystemRepresentation]];
              }
             
              //show popup

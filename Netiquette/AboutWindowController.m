@@ -49,11 +49,11 @@
     if(nil == version)
     {
         //default
-        version = @"unknown";
+        version = NSLocalizedString(@"unknown", @"unknown");
     }
     
     //set version sting
-    self.versionLabel.stringValue = [NSString stringWithFormat:@"Version: %@", version];
+    self.versionLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Version: %@", @"Version: %@"), version];
 
     //load patrons
     // <3 you guys & girls

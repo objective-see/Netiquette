@@ -94,7 +94,7 @@
 {
     //handle 'update' / 'more info', etc
     // open product webpage, if they *didn't* click 'Close'
-    if(YES != [((NSButton*)sender).title isEqualToString:@"Close"])
+    if(YES != [((NSButton*)sender).title isEqualToString:NSLocalizedString(@"Close", @"Close")])
     {
         //open URL
         // invokes user's default browser

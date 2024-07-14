@@ -7,7 +7,6 @@
 //
 
 #import "Event.h"
-#import "logging.h"
 #import "utilities.h"
 
 //disable std err

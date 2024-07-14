@@ -236,7 +236,7 @@ bail:
         case -1:
             
             //set label
-            self.updateLabel.stringValue = @"error: update check failed";
+            self.updateLabel.stringValue = NSLocalizedString(@"error: update check failed",@"error: update check failed");
             
             break;
             
@@ -244,7 +244,7 @@ bail:
         case 0:
             
             //set label
-            self.updateLabel.stringValue = [NSString stringWithFormat:@"Installed version (%@),\r\nis the latest.", getAppVersion()];
+            self.updateLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Installed version (%@),\r\nis the latest.",@"Installed version (%@),\r\nis the latest."), getAppVersion()];
             
             break;
          
@@ -256,7 +256,7 @@ bail:
             updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
             
             //configure
-            [self.updateWindowController configure:[NSString stringWithFormat:@"a new version (%@) is available!", newVersion] buttonTitle:@"Update"];
+            [self.updateWindowController configure:[NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!",@"a new version (%@) is available!"), newVersion] buttonTitle:NSLocalizedString(@"Update", @"Update")];
             
             //center window
             [[self.updateWindowController window] center];
