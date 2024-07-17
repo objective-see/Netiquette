@@ -1037,31 +1037,24 @@ bail:
              output = formatResults(self.processedItems, [NSUserDefaults.standardUserDefaults boolForKey:PREFS_HIDE_APPLE]);
              
              //save JSON to disk
-             // display results in popup
-             if(YES != [output writeToURL:[panel URL] atomically:NO encoding:NSUTF8StringEncoding error:&error])
+             if(YES == [output writeToURL:panel.URL atomically:NO encoding:NSUTF8StringEncoding error:&error])
+             {
+                 //activate Finder and select file
+                 [NSWorkspace.sharedWorkspace selectFile:panel.URL.path inFileViewerRootedAtPath:@""];
+             }
+             //error saving file
+             else
              {
                  //set error msg
                  popup.messageText = NSLocalizedString(@"ERROR: Failed To Save Output",@"ERROR: Failed To Save Output");
                  
                  //set error details
                  popup.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Details: %@", @"Details: %@"), error];
-             }
-             //TODO: show Finder window instead?
-             //saved ok
-             // just show msg
-             else
-             {
-                 //set msg
-                 popup.messageText = NSLocalizedString(@"Succesfully Saved Output", @"Succesfully Saved Output");
                  
-                 //set details
-                 popup.informativeText = [NSString stringWithFormat:NSLocalizedString(@"File: %s", @"File: %s"), [[panel URL] fileSystemRepresentation]];
+                 //show popup
+                 [popup runModal];
              }
-            
-             //show popup
-             [popup runModal];
          }
-         
      }];
     
 bail:

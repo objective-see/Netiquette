@@ -246,7 +246,7 @@ NSString* prettifyJSON(NSString* output)
     else
     {
         //error
-        prettyString = @"{\"ERROR\" : \"failed to convert output to JSON\"}";
+        prettyString = NSLocalizedString(@"{\"ERROR\" : \"failed to convert output to JSON\"}", @"{\"ERROR\" : \"failed to convert output to JSON\"}");
     }
     
     return prettyString;
@@ -331,10 +331,10 @@ NSMutableString* formatResults(OrderedDictionary* connections, BOOL skipApple)
         }
         
         //add process info
-        [output appendFormat:@"{\"process\": {\"pid\": \"%d\", \"path\": \"%@\", \"signature(s)\": %@},", process.pid, process.path, signingInfo];
+        [output appendFormat:NSLocalizedString(@"{\"process\": {\"pid\": \"%d\", \"path\": \"%@\", \"signature(s)\": %@},",@"{\"process\": {\"pid\": \"%d\", \"path\": \"%@\", \"signature(s)\": %@},"), process.pid, process.path, signingInfo];
         
         //add events
-        [output appendFormat:@"\"connections\": ["];
+        [output appendFormat:NSLocalizedString(@"\"connections\": [", @"\"connections\": [")];
         
         //add all events
         for(Event* event in events.allValues)
