@@ -19,7 +19,7 @@
 #define BUTTON_COLLAPSE     5
 
 #define MAX_ZOOM_SCALE      25
-#define DEFAULT_FONT_SIZE   16
+#define DEFAULT_FONT_SIZE   15
 #define DEFAULT_ROW_HEIGHT  45
 
 #import "sort.h"

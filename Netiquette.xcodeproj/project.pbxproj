@@ -28,6 +28,8 @@
 		CD75D96D22CB36D90085361F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD75D96C22CB36D90085361F /* Assets.xcassets */; };
 		CD75D97322CB36D90085361F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD75D97222CB36D90085361F /* main.m */; };
 		CD82468522F921F20080CE10 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CD82468322F921F20080CE10 /* OrderedDictionary.m */; };
+		CDD992D92C5842DF00A1B406 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CDD992D82C5842DF00A1B406 /* InfoPlist.xcstrings */; };
+		CDD992DB2C5842DF00A1B406 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CDD992DA2C5842DF00A1B406 /* Localizable.xcstrings */; };
 		CDFCAE48230B8C7B005FA66B /* sort.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFCAE47230B8C7B005FA66B /* sort.m */; };
 		CDFCAE52230BE5D4005FA66B /* patrons.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDFCAE51230BE5D4005FA66B /* patrons.txt */; };
 /* End PBXBuildFile section */
@@ -90,6 +92,8 @@
 		CD75D97222CB36D90085361F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD82468322F921F20080CE10 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderedDictionary.m; path = "Netiquette/3rd-party/OrderedDictionary.m"; sourceTree = SOURCE_ROOT; };
 		CD82468422F921F20080CE10 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderedDictionary.h; path = "Netiquette/3rd-party/OrderedDictionary.h"; sourceTree = SOURCE_ROOT; };
+		CDD992D82C5842DF00A1B406 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		CDD992DA2C5842DF00A1B406 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		CDFCAE47230B8C7B005FA66B /* sort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sort.m; sourceTree = "<group>"; };
 		CDFCAE49230B8C8D005FA66B /* sort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sort.h; sourceTree = "<group>"; };
 		CDFCAE51230BE5D4005FA66B /* patrons.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = patrons.txt; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 			children = (
 				CD2CA1942C42F5F400D7BEAA /* AboutWindow.xib */,
 				CD1DFE1522F61ACA002112FA /* AboutWindowController.h */,
+				CDD992DA2C5842DF00A1B406 /* Localizable.xcstrings */,
+				CDD992D82C5842DF00A1B406 /* InfoPlist.xcstrings */,
 				CD1DFE1422F61ACA002112FA /* AboutWindowController.m */,
 				CD75D96922CB36D70085361F /* AppDelegate.h */,
 				CD75D96A22CB36D70085361F /* AppDelegate.m */,
@@ -186,7 +192,8 @@
 				CD82468422F921F20080CE10 /* OrderedDictionary.h */,
 				CD82468322F921F20080CE10 /* OrderedDictionary.m */,
 			);
-			path = "3rd-Party";
+			name = "3rd-Party";
+			path = "Netiquette/3rd-party";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,7 +223,8 @@
 		CD75D95E22CB36D70085361F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1540;
 				ORGANIZATIONNAME = "Objective-See";
 				TargetAttributes = {
 					CD75D96522CB36D70085361F = {
@@ -254,6 +262,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDFCAE52230BE5D4005FA66B /* patrons.txt in Resources */,
+				CDD992D92C5842DF00A1B406 /* InfoPlist.xcstrings in Resources */,
+				CDD992DB2C5842DF00A1B406 /* Localizable.xcstrings in Resources */,
 				CD75D96D22CB36D90085361F /* Assets.xcassets in Resources */,
 				CD2CA19B2C42F60300D7BEAA /* MainMenu.xib in Resources */,
 				CD2CA1A32C42F60F00D7BEAA /* UpdateWindow.xib in Resources */,
@@ -333,6 +343,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -355,6 +367,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -363,9 +376,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -393,6 +408,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -415,6 +432,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -423,9 +441,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -450,6 +470,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2.2.0;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Netiquette/Info.plist;
@@ -482,6 +503,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2.2.0;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Netiquette/Info.plist;

@@ -10,6 +10,12 @@
             "state" : "new",
             "value" : "Quit Netiquette"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salir de Netiquette"
+          }
         }
       }
     },
@@ -20,6 +26,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "No"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "No"
           }
         }
@@ -34,6 +46,12 @@
             "state" : "new",
             "value" : "Netiquette"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netiquette"
+          }
         }
       }
     },
@@ -45,6 +63,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Collapse All"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colapsar Todo"
           }
         }
       }
@@ -58,6 +82,12 @@
             "state" : "new",
             "value" : "Text Cell"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celda de Texto"
+          }
         }
       }
     },
@@ -69,6 +99,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Item Path"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruta de Ítem"
           }
         }
       }
@@ -82,6 +118,12 @@
             "state" : "new",
             "value" : "Show Preferences"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar Preferencias"
+          }
         }
       }
     },
@@ -93,6 +135,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Bytes Up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bytes Enviados"
           }
         }
       }
@@ -106,6 +154,12 @@
             "state" : "new",
             "value" : "Text Cell"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celda de Texto"
+          }
         }
       }
     },
@@ -117,6 +171,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Text Cell"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celda de Texto"
           }
         }
       }
@@ -130,6 +190,12 @@
             "state" : "new",
             "value" : "Main Menu"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menú Principal"
+          }
         }
       }
     },
@@ -141,6 +207,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Save Results"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar Resultados"
           }
         }
       }
@@ -154,6 +226,12 @@
             "state" : "new",
             "value" : "View"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver"
+          }
         }
       }
     },
@@ -165,6 +243,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Preferences"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferencias"
           }
         }
       }
@@ -178,6 +262,12 @@
             "state" : "new",
             "value" : "Text Cell"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celda de Texto"
+          }
         }
       }
     },
@@ -189,6 +279,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Save"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
           }
         }
       }
@@ -202,6 +298,12 @@
             "state" : "new",
             "value" : "Expand All"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expandir Todo"
+          }
         }
       }
     },
@@ -213,6 +315,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Text Cell"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celda de Texto"
           }
         }
       }
@@ -226,6 +334,12 @@
             "state" : "new",
             "value" : "Check for Update..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verificar Actualización..."
+          }
         }
       }
     },
@@ -237,6 +351,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Protocol"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Protocolo"
           }
         }
       }
@@ -250,6 +370,12 @@
             "state" : "new",
             "value" : "Bytes Down"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bytes Recibidos"
+          }
         }
       }
     },
@@ -261,6 +387,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Show some love? "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Nos das tu apoyo?"
           }
         }
       }
@@ -274,6 +406,12 @@
             "state" : "new",
             "value" : "About Netiquette"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de Netiquette"
+          }
         }
       }
     },
@@ -285,6 +423,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Filter"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar"
           }
         }
       }
@@ -298,6 +442,12 @@
             "state" : "new",
             "value" : "Expand"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expandir"
+          }
         }
       }
     },
@@ -309,6 +459,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Zoom In"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acercar"
           }
         }
       }
@@ -322,6 +478,12 @@
             "state" : "new",
             "value" : "Support"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apóyanos"
+          }
         }
       }
     },
@@ -333,6 +495,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Yes!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Sí!"
           }
         }
       }
@@ -346,6 +514,12 @@
             "state" : "new",
             "value" : "Item Name"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de Ítem"
+          }
         }
       }
     },
@@ -357,6 +531,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Show Preferences"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar Preferencias"
           }
         }
       }
@@ -370,6 +550,12 @@
             "state" : "new",
             "value" : "Mahalo to the \"Friends Objective-See\""
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahalo a los \"Friends de Objective-See\""
+          }
         }
       }
     },
@@ -380,6 +566,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "Interface"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Interface"
           }
         }
@@ -394,6 +586,12 @@
             "state" : "new",
             "value" : "View"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver"
+          }
         }
       }
     },
@@ -405,6 +603,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Show Preferences"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar Preferencias"
           }
         }
       }
@@ -418,6 +622,12 @@
             "state" : "new",
             "value" : "State"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado"
+          }
         }
       }
     },
@@ -430,6 +640,12 @@
             "state" : "new",
             "value" : "Enumerating Network Connections..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enumerando Conexiones de Red..."
+          }
         }
       }
     },
@@ -440,6 +656,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "Netiquette"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Netiquette"
           }
         }
@@ -454,6 +676,12 @@
             "state" : "new",
             "value" : "Zoom Out"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alejar"
+          }
         }
       }
     },
@@ -465,6 +693,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Collapse"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colapsar"
           }
         }
       }
@@ -478,6 +712,12 @@
             "state" : "new",
             "value" : "It's free, open-source, and written by a single (macOS-loving) coder!"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin cargo, open-source y desarrollado por un único programador (amante de Mac)!  "
+          }
         }
       }
     },
@@ -489,6 +729,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Support Netiquette?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Apoyas a Netiquette?"
           }
         }
       }
@@ -502,6 +748,12 @@
             "state" : "new",
             "value" : "Text Cell"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celda de Texto"
+          }
         }
       }
     },
@@ -514,6 +766,12 @@
             "state" : "new",
             "value" : "Preferences..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferencias..."
+          }
         }
       }
     },
@@ -525,6 +783,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "connection "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "conexión"
           }
         }
       }

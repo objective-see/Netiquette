@@ -10,6 +10,12 @@
             "state" : "new",
             "value" : "Check Now"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verificar Ahora"
+          }
         }
       }
     },
@@ -21,6 +27,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Resolve Names"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resolver Nombres"
           }
         }
       }
@@ -34,6 +46,12 @@
             "state" : "new",
             "value" : "Hide Apple Processes"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocultar Procesos de Apple"
+          }
         }
       }
     },
@@ -45,6 +63,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Automatically reenumerate and redisplay network connections"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enumerar y mostrar de nuevo automáticamente las conexiones de red"
           }
         }
       }
@@ -58,6 +82,12 @@
             "state" : "new",
             "value" : "Preferences"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferencias"
+          }
         }
       }
     },
@@ -69,6 +99,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Do not automatically check for new versions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No comprobar automáticamente si hay nuevas versiones."
           }
         }
       }
@@ -82,6 +118,12 @@
             "state" : "new",
             "value" : "Auto Refresh"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualización Automática"
+          }
         }
       }
     },
@@ -92,6 +134,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "General"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "General"
           }
         }
@@ -106,6 +154,12 @@
             "state" : "new",
             "value" : "General"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
         }
       }
     },
@@ -117,6 +171,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Hide Local Connections"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocultar Conexiones Locales"
           }
         }
       }
@@ -130,6 +190,12 @@
             "state" : "new",
             "value" : "Update"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar"
+          }
         }
       }
     },
@@ -141,6 +207,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Update"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar"
           }
         }
       }
@@ -154,6 +226,12 @@
             "state" : "new",
             "value" : "Resolve (domain) names via reverse lookup"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resolver nombres de (dominio) mediante búsqueda inversa"
+          }
         }
       }
     },
@@ -165,6 +243,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Do not display network activity from to system binaries"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No mostrar la actividad de red de los binarios del sistema"
           }
         }
       }
@@ -178,6 +262,12 @@
             "state" : "new",
             "value" : "Do not display network activity to local host (lo*)"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No mostrar la actividad de red al host local (lo*)"
+          }
         }
       }
     },
@@ -189,6 +279,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Disable Update Checks"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deshabilitar Verificación de Actualización"
           }
         }
       }

@@ -1,0 +1,188 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "\"connections\": [" : {
+      "comment" : "\"connections\": [",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"conexiones\": ["
+          }
+        }
+      }
+    },
+    "{\"ERROR\" : \"failed to convert output to JSON\"}" : {
+      "comment" : "{\"ERROR\" : \"failed to convert output to JSON\"}",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "{\"ERROR\" : \"fallo al convertir la salida a JSON\"}"
+          }
+        }
+      }
+    },
+    "{\"process\": {\"pid\": \"%d\", \"path\": \"%@\", \"signature(s)\": %@}," : {
+      "comment" : "{\"process\": {\"pid\": \"%d\", \"path\": \"%@\", \"signature(s)\": %@},",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "{\"process\": {\"pid\": \"%1$d\", \"path\": \"%2$@\", \"signature(s)\": %3$@},"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "{\"proceso\": {\"pid\": \"%1$d\", \"ruta\": \"%2$@\", \"firma(s)\": %3$@},"
+          }
+        }
+      }
+    },
+    "a new version (%@) is available!" : {
+      "comment" : "a new version (%@) is available!",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡una nueva versión (%@) está disponible!"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "comment" : "Close",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        }
+      }
+    },
+    "Details: %@" : {
+      "comment" : "Details: %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalles: %@"
+          }
+        }
+      }
+    },
+    "Enumerating Network Connections..." : {
+      "comment" : "Enumerating Network Connections...",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enumerando Conexiones de Red..."
+          }
+        }
+      }
+    },
+    "ERROR: Failed To Save Output" : {
+      "comment" : "ERROR: Failed To Save Output",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR: Fallo al Guardar la Salida"
+          }
+        }
+      }
+    },
+    "error: update check failed" : {
+      "comment" : "error: update check failed",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "error: falló la verificación de actualización"
+          }
+        }
+      }
+    },
+    "Installed version (%@),\r\nis the latest." : {
+      "comment" : "Installed version (%@),\r\nis the latest.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La versión instalada (%@) es la más reciente."
+          }
+        }
+      }
+    },
+    "No (3rd-party) Network Connections Detected" : {
+      "comment" : "No (3rd-party) Network Connections Detected",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se Detectaron Conexiones de Red (de terceros)"
+          }
+        }
+      }
+    },
+    "No Network Connections Detected" : {
+      "comment" : "No Network Connections Detected",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se Detectaron Conexiones de Red"
+          }
+        }
+      }
+    },
+    "No new versions available" : {
+      "comment" : "No new versions available",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay nuevas versiones disponibles"
+          }
+        }
+      }
+    },
+    "unknown" : {
+      "comment" : "unknown",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "desconocido"
+          }
+        }
+      }
+    },
+    "Update" : {
+      "comment" : "Update",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar"
+          }
+        }
+      }
+    },
+    "Version: %@" : {
+      "comment" : "Version: %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión: %@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
