@@ -106,8 +106,8 @@
         }
       }
     },
-    "Installed version (%@),\r\nis the latest." : {
-      "comment" : "Installed version (%@),\r\nis the latest.",
+    "Installed version (%@) is the latest." : {
+      "comment" : "Installed version (%@) is the latest.",
       "localizations" : {
         "es" : {
           "stringUnit" : {

@@ -56,19 +56,19 @@
       }
     },
     "2l2-iL-VQM.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Collapse All\"; ObjectID = \"2l2-iL-VQM\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Collapse Rows\"; ObjectID = \"2l2-iL-VQM\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Collapse All"
+            "value" : "Collapse Rows"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Colapsar Todo"
+            "value" : "Colapsar filas"
           }
         }
       }
@@ -110,19 +110,19 @@
       }
     },
     "8UI-Jn-6Wt.ibShadowedToolTip" : {
-      "comment" : "Class = \"NSButton\"; ibShadowedToolTip = \"Show Preferences\"; ObjectID = \"8UI-Jn-6Wt\";",
+      "comment" : "Class = \"NSButton\"; ibShadowedToolTip = \"Show settings\"; ObjectID = \"8UI-Jn-6Wt\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Show Preferences"
+            "value" : "Show settings"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar Preferencias"
+            "state" : "needs_review",
+            "value" : "Mostrar configuraciones"
           }
         }
       }
@@ -200,19 +200,19 @@
       }
     },
     "B4V-Uy-741.ibShadowedToolTip" : {
-      "comment" : "Class = \"NSButton\"; ibShadowedToolTip = \"Save Results\"; ObjectID = \"B4V-Uy-741\";",
+      "comment" : "Class = \"NSButton\"; ibShadowedToolTip = \"Save results\"; ObjectID = \"B4V-Uy-741\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Save Results"
+            "value" : "Save results"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guardar Resultados"
+            "value" : "Guardar resultados"
           }
         }
       }
@@ -230,25 +230,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver"
+            "value" : "Visualización"
           }
         }
       }
     },
     "bH4-Rh-fvB.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Preferences\"; ObjectID = \"bH4-Rh-fvB\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Settings\"; ObjectID = \"bH4-Rh-fvB\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Preferences"
+            "value" : "Settings"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preferencias"
+            "value" : "Configuratión"
           }
         }
       }
@@ -290,19 +290,19 @@
       }
     },
     "cfa-qr-T5T.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Expand All\"; ObjectID = \"cfa-qr-T5T\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Expand Rows\"; ObjectID = \"cfa-qr-T5T\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Expand All"
+            "value" : "Expand Rows"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Expandir Todo"
+            "value" : "Expandir filas"
           }
         }
       }
@@ -338,7 +338,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verificar Actualización..."
+            "value" : "Verificar actualización..."
           }
         }
       }
@@ -524,19 +524,19 @@
       }
     },
     "j8n-6d-Z9E.ibShadowedToolTip" : {
-      "comment" : "Class = \"NSButton\"; ibShadowedToolTip = \"Show Preferences\"; ObjectID = \"j8n-6d-Z9E\";",
+      "comment" : "Class = \"NSButton\"; ibShadowedToolTip = \"Expand rows\"; ObjectID = \"j8n-6d-Z9E\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Show Preferences"
+            "value" : "Expand rows"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar Preferencias"
+            "state" : "needs_review",
+            "value" : "Expandir filas"
           }
         }
       }
@@ -590,25 +590,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver"
+            "value" : "Visualización"
           }
         }
       }
     },
     "rWv-ig-rTJ.ibShadowedToolTip" : {
-      "comment" : "Class = \"NSButton\"; ibShadowedToolTip = \"Show Preferences\"; ObjectID = \"rWv-ig-rTJ\";",
+      "comment" : "Class = \"NSButton\"; ibShadowedToolTip = \"Collapse rows\"; ObjectID = \"rWv-ig-rTJ\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Show Preferences"
+            "value" : "Collapse rows"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar Preferencias"
+            "state" : "needs_review",
+            "value" : "Contraer filas"
           }
         }
       }
@@ -758,19 +758,19 @@
       }
     },
     "Yci-uK-1Ep.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Preferences...\"; ObjectID = \"Yci-uK-1Ep\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Settings...\"; ObjectID = \"Yci-uK-1Ep\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Preferences..."
+            "value" : "Settings..."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preferencias..."
+            "value" : "Configuratión..."
           }
         }
       }

@@ -26,6 +26,10 @@
     //get latest version in background
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
+        //nap
+        // UI is showing a spinner...
+        [NSThread sleepForTimeInterval:1.00f];
+        
         //grab latest version
         latestVersion = [self getLatestVersion];
         if(nil != latestVersion)

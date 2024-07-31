@@ -244,7 +244,7 @@ bail:
         case 0:
             
             //set label
-            self.updateLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Installed version (%@),\r\nis the latest.",@"Installed version (%@),\r\nis the latest."), getAppVersion()];
+            self.updateLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Installed version (%@) is the latest.", @"Installed version (%@) is the latest."), getAppVersion()];
             
             break;
          

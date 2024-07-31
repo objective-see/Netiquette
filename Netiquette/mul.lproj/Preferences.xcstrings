@@ -56,37 +56,37 @@
       }
     },
     "E0T-Ug-P8f.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Automatically reenumerate and redisplay network connections\"; ObjectID = \"E0T-Ug-P8f\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Automatically reenumerate and redisplay network connections.\"; ObjectID = \"E0T-Ug-P8f\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Automatically reenumerate and redisplay network connections"
+            "value" : "Automatically reenumerate and redisplay network connections."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enumerar y mostrar de nuevo automáticamente las conexiones de red"
+            "value" : "Enumerar y mostrar de nuevo automáticamente las conexiones de red."
           }
         }
       }
     },
     "F0z-JX-Cv5.title" : {
-      "comment" : "Class = \"NSWindow\"; title = \"Preferences\"; ObjectID = \"F0z-JX-Cv5\";",
+      "comment" : "Class = \"NSWindow\"; title = \"Settings\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Preferences"
+            "value" : "Settings"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preferencias"
+            "value" : "Configuratión"
           }
         }
       }
@@ -218,55 +218,55 @@
       }
     },
     "SG5-YM-BoV.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Resolve (domain) names via reverse lookup\"; ObjectID = \"SG5-YM-BoV\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Resolve (domain) names via reverse lookup.\"; ObjectID = \"SG5-YM-BoV\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Resolve (domain) names via reverse lookup"
+            "value" : "Resolve (domain) names via reverse lookup."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Resolver nombres de (dominio) mediante búsqueda inversa"
+            "value" : "Resolver nombres de (dominio) mediante búsqueda inversa."
           }
         }
       }
     },
     "SYJ-Qv-cRq.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Do not display network activity from to system binaries\"; ObjectID = \"SYJ-Qv-cRq\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Do not display network activity from to system binaries.\"; ObjectID = \"SYJ-Qv-cRq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Do not display network activity from to system binaries"
+            "value" : "Do not display network activity from to system binaries."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No mostrar la actividad de red de los binarios del sistema"
+            "value" : "No mostrar la actividad de red de los binarios del sistema."
           }
         }
       }
     },
     "WTz-7B-Wrc.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Do not display network activity to local host (lo*)\"; ObjectID = \"WTz-7B-Wrc\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Do not display network activity to local host (lo*).\"; ObjectID = \"WTz-7B-Wrc\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Do not display network activity to local host (lo*)"
+            "value" : "Do not display network activity to local host (lo*)."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No mostrar la actividad de red al host local (lo*)"
+            "value" : "No mostrar la actividad de red al host local (lo*)."
           }
         }
       }

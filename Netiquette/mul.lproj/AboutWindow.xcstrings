@@ -56,18 +56,18 @@
       }
     },
     "J9x-sM-h9S.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"More Info\"; ObjectID = \"J9x-sM-h9S\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"More Information\"; ObjectID = \"J9x-sM-h9S\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "More Info"
+            "value" : "More Information"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Más Información"
           }
         }
