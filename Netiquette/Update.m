@@ -14,7 +14,7 @@
 @implementation Update
 
 //check for an update
-// ->will invoke app delegate method to update UI when check completes
+// will invoke app delegate method to update UI when check completes
 -(void)checkForUpdate:(void (^)(NSUInteger result, NSString* latestVersion))completionHandler
 {
     //latest version
@@ -25,10 +25,6 @@
 
     //get latest version in background
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        //nap
-        // UI is showing a spinner...
-        [NSThread sleepForTimeInterval:1.00f];
         
         //grab latest version
         latestVersion = [self getLatestVersion];

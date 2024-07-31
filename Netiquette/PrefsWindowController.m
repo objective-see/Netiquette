@@ -208,14 +208,20 @@ bail:
     //init update obj
     update = [[Update alloc] init];
     
-    //check for update
-    // 'updateResponse newVersion:' method will be called when check is done
-    [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
+    //after a few seconds
+    // check for updates in background
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(),
+    ^{
         
-        //process response
-        [self updateResponse:result newVersion:newVersion];
-        
-    }];
+        //check for update
+        [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
+            
+            //process response
+            [self updateResponse:result newVersion:newVersion];
+            
+        }];
+
+    });
     
     return;
 }
@@ -233,7 +239,7 @@ bail:
     switch(result)
     {
         //error
-        case -1:
+        case UPDATE_ERROR:
             
             //set label
             self.updateLabel.stringValue = NSLocalizedString(@"error: update check failed",@"error: update check failed");
@@ -241,7 +247,7 @@ bail:
             break;
             
         //no updates
-        case 0:
+        case UPDATE_NOTHING_NEW:
             
             //set label
             self.updateLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Installed version (%@) is the latest.", @"Installed version (%@) is the latest."), getAppVersion()];
@@ -250,7 +256,7 @@ bail:
          
             
         //new version
-        case 1:
+        case UPDATE_NEW_VERSION:
             
             //alloc update window
             updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];

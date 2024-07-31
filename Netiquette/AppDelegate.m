@@ -239,7 +239,7 @@
     update = [[Update alloc] init];
     
     //check for update
-    // ->'updateResponse newVersion:' method will be called when check is done
+    // 'updateResponse newVersion:' method will be called when check is done
     [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
         
         //show update window?
@@ -269,7 +269,7 @@
     if(UPDATE_NEW_VERSION == result)
     {
         //set details
-        details = [NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!",@"a new version (%@) is available!"), newVersion];
+        details = [NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!", @"a new version (%@) is available!"), newVersion];
         
         //set action
         action = NSLocalizedString(@"Update",@"Update");
