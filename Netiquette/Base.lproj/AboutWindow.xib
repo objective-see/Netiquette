@@ -69,7 +69,7 @@
                         </scroller>
                     </scrollView>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fZJ-sG-ZuJ">
-                        <rect key="frame" x="18" y="204" width="138" height="19"/>
+                        <rect key="frame" x="18" y="204" width="449" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Patrons &amp; Friends" id="fJg-qw-wDf">
                             <font key="font" size="13" name="Menlo-Regular"/>
