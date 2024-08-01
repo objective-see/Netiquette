@@ -121,7 +121,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Mostrar configuraciones"
           }
         }
@@ -535,14 +535,14 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Expandir filas"
           }
         }
       }
     },
-    "lq1-Qh-dX2.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Mahalo to the \\\"Friends Objective-See\\\"\"; ObjectID = \"lq1-Qh-dX2\";",
+    "klN-Ne-sCM.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Mahalo to the \\\"Friends Objective-See\\\"\"; ObjectID = \"klN-Ne-sCM\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -554,7 +554,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mahalo a los \"Friends de Objective-See\""
+            "value" : "Gracias a los \"Friends of Objective-See\""
           }
         }
       }
@@ -607,7 +607,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Contraer filas"
           }
         }
