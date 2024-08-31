@@ -162,7 +162,7 @@
                     //update table on main thread
                     dispatch_async(dispatch_get_main_queue(),
                     ^{
-                        
+    
                         //refresh table?
                         if( (YES == isFirstEnumeration) ||
                             (YES == [NSUserDefaults.standardUserDefaults boolForKey:PREFS_AUTO_REFRESH]) )

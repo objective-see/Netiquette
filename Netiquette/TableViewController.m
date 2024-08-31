@@ -140,10 +140,7 @@
     //first time
     // remove/update
     dispatch_once(&once, ^{
-        
-        //hide activity indicator
-        self.activityIndicator.hidden = YES;
-        
+                
         //nothing found?
         // update overlay, then fade out
         if(0 == self.processedItems.count)
@@ -165,19 +162,26 @@
             }
             
             //fade-out overlay
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                //begin grouping
-                [NSAnimationContext beginGrouping];
-                
-                //set duration
-                [[NSAnimationContext currentContext] setDuration:2.0];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), 
+            ^{
+                //hide activity indicator
+                self.activityIndicator.hidden = YES;
                 
                 //fade out
-                [[self.overlay animator] removeFromSuperview];
-                
-                //end grouping
-                [NSAnimationContext endGrouping];
+                [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+                        
+                    //fade out time
+                    [context setDuration:1.5];
+                   
+                    //fade out
+                    // and remove on completion
+                    [[self.overlay animator] setAlphaValue:0.0];
+                    } completionHandler:^{
+                        
+                        //remove / hide
+                        [self.overlay removeFromSuperview];
+                        self.overlay.hidden = YES;
+                }];
                 
             });
         }
@@ -185,8 +189,28 @@
         //hide overlay
         else
         {
-            //hide
-            self.overlay.hidden = YES;
+            //fade-out overlay
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.75 * NSEC_PER_SEC)), dispatch_get_main_queue(),
+            ^{
+                //hide activity indicator
+                self.activityIndicator.hidden = YES;
+                
+                //fade out
+                [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+                        
+                    //fade out time
+                    [context setDuration:1.5];
+                   
+                    //fade out
+                    // and remove on completion
+                    [[self.overlay animator] setAlphaValue:0.0];
+                    } completionHandler:^{
+                        
+                        //remove / hide
+                        [self.overlay removeFromSuperview];
+                        self.overlay.hidden = YES;
+                }];
+            });
         }
     });
     
@@ -793,7 +817,7 @@ bail:
     
     //ascending?
     BOOL ascending = NO;
-    
+
     //grab column
     column = [self columnIDToIndex:outlineView.sortDescriptors.firstObject.key];
     
@@ -804,16 +828,20 @@ bail:
     // then update table on main thread
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
     ^{
-        //sort
-        sortedEvents = sortEvents(self.processedItems, column, ascending);
-        
-        //update table on main thread
-        dispatch_async(dispatch_get_main_queue(),
-        ^{
-            //update table
-            [self update:sortedEvents expand:NO reset:YES];
-                    
-        });
+        //items to sort/show?
+        if(0 != self.processedItems)
+        {
+            //sort
+            sortedEvents = sortEvents(self.processedItems, column, ascending);
+            
+            //update table on main thread
+            dispatch_async(dispatch_get_main_queue(),
+            ^{
+                //update table
+                [self update:sortedEvents expand:NO reset:YES];
+                        
+            });
+        }
     });
     
     return;

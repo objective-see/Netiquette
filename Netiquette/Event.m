@@ -382,12 +382,12 @@ bail:
     if(AF_INET == sockAddr->sa_family)
     {
         //key
-        key = [NSData dataWithBytes:(unsigned char*)&((struct sockaddr_in *)sockAddr)->sin_addr length:INET_ADDRSTRLEN];
+        key = [NSData dataWithBytes:(unsigned char*)&((struct sockaddr_in *)sockAddr)->sin_addr length:sizeof(struct in_addr)];
     }
     //init ipv6 cache key
     else if(AF_INET6 == sockAddr->sa_family)
     {
-        key = [NSData dataWithBytes:(unsigned char*)&((struct sockaddr_in6 *)sockAddr)->sin6_addr length:INET6_ADDRSTRLEN];
+        key = [NSData dataWithBytes:(unsigned char*)&((struct sockaddr_in6 *)sockAddr)->sin6_addr length:sizeof(struct in6_addr)];
     }
     
     //in cache?

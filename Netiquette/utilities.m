@@ -120,7 +120,7 @@ NSString* convertIPAddr(unsigned char* ipAddr, __uint8_t socketFamily)
     NSString* socketDescription = nil;
     
     //socket address
-    unsigned char socketAddress[INET6_ADDRSTRLEN+1] = {0};
+    unsigned char socketAddress[INET6_ADDRSTRLEN] = {0};
     
     //what family?
     switch(socketFamily)
