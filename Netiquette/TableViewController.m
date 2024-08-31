@@ -77,13 +77,16 @@
         [self.activityIndicator startAnimation:nil];
         
         //init sort descriptor for name column
-        self.outlineView.tableColumns[0].sortDescriptorPrototype = [NSSortDescriptor sortDescriptorWithKey:[self.outlineView.tableColumns[0] identifier] ascending:NO];
+        self.outlineView.tableColumns[0].sortDescriptorPrototype = [NSSortDescriptor sortDescriptorWithKey:[self.outlineView.tableColumns[0] identifier] ascending:YES];
         
         //init sort descriptor for bytes up column
         self.outlineView.tableColumns[4].sortDescriptorPrototype = [NSSortDescriptor sortDescriptorWithKey:[self.outlineView.tableColumns[4] identifier] ascending:YES];
         
         //init sort descriptor for bytes down column
         self.outlineView.tableColumns[5].sortDescriptorPrototype = [NSSortDescriptor sortDescriptorWithKey:[self.outlineView.tableColumns[5] identifier] ascending:YES];
+        
+        //set sort descriptors
+        [self.outlineView setSortDescriptors:@[self.outlineView.tableColumns[0].sortDescriptorPrototype, self.outlineView.tableColumns[4].sortDescriptorPrototype, self.outlineView.tableColumns[5].sortDescriptorPrototype]];
         
         //table resizing settings
         [self.outlineView sizeLastColumnToFit];
@@ -397,146 +400,156 @@ bail:
     //flag
     BOOL isProcessCell = NO;
     
-    //set process cell flag
-    isProcessCell = [item isKindOfClass:[OrderedDictionary class]];
-    
-    //set event
-    if(YES == isProcessCell)
-    {
-        //grab firt event
-        event = [[item allValues] firstObject];
-    }
-    else
-    {
-        //typecast
-        event = (Event*)item;
-    }
-    
-    //first column
-    // process or connection cell
-    if(tableColumn == self.outlineView.tableColumns[0])
-    {
-        //init process cell
+    @synchronized (self) {
+        
+        //set process cell flag
+        isProcessCell = [item isKindOfClass:[OrderedDictionary class]];
+        
+        //set event
         if(YES == isProcessCell)
         {
-            //create/configure
-            cell = [self createProcessCell:event.process];
+            //grab first event
+            event = [[item allValues] firstObject];
         }
-        //init connection (child) cell
         else
         {
-            //create/configure
-            cell = [self createConnectionCell:event];
-        }
-    }
-    //all other columns
-    // init a basic cell
-    else
-    {
-        //init table cell
-        cell = [self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
-        
-        //reset text
-        ((NSTableCellView*)cell).textField.stringValue = @"";
-        
-        //set font size
-        ((NSTableCellView*)cell).textField.font = [NSFontManager.sharedFontManager convertFont:((NSTableCellView*)cell).textField.font toSize:DEFAULT_FONT_SIZE*(self.zoomScale/100)];
-        
-        //2nd column: protocol
-        if( (YES != isProcessCell) &&
-            (tableColumn  == self.outlineView.tableColumns[1]) )
-        {
-            //set protocol
-            ((NSTableCellView*)cell).textField.stringValue = ((Event*)item).provider;
+            //typecast
+            event = (Event*)item;
         }
         
-        //3rd column: interface
-        else if( (YES != isProcessCell) &&
-                (tableColumn  == self.outlineView.tableColumns[2]) )
+        //sanity check
+        if(YES != [event isKindOfClass:[Event class]])
         {
-            //set interface
-            if(nil != ((Event*)item).interface)
-            {
-                //interface
-                ((NSTableCellView*)cell).textField.stringValue = ((Event*)item).interface;
-            }
+            //bail
+            goto bail;
         }
         
-        //4th column: for (tcp) events: state
-        else if( (YES != isProcessCell) &&
-                 (tableColumn == self.outlineView.tableColumns[3]) )
+        //first column
+        // process or connection cell
+        if(tableColumn == self.outlineView.tableColumns[0])
         {
-            //set state
-            if(nil != ((Event*)item).tcpState)
-            {
-                //state
-                ((NSTableCellView*)cell).textField.stringValue = ((Event*)item).tcpState;
-            }
-        }
-        
-        //5th column: bytes up
-        else if(tableColumn == self.outlineView.tableColumns[4])
-        {
-            //process cell?
-            // compute total
+            //init process cell
             if(YES == isProcessCell)
             {
-                //total
-                unsigned long total = 0;
-                
-                //compute all
-                for(Event* event in [item allValues])
-                {
-                    //sum
-                    total += event.bytesUp;
-                }
-                
-                //set
-                ((NSTableCellView*)cell).textField.stringValue = (0 == total) ? @"0" : [NSByteCountFormatter stringFromByteCount:total countStyle:NSByteCountFormatterCountStyleFile];
+                //create/configure
+                cell = [self createProcessCell:event.process];
             }
-            //connection cell
-            // just display bytes up for connection
+            //init connection (child) cell
             else
             {
-                //set
-                ((NSTableCellView*)cell).textField.stringValue = (0 == ((Event*)item).bytesUp) ? @"0" : [NSByteCountFormatter stringFromByteCount:((Event*)item).bytesUp countStyle:NSByteCountFormatterCountStyleFile];
+                //create/configure
+                cell = [self createConnectionCell:event];
+            }
+        }
+        //all other columns
+        // init a basic cell
+        else
+        {
+            //init table cell
+            cell = [self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
+            
+            //reset text
+            ((NSTableCellView*)cell).textField.stringValue = @"";
+            
+            //set font size
+            ((NSTableCellView*)cell).textField.font = [NSFontManager.sharedFontManager convertFont:((NSTableCellView*)cell).textField.font toSize:DEFAULT_FONT_SIZE*(self.zoomScale/100)];
+            
+            //2nd column: protocol
+            if( (YES != isProcessCell) &&
+               (tableColumn  == self.outlineView.tableColumns[1]) )
+            {
+                //set protocol
+                ((NSTableCellView*)cell).textField.stringValue = ((Event*)item).provider;
+            }
+            
+            //3rd column: interface
+            else if( (YES != isProcessCell) &&
+                    (tableColumn  == self.outlineView.tableColumns[2]) )
+            {
+                //set interface
+                if(nil != ((Event*)item).interface)
+                {
+                    //interface
+                    ((NSTableCellView*)cell).textField.stringValue = ((Event*)item).interface;
+                }
+            }
+            
+            //4th column: for (tcp) events: state
+            else if( (YES != isProcessCell) &&
+                    (tableColumn == self.outlineView.tableColumns[3]) )
+            {
+                //set state
+                if(nil != ((Event*)item).tcpState)
+                {
+                    //state
+                    ((NSTableCellView*)cell).textField.stringValue = ((Event*)item).tcpState;
+                }
+            }
+            
+            //5th column: bytes up
+            else if(tableColumn == self.outlineView.tableColumns[4])
+            {
+                //process cell?
+                // compute total
+                if(YES == isProcessCell)
+                {
+                    //total
+                    unsigned long total = 0;
+                    
+                    //compute all
+                    for(Event* event in [item allValues])
+                    {
+                        //sum
+                        total += event.bytesUp;
+                    }
+                    
+                    //set
+                    ((NSTableCellView*)cell).textField.stringValue = (0 == total) ? @"0" : [NSByteCountFormatter stringFromByteCount:total countStyle:NSByteCountFormatterCountStyleFile];
+                }
+                //connection cell
+                // just display bytes up for connection
+                else
+                {
+                    //set
+                    ((NSTableCellView*)cell).textField.stringValue = (0 == ((Event*)item).bytesUp) ? @"0" : [NSByteCountFormatter stringFromByteCount:((Event*)item).bytesUp countStyle:NSByteCountFormatterCountStyleFile];
+                }
+            }
+            
+            //6th column: bytes down
+            else if(tableColumn == self.outlineView.tableColumns[5])
+            {
+                //process cell?
+                // compute total
+                if(YES == isProcessCell)
+                {
+                    //total
+                    unsigned long total = 0;
+                    
+                    //compute all
+                    for(Event* event in [item allValues])
+                    {
+                        //sum
+                        total += event.bytesDown;
+                    }
+                    
+                    //set
+                    ((NSTableCellView*)cell).textField.stringValue = (0 == total) ? @"0" : [NSByteCountFormatter stringFromByteCount:total countStyle:NSByteCountFormatterCountStyleFile];
+                }
+                //connection cell
+                // just display bytes down for connection
+                else
+                {
+                    //set bytes down
+                    ((NSTableCellView*)cell).textField.stringValue = (0 == ((Event*)item).bytesDown) ? @"0" : [NSByteCountFormatter stringFromByteCount:((Event*)item).bytesDown countStyle:NSByteCountFormatterCountStyleFile];
+                }
             }
         }
         
-        //6th column: bytes down
-        else if(tableColumn == self.outlineView.tableColumns[5])
-        {
-            //process cell?
-            // compute total
-            if(YES == isProcessCell)
-            {
-                //total
-                unsigned long total = 0;
-                
-                //compute all
-                for(Event* event in [item allValues])
-                {
-                    //sum
-                    total += event.bytesDown;
-                }
-                
-                //set
-                ((NSTableCellView*)cell).textField.stringValue = (0 == total) ? @"0" : [NSByteCountFormatter stringFromByteCount:total countStyle:NSByteCountFormatterCountStyleFile];
-            }
-            //connection cell
-            // just display bytes down for connection
-            else
-            {
-                //set bytes down
-                ((NSTableCellView*)cell).textField.stringValue = (0 == ((Event*)item).bytesDown) ? @"0" : [NSByteCountFormatter stringFromByteCount:((Event*)item).bytesDown countStyle:NSByteCountFormatterCountStyleFile];
-            }
-        }
-    }
-    
+    } //sync
+        
 bail:
     
     return cell;
-
 }
 
 //create & customize process cell
@@ -1026,12 +1039,6 @@ bail:
              //alloc results
              results = [NSMutableArray array];
              
-             //alloc alert
-             popup = [[NSAlert alloc] init];
-             
-             //add default button
-             [popup addButtonWithTitle:@"Ok"];
-             
              //format results
              // convert to JSON
              output = formatResults(self.processedItems, [NSUserDefaults.standardUserDefaults boolForKey:PREFS_HIDE_APPLE]);
@@ -1045,6 +1052,12 @@ bail:
              //error saving file
              else
              {
+                 //alloc alert
+                 popup = [[NSAlert alloc] init];
+                 
+                 //add default button
+                 [popup addButtonWithTitle:@"Ok"];
+                 
                  //set error msg
                  popup.messageText = NSLocalizedString(@"ERROR: Failed To Save Output",@"ERROR: Failed To Save Output");
                  
