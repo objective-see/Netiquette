@@ -208,8 +208,8 @@ bail:
     //init update obj
     update = [[Update alloc] init];
     
-    //after a few seconds
-    // check for updates in background
+    //check
+    // but after a delay for UI
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(),
     ^{
         
