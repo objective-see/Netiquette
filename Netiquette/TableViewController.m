@@ -629,6 +629,13 @@ bail:
     //set detailed text color to gray
     ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT_TAG]).textColor = [NSColor secondaryLabelColor];
     
+    //set tooltip
+    subText.toolTip = subText.stringValue;
+    
+    //mask bounds
+    subText.wantsLayer = YES;
+    subText.layer.masksToBounds = YES;
+    
     return processCell;
 }
 
