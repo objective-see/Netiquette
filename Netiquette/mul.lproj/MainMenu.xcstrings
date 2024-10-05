@@ -73,24 +73,6 @@
         }
       }
     },
-    "5d0-v2-Neg.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"5d0-v2-Neg\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Celda de Texto"
-          }
-        }
-      }
-    },
     "6tZ-RA-Kuj.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Item Path\"; ObjectID = \"6tZ-RA-Kuj\";",
       "extractionState" : "extracted_with_value",
@@ -141,42 +123,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bytes Enviados"
-          }
-        }
-      }
-    },
-    "92g-lM-EGM.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"92g-lM-EGM\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Celda de Texto"
-          }
-        }
-      }
-    },
-    "agq-c1-23V.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"agq-c1-23V\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Celda de Texto"
           }
         }
       }
@@ -253,24 +199,6 @@
         }
       }
     },
-    "bTb-Ub-eJ0.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"bTb-Ub-eJ0\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Celda de Texto"
-          }
-        }
-      }
-    },
     "c9y-8g-HZk.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Save\"; ObjectID = \"c9y-8g-HZk\";",
       "extractionState" : "extracted_with_value",
@@ -303,24 +231,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Expandir filas"
-          }
-        }
-      }
-    },
-    "chO-Vr-TyP.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"chO-Vr-TyP\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Celda de Texto"
           }
         }
       }
@@ -735,24 +645,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Apoyas a Netiquette?"
-          }
-        }
-      }
-    },
-    "XWg-qv-mzG.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"XWg-qv-mzG\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Celda de Texto"
           }
         }
       }
