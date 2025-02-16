@@ -9,6 +9,12 @@
             "state" : "translated",
             "value" : "\"conexiones\": ["
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"connections\": ["
+          }
         }
       }
     },
@@ -19,6 +25,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "{\"ERROR\" : \"fallo al convertir la salida a JSON\"}"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "{\"ERROR\" : \"failed to convert output to JSON\"}"
           }
         }
       }
@@ -37,6 +49,12 @@
             "state" : "translated",
             "value" : "{\"proceso\": {\"pid\": \"%1$d\", \"ruta\": \"%2$@\", \"firma(s)\": %3$@},"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "{\"process\": {\"pid\": \"%1$d\", \"path\": \"%2$@\", \"signature(s)\": %3$@},"
+          }
         }
       }
     },
@@ -47,6 +65,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡una nueva versión (%@) está disponible!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 버전(%@)이 있습니다!"
           }
         }
       }
@@ -59,6 +83,12 @@
             "state" : "translated",
             "value" : "Cerrar"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "닫기"
+          }
         }
       }
     },
@@ -69,6 +99,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detalles: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "세부 정보: %@"
           }
         }
       }
@@ -81,6 +117,12 @@
             "state" : "translated",
             "value" : "Enumerando Conexiones de Red..."
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 연결 열거 중..."
+          }
         }
       }
     },
@@ -91,6 +133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERROR: Fallo al Guardar la Salida"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 출력 결과 저장 실패"
           }
         }
       }
@@ -103,6 +151,12 @@
             "state" : "translated",
             "value" : "error: falló la verificación de actualización"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 업데이트 확인 실패"
+          }
         }
       }
     },
@@ -113,6 +167,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La versión instalada (%@) es la más reciente."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설치된 버전(%@)이 최신입니다."
           }
         }
       }
@@ -125,6 +185,12 @@
             "state" : "translated",
             "value" : "No se Detectaron Conexiones de Red (de terceros)"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(서드파티) 네트워크 연결 감지되지 않음"
+          }
         }
       }
     },
@@ -135,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se Detectaron Conexiones de Red"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 연결 감지되지 않음"
           }
         }
       }
@@ -147,6 +219,12 @@
             "state" : "translated",
             "value" : "No hay nuevas versiones disponibles"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미 최신 버전입니다"
+          }
         }
       }
     },
@@ -157,6 +235,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "desconocido"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알 수 없음"
           }
         }
       }
@@ -169,6 +253,12 @@
             "state" : "translated",
             "value" : "Actualizar"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트"
+          }
         }
       }
     },
@@ -179,6 +269,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versión: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전: %@"
           }
         }
       }

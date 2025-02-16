@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "Verificar Ahora"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지금 확인"
+          }
         }
       }
     },
@@ -33,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Resolver Nombres"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이름 알아내기"
           }
         }
       }
@@ -52,6 +64,12 @@
             "state" : "translated",
             "value" : "Ocultar Procesos de Apple"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 프로세스 숨기기"
+          }
         }
       }
     },
@@ -69,6 +87,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enumerar y mostrar de nuevo automáticamente las conexiones de red."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 연결을 자동으로 다시 열거 및 표시합니다."
           }
         }
       }
@@ -88,6 +112,12 @@
             "state" : "translated",
             "value" : "Configuratión"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정"
+          }
         }
       }
     },
@@ -105,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No comprobar automáticamente si hay nuevas versiones."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "자동으로 새로운 버전을 확인하지 않습니다."
           }
         }
       }
@@ -124,6 +160,12 @@
             "state" : "translated",
             "value" : "Actualización Automática"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "자동 새로 고침"
+          }
         }
       }
     },
@@ -141,6 +183,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "General"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일반"
           }
         }
       }
@@ -160,6 +208,12 @@
             "state" : "translated",
             "value" : "General"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일반"
+          }
         }
       }
     },
@@ -177,6 +231,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ocultar Conexiones Locales"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로컬 연결 숨기기"
           }
         }
       }
@@ -196,6 +256,12 @@
             "state" : "translated",
             "value" : "Actualizar"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트"
+          }
         }
       }
     },
@@ -213,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Actualizar"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트"
           }
         }
       }
@@ -232,6 +304,12 @@
             "state" : "translated",
             "value" : "Resolver nombres de (dominio) mediante búsqueda inversa."
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "역방향 조회를 통해 (도메인) 이름을 알아냅니다."
+          }
         }
       }
     },
@@ -249,6 +327,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No mostrar la actividad de red de los binarios del sistema."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시스템 실행 파일로 들어오고 나가는 네트워크 활동을 표시하지 않습니다."
           }
         }
       }
@@ -268,6 +352,12 @@
             "state" : "translated",
             "value" : "No mostrar la actividad de red al host local (lo*)."
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로컬 호스트(lo*)로 가는 네트워크 활동을 표시하지 않습니다."
+          }
         }
       }
     },
@@ -285,6 +375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deshabilitar Verificación de Actualización"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트 확인 비활성화"
           }
         }
       }
