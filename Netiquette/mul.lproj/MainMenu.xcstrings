@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "Salir de Netiquette"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netiquette 종료"
+          }
         }
       }
     },
@@ -34,6 +40,12 @@
             "state" : "translated",
             "value" : "No"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아니요"
+          }
         }
       }
     },
@@ -48,6 +60,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netiquette"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Netiquette"
@@ -70,6 +88,12 @@
             "state" : "translated",
             "value" : "Colapsar filas"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "열 접기"
+          }
         }
       }
     },
@@ -87,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ruta de Ítem"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "항목 경로"
           }
         }
       }
@@ -106,6 +136,12 @@
             "state" : "translated",
             "value" : "Mostrar configuraciones"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정 보이기"
+          }
         }
       }
     },
@@ -123,6 +159,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bytes Enviados"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "올라간 바이트"
           }
         }
       }
@@ -142,6 +184,12 @@
             "state" : "translated",
             "value" : "Menú Principal"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메인 메뉴"
+          }
         }
       }
     },
@@ -159,6 +207,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guardar resultados"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "결과 저장"
           }
         }
       }
@@ -178,6 +232,12 @@
             "state" : "translated",
             "value" : "Visualización"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "보기"
+          }
         }
       }
     },
@@ -195,6 +255,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Configuratión"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정"
           }
         }
       }
@@ -214,6 +280,12 @@
             "state" : "translated",
             "value" : "Guardar"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장"
+          }
         }
       }
     },
@@ -231,6 +303,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Expandir filas"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "열 펼치기"
           }
         }
       }
@@ -250,6 +328,12 @@
             "state" : "translated",
             "value" : "Verificar actualización..."
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트 확인..."
+          }
         }
       }
     },
@@ -267,6 +351,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Protocolo"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로토콜"
           }
         }
       }
@@ -286,6 +376,12 @@
             "state" : "translated",
             "value" : "Bytes Recibidos"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내려온 바이트"
+          }
         }
       }
     },
@@ -303,6 +399,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Nos das tu apoyo?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "애정을 보여주실래요?"
           }
         }
       }
@@ -322,6 +424,12 @@
             "state" : "translated",
             "value" : "Acerca de Netiquette"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netiquette에 관하여"
+          }
         }
       }
     },
@@ -339,6 +447,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtrar"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "필터"
           }
         }
       }
@@ -358,6 +472,12 @@
             "state" : "translated",
             "value" : "Expandir"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "펼치기"
+          }
         }
       }
     },
@@ -375,6 +495,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acercar"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확대"
           }
         }
       }
@@ -394,6 +520,12 @@
             "state" : "translated",
             "value" : "Apóyanos"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지원"
+          }
         }
       }
     },
@@ -411,6 +543,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Sí!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예!"
           }
         }
       }
@@ -430,6 +568,12 @@
             "state" : "translated",
             "value" : "Nombre de Ítem"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "항목 이름"
+          }
         }
       }
     },
@@ -447,6 +591,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Expandir filas"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "열 펼치기"
           }
         }
       }
@@ -466,6 +616,12 @@
             "state" : "translated",
             "value" : "Gracias a los \"Friends of Objective-See\""
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Objective-See 친구들\"에게, 마할로!"
+          }
         }
       }
     },
@@ -483,6 +639,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Interface"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "인터페이스"
           }
         }
       }
@@ -502,6 +664,12 @@
             "state" : "translated",
             "value" : "Visualización"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "보기"
+          }
         }
       }
     },
@@ -519,6 +687,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contraer filas"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "열 접기"
           }
         }
       }
@@ -538,6 +712,12 @@
             "state" : "translated",
             "value" : "Estado"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상태"
+          }
         }
       }
     },
@@ -556,6 +736,12 @@
             "state" : "translated",
             "value" : "Enumerando Conexiones de Red..."
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 연결 열거 중..."
+          }
         }
       }
     },
@@ -570,6 +756,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netiquette"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Netiquette"
@@ -592,6 +784,12 @@
             "state" : "translated",
             "value" : "Alejar"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "축소"
+          }
         }
       }
     },
@@ -609,6 +807,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Colapsar"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "접기"
           }
         }
       }
@@ -628,6 +832,12 @@
             "state" : "translated",
             "value" : "Sin cargo, open-source y desarrollado por un único programador (amante de Mac)!  "
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "무료이면서, 오픈소스에, 한 (Mac 덕후) 코더에 의해 개발되었습니다!"
+          }
         }
       }
     },
@@ -645,6 +855,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Apoyas a Netiquette?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netiquette를 응원하시겠어요?"
           }
         }
       }
@@ -664,6 +880,12 @@
             "state" : "translated",
             "value" : "Configuratión..."
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정..."
+          }
         }
       }
     },
@@ -681,6 +903,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "conexión"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "연결"
           }
         }
       }

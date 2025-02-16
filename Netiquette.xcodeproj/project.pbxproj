@@ -245,6 +245,7 @@
 				en,
 				Base,
 				es,
+				ko,
 			);
 			mainGroup = CD75D95D22CB36D70085361F;
 			productRefGroup = CD75D96722CB36D70085361F /* Products */;
