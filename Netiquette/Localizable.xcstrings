@@ -4,6 +4,12 @@
     "\"connections\": [" : {
       "comment" : "\"connections\": [",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Verbindungen“: ["
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15,6 +21,12 @@
     "{\"ERROR\" : \"failed to convert output to JSON\"}" : {
       "comment" : "{\"ERROR\" : \"failed to convert output to JSON\"}",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "{„FEHLER“ : „Output konnte nicht nach JSON konvertiert werden“}"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26,6 +38,12 @@
     "{\"process\": {\"pid\": \"%d\", \"path\": \"%@\", \"signature(s)\": %@}," : {
       "comment" : "{\"process\": {\"pid\": \"%d\", \"path\": \"%@\", \"signature(s)\": %@},",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "{„Prozess“:{„pid“:“%1$d,“Pfad“: „%2$@,“Signatur(en)“:%3$@,"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -43,6 +61,12 @@
     "a new version (%@) is available!" : {
       "comment" : "a new version (%@) is available!",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die neue Version (%@) ist verfügbar!"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54,6 +78,12 @@
     "Close" : {
       "comment" : "Close",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -65,6 +95,12 @@
     "Details: %@" : {
       "comment" : "Details: %@",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details: %@"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -76,6 +112,12 @@
     "Enumerating Network Connections..." : {
       "comment" : "Enumerating Network Connections...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überprüfe Netzwerkverbindungen…"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -87,6 +129,12 @@
     "ERROR: Failed To Save Output" : {
       "comment" : "ERROR: Failed To Save Output",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler: Output konnte nicht gespeichert werden"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -98,6 +146,12 @@
     "error: update check failed" : {
       "comment" : "error: update check failed",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler: Suche nach Updates fehlgeschlagen"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -109,6 +163,12 @@
     "Installed version (%@) is the latest." : {
       "comment" : "Installed version (%@) is the latest.",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die installierte Version (%@) ist auf dem neusten Stand."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -120,6 +180,12 @@
     "No (3rd-party) Network Connections Detected" : {
       "comment" : "No (3rd-party) Network Connections Detected",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine (3rd-party ) Netzwerkverbindungen erkannt"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -131,6 +197,12 @@
     "No Network Connections Detected" : {
       "comment" : "No Network Connections Detected",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Netzwerkverbindungen erkannt."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -142,6 +214,12 @@
     "No new versions available" : {
       "comment" : "No new versions available",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine neuen Versionen verfügbar"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -153,6 +231,12 @@
     "unknown" : {
       "comment" : "unknown",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unbekannt"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -164,6 +248,12 @@
     "Update" : {
       "comment" : "Update",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -175,6 +265,12 @@
     "Version: %@" : {
       "comment" : "Version: %@",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version: %@"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",

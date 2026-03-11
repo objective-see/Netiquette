@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Check Now\"; ObjectID = \"2qr-2x-A3U\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt prüfen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -23,6 +29,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Resolve Names\"; ObjectID = \"4EN-j2-enV\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namen auflösen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -41,6 +53,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Hide Apple Processes\"; ObjectID = \"a5n-tt-65v\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Prozesse ausblenden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -59,6 +77,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Automatically reenumerate and redisplay network connections.\"; ObjectID = \"E0T-Ug-P8f\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerkverbindungen automatisch neu überprüfen und anzeigen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -77,6 +101,12 @@
       "comment" : "Class = \"NSWindow\"; title = \"Settings\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -95,6 +125,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Do not automatically check for new versions.\"; ObjectID = \"JV5-cY-ff4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht automatisch nach neuen Versionen suchen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -113,6 +149,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Auto Refresh\"; ObjectID = \"JVI-Or-h0u\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto Refresh"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -131,6 +173,12 @@
       "comment" : "Class = \"NSToolbarItem\"; label = \"General\"; ObjectID = \"k0w-Oi-kwd\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allgemein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -149,6 +197,12 @@
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"General\"; ObjectID = \"k0w-Oi-kwd\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allgemein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -167,6 +221,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Hide Local Connections\"; ObjectID = \"NVd-tb-ysH\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokale Verbindungen ausblenden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -185,6 +245,12 @@
       "comment" : "Class = \"NSToolbarItem\"; label = \"Update\"; ObjectID = \"rrF-xj-cXp\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -203,6 +269,12 @@
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Update\"; ObjectID = \"rrF-xj-cXp\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -221,6 +293,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Resolve (domain) names via reverse lookup.\"; ObjectID = \"SG5-YM-BoV\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(Domain) Namen via reverse lookup auflösen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -239,6 +317,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Do not display network activity from to system binaries.\"; ObjectID = \"SYJ-Qv-cRq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerkaktivität zwischen System Binaries nicht anzeigen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -257,6 +341,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Do not display network activity to local host (lo*).\"; ObjectID = \"WTz-7B-Wrc\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerkaktivität zu local host (lo*) nicht anzeigen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -275,6 +365,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Disable Update Checks\"; ObjectID = \"z5b-fA-WCk\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Prüfung ausschalten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
